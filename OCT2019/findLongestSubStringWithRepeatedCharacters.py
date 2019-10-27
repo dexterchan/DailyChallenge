@@ -1,5 +1,6 @@
 
 from functools import reduce
+
 class Solution2:
     CHAR_MAP_SIZE = 256
     def addr(self, chr):
