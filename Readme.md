@@ -15,3 +15,8 @@ Build package
 ````
 python setup.py sdist
 ````
+
+Test Package
+````
+pytest tests
+````
