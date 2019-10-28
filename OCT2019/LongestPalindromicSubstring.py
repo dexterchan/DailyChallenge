@@ -64,7 +64,7 @@ class Solution:
                         if(k > maxLength):
                             maxLength = k
                             start = i
-        self.debug(memory, wordL)
+        #self.debug(memory, wordL)
 
         return s[start:start+maxLength+1]
 
@@ -75,9 +75,9 @@ class Solution:
             print ("")
 
 # Fill this in.
-
-# Test program
-s = "tracecars"
-#s = "geeks"
-print(str(Solution().longestPalindrome(s)))
-# racecar
+if __name__ == "__main__":
+    # Test program
+    s = "tracecars"
+    s = "abcded"
+    print(str(Solution().longestPalindrome(s)))
+    # racecar
