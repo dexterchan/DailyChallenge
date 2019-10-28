@@ -2,6 +2,7 @@ from .context import OCT2019
 
 from OCT2019.findLongestSubStringWithRepeatedCharacters import Solution2 as findLongestSubStringWithRepeatedCharacters
 from OCT2019.LongestPalindromicSubstring import Solution as LPSS
+from OCT2019.ValidateBalancedParentheses import Solution as BP
 
 import unittest
 
@@ -31,6 +32,35 @@ class OCT2019Suite(unittest.TestCase):
 
         ss = solu.longestPalindrome("eggissimple")
         self.assertEqual(ss, "issi")
+
+    def test_BalancedParentheses(self):
+        solu = BP ()
+        # Test Program
+        s = "()(){(())"
+        # should return False
+        self.assertFalse(solu.isValid(s))
+
+        s = ""
+        # should return True
+        self.assertTrue(solu.isValid(s))
+
+        s = "([{}])()"
+        # should return True
+        self.assertTrue(solu.isValid(s))
+
+        s = "([{}])())"
+        # should return False
+        self.assertFalse(solu.isValid(s))
+
+        s = "([{}])("
+        # should return False
+        self.assertFalse(solu.isValid(s))
+
+        s = "([{}])([])"
+        # should return True
+        self.assertTrue(solu.isValid(s))
+
+
 
 
 if __name__ == '__main__':

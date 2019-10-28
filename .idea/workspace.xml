@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af693129-d2bf-425f-99b6-8c54c884e276" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/OCT2019/LongestPalindromicSubstring.py" beforeDir="false" afterPath="$PROJECT_DIR$/OCT2019/LongestPalindromicSubstring.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_OCT2019.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_OCT2019.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OCT2019/LongestPalindromicSubstring.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
+            <state relative-caret-position="290">
+              <caret line="77" selection-start-line="77" selection-end-line="77" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -37,11 +36,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_OCT2019.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+            <state relative-caret-position="255">
+              <caret line="59" column="28" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OCT2019/ValidateBalancedParentheses.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="534">
+              <caret line="64" column="18" lean-forward="true" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -72,13 +80,14 @@
         <option value="$PROJECT_DIR$/Readme.md" />
         <option value="$PROJECT_DIR$/OCT2019/findLongestSubStringWithRepeatedCharacters.py" />
         <option value="$PROJECT_DIR$/OCT2019/LongestPalindromicSubstring.py" />
+        <option value="$PROJECT_DIR$/OCT2019/ValidateBalancedParentheses.py" />
         <option value="$PROJECT_DIR$/tests/test_OCT2019.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-16" />
-    <option name="y" value="32" />
+    <option name="y" value="31" />
     <option name="width" value="1400" />
     <option name="height" value="766" />
   </component>
@@ -139,27 +148,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python tests.Unittests in test_OCT2019.py">
-    <configuration name="AddTwoNumbersAsLinkedList" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DailyChallenge" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OCT2019" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OCT2019/AddTwoNumbersAsLinkedList.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="LongestPalindromicSubstring" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DailyChallenge" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -173,6 +161,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OCT2019/LongestPalindromicSubstring.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ValidateBalancedParentheses" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DailyChallenge" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/OCT2019" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/OCT2019/ValidateBalancedParentheses.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -233,10 +242,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Unittests in test_OCT2019.py" />
+        <item itemvalue="Python.ValidateBalancedParentheses" />
         <item itemvalue="Python.LongestPalindromicSubstring" />
         <item itemvalue="Python tests.Unittests in test_basic.py" />
         <item itemvalue="Python.findLongestSubStringWithRepeatedCharacters" />
-        <item itemvalue="Python.AddTwoNumbersAsLinkedList" />
       </list>
     </recent_temporary>
   </component>
@@ -269,15 +278,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_OCT2019Test_py - 2019.10.26 at 19h 00m 30s.xml">
-      <configuration name="Unittests in OCT2019Test.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_OCT2019_py - 2019.10.26 at 19h 07m 04s.xml">
-      <configuration name="Unittests in test_OCT2019.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_OCT2019_py - 2019.10.26 at 19h 07m 16s.xml">
-      <configuration name="Unittests in test_OCT2019.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_test_OCT2019_py - 2019.10.26 at 19h 07m 50s.xml">
       <configuration name="Unittests in test_OCT2019.py" configurationId="tests" />
     </history-entry>
@@ -299,9 +299,18 @@
     <history-entry file="Unittests_in_test_OCT2019_py - 2019.10.28 at 20h 21m 58s.xml">
       <configuration name="Unittests in test_OCT2019.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_in_test_OCT2019_py - 2019.10.28 at 20h 22m 24s.xml">
+      <configuration name="Unittests in test_OCT2019.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_OCT2019_py - 2019.10.28 at 21h 51m 42s.xml">
+      <configuration name="Unittests in test_OCT2019.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_OCT2019_py - 2019.10.28 at 21h 52m 12s.xml">
+      <configuration name="Unittests in test_OCT2019.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-16" y="32" width="1400" height="766" extended-state="0" />
+    <frame x="-16" y="31" width="1400" height="766" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24945612" />
@@ -343,6 +352,11 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/test_basic.py</url>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/OCT2019/ValidateBalancedParentheses.py</url>
+          <line>75</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -434,15 +448,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OCT2019/LongestPalindromicSubstring.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
+        <state relative-caret-position="290">
+          <caret line="77" selection-start-line="77" selection-end-line="77" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OCT2019/ValidateBalancedParentheses.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="64" column="18" lean-forward="true" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_OCT2019.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+        <state relative-caret-position="255">
+          <caret line="59" column="28" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
