@@ -3,6 +3,7 @@ from .context import OCT2019
 from OCT2019.findLongestSubStringWithRepeatedCharacters import Solution2 as findLongestSubStringWithRepeatedCharacters
 from OCT2019.LongestPalindromicSubstring import Solution as LPSS
 from OCT2019.ValidateBalancedParentheses import Solution as BP
+from OCT2019.FirstandLastIndicesofanElementinSortedArray import Solution as FLIESA
 
 import unittest
 
@@ -60,6 +61,25 @@ class OCT2019Suite(unittest.TestCase):
         # should return True
         self.assertTrue(solu.isValid(s))
 
+    def testFLIESA(self):
+        solu = FLIESA()
+
+        # Test program
+        arr = [1, 2, 2, 2, 2, 3, 4, 7, 8, 8]
+        x = 2
+        ret = (solu.getRange(arr, x))
+        self.assertEqual(ret, [1, 4])
+
+        arr = [1, 2, 2, 2, 2]
+        x = 2
+        ret = (solu.getRange(arr, x))
+        self.assertEqual(ret, [1, 4])
+
+
+        arr = [1, 5]
+        x = 2
+        ret = (solu.getRange(arr, x))
+        self.assertEqual(ret, [-1, -1])
 
 
 
