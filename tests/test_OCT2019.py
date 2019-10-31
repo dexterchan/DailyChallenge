@@ -5,6 +5,7 @@ from OCT2019.LongestPalindromicSubstring import Solution as LPSS
 from OCT2019.ValidateBalancedParentheses import Solution as BP
 from OCT2019.FirstandLastIndicesofanElementinSortedArray import Solution as FLIESA
 from OCT2019.ReverseAList import ListNode as ListNode
+from OCT2019.Sortinglistwith3uniquenumbers import sortNums
 
 import unittest
 
@@ -127,5 +128,9 @@ class OCT2019Suite(unittest.TestCase):
             currentNode = currentNode.next
             self.assertTrue( (currentNode.val-prevalue)==1 )
             prevalue = currentNode.val
+
+    def testSortNum(self):
+        N = sortNums([3, 3, 2, 1, 3, 2, 1])
+        self.assertEqual(N, [1, 1, 2, 2, 3, 3, 3])
 if __name__ == '__main__':
     unittest.main()
