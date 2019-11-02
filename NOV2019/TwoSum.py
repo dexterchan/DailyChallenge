@@ -1,6 +1,18 @@
 #Given [4, 7, 1 , -3, 2] and k = 5,
 #return true since 4 + 1 = 5.
 
+
+def two_sum_HashSet(list, k):
+
+    memory = set()
+
+    for i in  (list):
+        if(i in memory ):
+            return True
+        wantedNum = k - i
+        memory.add(wantedNum)
+    return False
+
 #O(N)
 def two_sum (list, k):
     m_size = 1<<16
@@ -31,6 +43,8 @@ if __name__ == "__main__":
     print (two_sum([4,7,1,-3,2], 5) )
     print(two_sum([4, 7, 1, -3, 2], 10))
     print(two_sum([4, 7, 2, -3, 2], 4))
+
+    print(two_sum_HashSet([4, 7, 1, -3, 2], 5))
 # True
 
 #Try to do it in a single pass of the list.
