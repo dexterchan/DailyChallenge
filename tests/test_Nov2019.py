@@ -1,6 +1,7 @@
 from .context import NOV2019
 from NOV2019.TwoSum import two_sum, two_sum_HashSet
 from NOV2019.SingleNumber import singleNumber
+from NOV2019.NondecreasingArraywithSingleModification import Solution as NAS
 
 import unittest
 
@@ -27,3 +28,8 @@ class NOV2019Suite(unittest.TestCase):
         self.assertIn(1, r)
         r = singleNumber([ 4, 3, 2, 4, 3, 2, 1])
         self.assertIn(1, r)
+
+    def testNondecreasingArraywithSingleModification(self):
+        solu = NAS()
+        self.assertTrue(solu.check([13, 4, 7]))
+        self.assertFalse(solu.check([5,1,3,2,5]))
