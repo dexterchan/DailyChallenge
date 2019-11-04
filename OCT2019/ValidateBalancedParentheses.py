@@ -62,7 +62,7 @@ class Solution:
 
 
 if __name__ == "__main__":
-    # Test Program
+    # Test Programs
     s = "()(){(())"
     # should return False
     print(Solution().isValid(s))
