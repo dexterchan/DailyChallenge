@@ -4,6 +4,8 @@ from NOV2019.SingleNumber import singleNumber
 from NOV2019.NondecreasingArraywithSingleModification import Solution as NAS
 from NOV2019.Floor_and_Ceiling_of_a_Binary_Search_Tree import findCeilingFloor as BinaryTreeFindCeilingFloor
 from NOV2019.Floor_and_Ceiling_of_a_Binary_Search_Tree import Node as BinaryTreeNode
+from NOV2019.InvertaBinaryTree import Node as BNode
+from NOV2019.InvertaBinaryTree import invert as invertBTree
 import unittest
 
 
@@ -48,3 +50,21 @@ class NOV2019Suite(unittest.TestCase):
 
         self.assertEqual( BinaryTreeFindCeilingFloor(root, 5), (4,6) )
         self.assertEqual(BinaryTreeFindCeilingFloor(root, 11), (10, 12))
+
+    def testInvertBTree(self):
+        root = BNode('a')
+        root.left = BNode('b')
+        root.right = BNode('c')
+        root.left.left = BNode('d')
+        root.left.right = BNode('e')
+        root.right.left = BNode('f')
+
+        outPutlst = []
+        root.preorderOut(outPutlst)
+        self.assertEqual(outPutlst, ['a', 'b', 'd', 'e', 'c', 'f'])
+        # a b d e c f
+        outPutlst.clear()
+        invertBTree(root)
+        root.preorderOut(outPutlst)
+        self.assertEqual(outPutlst, ['a', 'c', 'f', 'b', 'e', 'd'])
+        # a c f b e d
