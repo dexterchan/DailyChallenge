@@ -6,6 +6,7 @@ from NOV2019.Floor_and_Ceiling_of_a_Binary_Search_Tree import findCeilingFloor a
 from NOV2019.Floor_and_Ceiling_of_a_Binary_Search_Tree import Node as BinaryTreeNode
 from NOV2019.InvertaBinaryTree import Node as BNode
 from NOV2019.InvertaBinaryTree import invert as invertBTree
+from NOV2019.MaximumInAStack import MaxStack as MaxStack
 import unittest
 
 
@@ -68,3 +69,46 @@ class NOV2019Suite(unittest.TestCase):
         root.preorderOut(outPutlst)
         self.assertEqual(outPutlst, ['a', 'c', 'f', 'b', 'e', 'd'])
         # a c f b e d
+
+    def testMaxStack(self):
+        s = MaxStack()
+        s.push(1)
+        s.push(2)
+        s.push(3)
+        s.push(2)
+        self.assertEqual(s.max(), 3)
+        # 3
+        s.pop()
+        s.pop()
+        # 2
+        self.assertEqual(s.max(), 2)
+
+        s = MaxStack()
+        s.push(100)
+        s.push(20)
+        s.push(50)
+        self.assertEqual(s.max(), 100)
+        s.push(100)
+        self.assertEqual(s.max(), 100)
+        self.assertEqual(s.pop(), 100)
+        self.assertEqual(s.max(), 100)
+        s.push(150)
+        self.assertEqual(s.max(), 150)
+        s.push(200)
+        self.assertEqual(s.max(), 200)
+        s.push(50)
+        self.assertEqual(s.max(), 200)
+        s.push(150)
+        self.assertEqual(s.max(), 200)
+        s.push(200)
+        self.assertEqual(s.max(), 200)
+
+        self.assertEqual(s.pop(), 200)
+        self.assertEqual(s.max(), 200)
+        self.assertEqual(s.pop(), 150)
+        self.assertEqual(s.pop(), 50)
+        self.assertEqual(s.max(), 200)
+        self.assertEqual(s.pop(), 200)
+        self.assertEqual(s.max(), 150)
+        self.assertEqual(s.pop(), 150)
+        self.assertEqual(s.max(), 100)
