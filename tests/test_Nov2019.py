@@ -7,6 +7,7 @@ from NOV2019.Floor_and_Ceiling_of_a_Binary_Search_Tree import Node as BinaryTree
 from NOV2019.InvertaBinaryTree import Node as BNode
 from NOV2019.InvertaBinaryTree import invert as invertBTree
 from NOV2019.MaximumInAStack import MaxStack as MaxStack
+from NOV2019.NumberofWaystoClimbStairs import staircase, staircase_brutal_force
 import unittest
 
 
@@ -27,16 +28,16 @@ class NOV2019Suite(unittest.TestCase):
     def testSingleNumber(self):
         r = singleNumber([4, 3, 2, 4, 1, 3, 2])
         self.assertIn(1, r)
-        r = singleNumber([10,4, 3, 2, 4, 1, 3, 2])
+        r = singleNumber([10, 4, 3, 2, 4, 1, 3, 2])
         self.assertIn(10, r)
         self.assertIn(1, r)
-        r = singleNumber([ 4, 3, 2, 4, 3, 2, 1])
+        r = singleNumber([4, 3, 2, 4, 3, 2, 1])
         self.assertIn(1, r)
 
     def testNondecreasingArraywithSingleModification(self):
         solu = NAS()
         self.assertTrue(solu.check([13, 4, 7]))
-        self.assertFalse(solu.check([5,1,3,2,5]))
+        self.assertFalse(solu.check([5, 1, 3, 2, 5]))
 
     def testFloor_and_Ceiling_of_a_Binary_Search_Tree(self):
         root = BinaryTreeNode(8)
@@ -49,7 +50,7 @@ class NOV2019Suite(unittest.TestCase):
         root.right.left = BinaryTreeNode(10)
         root.right.right = BinaryTreeNode(14)
 
-        self.assertEqual( BinaryTreeFindCeilingFloor(root, 5), (4,6) )
+        self.assertEqual( BinaryTreeFindCeilingFloor(root, 5), (4, 6))
         self.assertEqual(BinaryTreeFindCeilingFloor(root, 11), (10, 12))
 
     def testInvertBTree(self):
@@ -112,3 +113,11 @@ class NOV2019Suite(unittest.TestCase):
         self.assertEqual(s.max(), 150)
         self.assertEqual(s.pop(), 150)
         self.assertEqual(s.max(), 100)
+        self.assertEqual(s.pop(), 50)
+        self.assertEqual(s.max(), 100)
+
+    def testStairs(self):
+        self.assertEqual(staircase_brutal_force(4), 5)
+        self.assertEqual(staircase_brutal_force(5), 8)
+        for n in range(7, 10):
+            self.assertEqual(staircase_brutal_force(n), staircase(n))
