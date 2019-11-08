@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af693129-d2bf-425f-99b6-8c54c884e276" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/NOV2019/FindPythagoreanTriplets.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_Nov2019.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_Nov2019.py" afterDir="false" />
     </list>
@@ -14,19 +15,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NOV2019/MaximumInAStack.py">
+        <entry file="file://$PROJECT_DIR$/NOV2019/FindPythagoreanTriplets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NOV2019/NumberofWaystoClimbStairs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="68" column="36" lean-forward="true" selection-start-line="68" selection-start-column="11" selection-end-line="68" selection-end-column="36" />
+            <state relative-caret-position="300">
+              <caret line="52" column="59" lean-forward="true" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -34,8 +26,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_Nov2019.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="123" column="8" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="8" />
+            <state relative-caret-position="345">
+              <caret line="128" column="24" selection-start-line="128" selection-start-column="24" selection-end-line="128" selection-end-column="24" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -89,6 +81,7 @@
         <option value="$PROJECT_DIR$/NOV2019/InvertaBinaryTree.py" />
         <option value="$PROJECT_DIR$/NOV2019/MaximumInAStack.py" />
         <option value="$PROJECT_DIR$/NOV2019/NumberofWaystoClimbStairs.py" />
+        <option value="$PROJECT_DIR$/NOV2019/FindPythagoreanTriplets.py" />
         <option value="$PROJECT_DIR$/tests/test_Nov2019.py" />
       </list>
     </option>
@@ -160,7 +153,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Python tests.Unittests in test_Nov2019.py">
-    <configuration name="Floor_and_Ceiling_of_a_Binary_Search_Tree" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="FindPythagoreanTriplets" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DailyChallenge" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -172,7 +165,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NOV2019/Floor_and_Ceiling_of_a_Binary_Search_Tree.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NOV2019/FindPythagoreanTriplets.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -261,10 +254,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Unittests in test_Nov2019.py" />
+        <item itemvalue="Python.FindPythagoreanTriplets" />
         <item itemvalue="Python.NumberofWaystoClimbStairs" />
         <item itemvalue="Python.MaximumInAStack" />
         <item itemvalue="Python.InvertaBinaryTree" />
-        <item itemvalue="Python.Floor_and_Ceiling_of_a_Binary_Search_Tree" />
       </list>
     </recent_temporary>
   </component>
@@ -297,12 +290,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.06 at 21h 09m 01s.xml">
-      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.06 at 21h 09m 13s.xml">
-      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.06 at 21h 10m 01s.xml">
       <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
     </history-entry>
@@ -325,6 +312,12 @@
       <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.08 at 21h 44m 31s.xml">
+      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.08 at 21h 45m 24s.xml">
+      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.09 at 00h 00m 06s.xml">
       <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
     </history-entry>
   </component>
@@ -646,10 +639,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/NOV2019/FindPythagoreanTriplets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="52" column="59" lean-forward="true" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_Nov2019.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="123" column="8" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="8" />
+        <state relative-caret-position="345">
+          <caret line="128" column="24" selection-start-line="128" selection-start-column="24" selection-end-line="128" selection-end-column="24" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
