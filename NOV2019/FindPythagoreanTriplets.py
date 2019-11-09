@@ -47,8 +47,8 @@ def findPythagoreanTriplets_brutal(nums):
     return False
 
 
+if __name__ == "__main__":
+    print (findPythagoreanTriplets_brutal(  [3,12,-5,13] ))
 
-print (findPythagoreanTriplets_brutal(  [3,12,-5,13] ))
-
-print (findPythagoreanTriplets_nSquare(  [3, 5, 12, 5, 13]))
+    print (findPythagoreanTriplets_nSquare(  [3, 5, 12, 5, 13]))
 # True
