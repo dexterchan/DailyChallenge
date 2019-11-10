@@ -27,7 +27,7 @@ class ListNode(object):
             currentNode.next = prevNode
             prevNode = currentNode
             currentNode = nextNode
-
+        return prevNode
 
 
     # Implement this.

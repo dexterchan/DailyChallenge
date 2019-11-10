@@ -9,6 +9,7 @@ from NOV2019.InvertaBinaryTree import invert as invertBTree
 from NOV2019.MaximumInAStack import MaxStack as MaxStack
 from NOV2019.NumberofWaystoClimbStairs import staircase, staircase_brutal_force
 from NOV2019.FindPythagoreanTriplets import findPythagoreanTriplets_nSquare
+from NOV2019.CreateaSimpleCalculator import eval
 import unittest
 
 
@@ -127,3 +128,12 @@ class NOV2019Suite(unittest.TestCase):
         self.assertTrue(findPythagoreanTriplets_nSquare(  [3, 5, 12, 5, 13]))
 
         self.assertFalse(findPythagoreanTriplets_nSquare([3, 5, 12, 5, 12]))
+
+    def testEval(self):
+        self.assertEqual(eval('2+(3+5)'), 10)
+        self.assertEqual(eval('2+(3+5)+1'), 11)
+
+        self.assertEqual(eval('2+(3+5+(2-3))+1'), 10)
+        self.assertEqual(eval('-2+3'), 1)
+        self.assertEqual(eval('-(2+3)'), -5)
+        self.assertEqual(eval('- (3 + ( 2 - 1 ) )'), -4)
