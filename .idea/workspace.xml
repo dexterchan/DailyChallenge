@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af693129-d2bf-425f-99b6-8c54c884e276" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/NOV2019/CreateaSimpleCalculator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TechLead/TraverseColor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TechLead/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TechLead/fibonacci.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NOV2019/TwoSum.py" beforeDir="false" afterPath="$PROJECT_DIR$/NOV2019/TwoSum.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OCT2019/ReverseAList.py" beforeDir="false" afterPath="$PROJECT_DIR$/OCT2019/ReverseAList.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_Nov2019.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_Nov2019.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +16,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NOV2019/CreateaSimpleCalculator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="71" selection-start-line="71" selection-end-line="77" selection-end-column="40" />
+            <state relative-caret-position="135">
+              <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="74" column="16" selection-start-line="74" selection-start-column="4" selection-end-line="74" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -31,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_Nov2019.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="136" column="39" lean-forward="true" selection-start-line="136" selection-start-column="39" selection-end-line="136" selection-end-column="39" />
+            <state relative-caret-position="302">
+              <caret line="144" column="74" selection-start-line="144" selection-start-column="74" selection-end-line="144" selection-end-column="74" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -43,7 +46,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TechLead/TraverseColor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
+            <state relative-caret-position="375">
               <caret line="43" column="24" lean-forward="true" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
             </state>
           </provider>
@@ -104,13 +107,14 @@
         <option value="$PROJECT_DIR$/OCT2019/ReverseAList.py" />
         <option value="$PROJECT_DIR$/NOV2019/TwoSum.py" />
         <option value="$PROJECT_DIR$/NOV2019/CreateaSimpleCalculator.py" />
+        <option value="$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py" />
         <option value="$PROJECT_DIR$/tests/test_Nov2019.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="y" value="73" />
+    <option name="x" value="77" />
+    <option name="y" value="54" />
     <option name="width" value="1400" />
     <option name="height" value="766" />
   </component>
@@ -120,7 +124,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,6 +155,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -201,7 +205,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="FindPythagoreanTriplets" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="LongestSequencewithTwoUniqueNumbers" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DailyChallenge" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -213,7 +217,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NOV2019/FindPythagoreanTriplets.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -281,10 +285,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Unittests in test_Nov2019.py" />
+        <item itemvalue="Python.LongestSequencewithTwoUniqueNumbers" />
         <item itemvalue="Python.CreateaSimpleCalculator" />
         <item itemvalue="Python.fibonacci" />
         <item itemvalue="Python.TraverseColor" />
-        <item itemvalue="Python.FindPythagoreanTriplets" />
       </list>
     </recent_temporary>
   </component>
@@ -317,21 +321,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.06 at 22h 54m 27s.xml">
-      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.08 at 21h 43m 52s.xml">
-      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.08 at 21h 44m 17s.xml">
-      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.08 at 21h 44m 31s.xml">
-      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.08 at 21h 45m 24s.xml">
-      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.09 at 00h 00m 06s.xml">
       <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
     </history-entry>
@@ -347,9 +336,24 @@
     <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.10 at 18h 58m 04s.xml">
       <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.10 at 18h 58m 29s.xml">
+      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.11 at 19h 16m 55s.xml">
+      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.11 at 22h 06m 08s.xml">
+      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.11 at 22h 06m 52s.xml">
+      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.11 at 22h 07m 26s.xml">
+      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="73" width="1400" height="766" extended-state="0" />
+    <frame x="77" y="54" width="1400" height="766" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24945612" />
@@ -358,7 +362,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32937685" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39910978" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.305638" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -476,6 +480,21 @@
           <url>file://$PROJECT_DIR$/NOV2019/CreateaSimpleCalculator.py</url>
           <line>43</line>
           <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py</url>
+          <line>47</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py</url>
+          <line>59</line>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -712,24 +731,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/NOV2019/CreateaSimpleCalculator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TechLead/TraverseColor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
+        <state relative-caret-position="375">
           <caret line="43" column="24" lean-forward="true" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NOV2019/CreateaSimpleCalculator.py">
+    <entry file="file://$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="71" selection-start-line="71" selection-end-line="77" selection-end-column="40" />
+        <state relative-caret-position="225">
+          <caret line="74" column="16" selection-start-line="74" selection-start-column="4" selection-end-line="74" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_Nov2019.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="136" column="39" lean-forward="true" selection-start-line="136" selection-start-column="39" selection-end-line="136" selection-end-column="39" />
+        <state relative-caret-position="302">
+          <caret line="144" column="74" selection-start-line="144" selection-start-column="74" selection-end-line="144" selection-end-column="74" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>

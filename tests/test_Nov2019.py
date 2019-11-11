@@ -10,6 +10,7 @@ from NOV2019.MaximumInAStack import MaxStack as MaxStack
 from NOV2019.NumberofWaystoClimbStairs import staircase, staircase_brutal_force
 from NOV2019.FindPythagoreanTriplets import findPythagoreanTriplets_nSquare
 from NOV2019.CreateaSimpleCalculator import eval
+from NOV2019.LongestSequencewithTwoUniqueNumbers import findSequence as longSeq2UniqueNumber
 import unittest
 
 
@@ -137,3 +138,8 @@ class NOV2019Suite(unittest.TestCase):
         self.assertEqual(eval('-2+3'), 1)
         self.assertEqual(eval('-(2+3)'), -5)
         self.assertEqual(eval('- (3 + ( 2 - 1 ) )'), -4)
+
+    def testlongSeq2UniqueNumber(self):
+        self.assertEqual (longSeq2UniqueNumber([1, 3, 5, 3, 1, 3, 1, 5]), 4)
+        self.assertEqual(longSeq2UniqueNumber([1, 3, 0, 1, 1, 3, 1, 5]), 4)
+        self.assertEqual(longSeq2UniqueNumber([1, 3, 3, 1, 1, 3, 1, 5]), 7)
