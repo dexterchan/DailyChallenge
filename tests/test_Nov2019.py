@@ -11,6 +11,7 @@ from NOV2019.NumberofWaystoClimbStairs import staircase, staircase_brutal_force
 from NOV2019.FindPythagoreanTriplets import findPythagoreanTriplets_nSquare
 from NOV2019.CreateaSimpleCalculator import eval
 from NOV2019.LongestSequencewithTwoUniqueNumbers import findSequence as longSeq2UniqueNumber
+from NOV2019.WordSearch import word_search
 import unittest
 
 
@@ -143,3 +144,12 @@ class NOV2019Suite(unittest.TestCase):
         self.assertEqual (longSeq2UniqueNumber([1, 3, 5, 3, 1, 3, 1, 5]), 4)
         self.assertEqual(longSeq2UniqueNumber([1, 3, 0, 1, 1, 3, 1, 5]), 4)
         self.assertEqual(longSeq2UniqueNumber([1, 3, 3, 1, 1, 3, 1, 5]), 7)
+
+    def testword_search(self):
+        matrix = [
+            ['F', 'A', 'C', 'I'],
+            ['O', 'B', 'Q', 'P'],
+            ['A', 'N', 'O', 'B'],
+            ['M', 'A', 'S', 'S']]
+        self.assertTrue(word_search(matrix, 'FOAM'))
+        self.assertTrue(word_search(matrix, 'MASS'))

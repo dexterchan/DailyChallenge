@@ -14,19 +14,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NOV2019/CreateaSimpleCalculator.py">
+        <entry file="file://$PROJECT_DIR$/NOV2019/WordSearch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="74" column="16" selection-start-line="74" selection-start-column="4" selection-end-line="74" selection-end-column="16" />
+            <state relative-caret-position="285">
+              <caret line="64" column="38" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -34,20 +25,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_Nov2019.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="144" column="74" selection-start-line="144" selection-start-column="74" selection-end-line="144" selection-end-column="74" />
+            <state relative-caret-position="537">
+              <caret line="154" column="49" selection-start-line="154" selection-start-column="49" selection-end-line="154" selection-end-column="49" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TechLead/TraverseColor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="43" column="24" lean-forward="true" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -108,12 +90,13 @@
         <option value="$PROJECT_DIR$/NOV2019/TwoSum.py" />
         <option value="$PROJECT_DIR$/NOV2019/CreateaSimpleCalculator.py" />
         <option value="$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py" />
+        <option value="$PROJECT_DIR$/NOV2019/WordSearch.py" />
         <option value="$PROJECT_DIR$/tests/test_Nov2019.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="77" />
+    <option name="x" value="40" />
     <option name="y" value="54" />
     <option name="width" value="1400" />
     <option name="height" value="766" />
@@ -226,7 +209,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="TraverseColor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="WordSearch" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DailyChallenge" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -234,11 +217,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TechLead" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NOV2019" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TechLead/TraverseColor.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NOV2019/WordSearch.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -285,10 +268,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Unittests in test_Nov2019.py" />
+        <item itemvalue="Python.WordSearch" />
         <item itemvalue="Python.LongestSequencewithTwoUniqueNumbers" />
         <item itemvalue="Python.CreateaSimpleCalculator" />
         <item itemvalue="Python.fibonacci" />
-        <item itemvalue="Python.TraverseColor" />
       </list>
     </recent_temporary>
   </component>
@@ -321,15 +304,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.09 at 00h 00m 06s.xml">
-      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.09 at 00h 00m 27s.xml">
-      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.09 at 11h 42m 32s.xml">
-      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.09 at 11h 43m 22s.xml">
       <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
     </history-entry>
@@ -351,9 +325,18 @@
     <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.11 at 22h 07m 26s.xml">
       <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.13 at 21h 50m 58s.xml">
+      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.13 at 21h 51m 08s.xml">
+      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.13 at 21h 51m 27s.xml">
+      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="77" y="54" width="1400" height="766" extended-state="0" />
+    <frame x="40" y="54" width="1400" height="766" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24945612" />
@@ -361,7 +344,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32937685" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32937685" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.305638" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -733,29 +716,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NOV2019/CreateaSimpleCalculator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
+        <state relative-caret-position="990">
           <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TechLead/TraverseColor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="43" column="24" lean-forward="true" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+        <state relative-caret-position="645">
+          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="597">
           <caret line="74" column="16" selection-start-line="74" selection-start-column="4" selection-end-line="74" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NOV2019/WordSearch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="64" column="38" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_Nov2019.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="144" column="74" selection-start-line="144" selection-start-column="74" selection-end-line="144" selection-end-column="74" />
+        <state relative-caret-position="537">
+          <caret line="154" column="49" selection-start-line="154" selection-start-column="49" selection-end-line="154" selection-end-column="49" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
