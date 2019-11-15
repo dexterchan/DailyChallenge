@@ -12,6 +12,7 @@ from NOV2019.FindPythagoreanTriplets import findPythagoreanTriplets_nSquare
 from NOV2019.CreateaSimpleCalculator import eval
 from NOV2019.LongestSequencewithTwoUniqueNumbers import findSequence as longSeq2UniqueNumber
 from NOV2019.WordSearch import word_search
+from NOV2019.MinimumSizeSubarraySum import Solution as MinSizeSubArray
 import unittest
 
 
@@ -153,3 +154,11 @@ class NOV2019Suite(unittest.TestCase):
             ['M', 'A', 'S', 'S']]
         self.assertTrue(word_search(matrix, 'FOAM'))
         self.assertTrue(word_search(matrix, 'MASS'))
+
+    def testMinSizeSUbArray(self):
+        solu = MinSizeSubArray()
+        self.assertEqual(solu.minSubArrayLen([2, 3, 1, 2, 4, 3], 7), 2)
+
+        self.assertEqual(solu.minSubArrayLen([2, 3, 1, 2, 4, 3], 4), 1)
+
+        self.assertTrue(solu.minSubArrayLen([8, 3, 5, 2, 1, 10], 8), 1)
