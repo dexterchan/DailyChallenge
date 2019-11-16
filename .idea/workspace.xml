@@ -22,11 +22,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_Nov2019.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="163" column="70" selection-start-line="163" selection-start-column="70" selection-end-line="163" selection-end-column="70" />
+            <state relative-caret-position="240">
+              <caret line="171" column="35" selection-start-line="171" selection-start-column="35" selection-end-line="171" selection-end-column="35" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -43,11 +43,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NOV2019/WaystoTraverseaGrid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
+            <state relative-caret-position="300">
               <caret line="99" column="21" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TechLead/StackQueue.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NOV2019/IntersectionLinkedList.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -111,15 +129,17 @@
         <option value="$PROJECT_DIR$/NOV2019/CreateaSimpleCalculator.py" />
         <option value="$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py" />
         <option value="$PROJECT_DIR$/NOV2019/WordSearch.py" />
-        <option value="$PROJECT_DIR$/tests/test_Nov2019.py" />
         <option value="$PROJECT_DIR$/NOV2019/MinimumSizeSubarraySum.py" />
         <option value="$PROJECT_DIR$/NOV2019/WaystoTraverseaGrid.py" />
+        <option value="$PROJECT_DIR$/TechLead/StackQueue.py" />
+        <option value="$PROJECT_DIR$/NOV2019/IntersectionLinkedList.py" />
+        <option value="$PROJECT_DIR$/tests/test_Nov2019.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="40" />
-    <option name="y" value="54" />
+    <option name="x" value="72" />
+    <option name="y" value="23" />
     <option name="width" value="1400" />
     <option name="height" value="766" />
   </component>
@@ -188,8 +208,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.WaystoTraverseaGrid">
-    <configuration name="LongestSequencewithTwoUniqueNumbers" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python tests.Unittests in test_Nov2019.py">
+    <configuration name="IntersectionLinkedList" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DailyChallenge" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -201,7 +221,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NOV2019/IntersectionLinkedList.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -231,6 +251,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="StackQueue" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DailyChallenge" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TechLead" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TechLead/StackQueue.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="WaystoTraverseaGrid" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DailyChallenge" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -244,27 +285,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NOV2019/WaystoTraverseaGrid.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="WordSearch" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DailyChallenge" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NOV2019" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NOV2019/WordSearch.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -289,11 +309,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.WaystoTraverseaGrid" />
         <item itemvalue="Python tests.Unittests in test_Nov2019.py" />
+        <item itemvalue="Python.IntersectionLinkedList" />
+        <item itemvalue="Python.StackQueue" />
+        <item itemvalue="Python.WaystoTraverseaGrid" />
         <item itemvalue="Python.MinimumSizeSubarraySum" />
-        <item itemvalue="Python.WordSearch" />
-        <item itemvalue="Python.LongestSequencewithTwoUniqueNumbers" />
       </list>
     </recent_temporary>
   </component>
@@ -326,12 +346,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.10 at 18h 58m 29s.xml">
-      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.11 at 19h 16m 55s.xml">
-      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.11 at 22h 06m 08s.xml">
       <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
     </history-entry>
@@ -356,9 +370,15 @@
     <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.14 at 22h 33m 17s.xml">
       <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.16 at 17h 19m 59s.xml">
+      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.16 at 17h 20m 42s.xml">
+      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="40" y="54" width="1400" height="766" extended-state="0" />
+    <frame x="72" y="23" width="1400" height="766" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24945612" />
@@ -767,16 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_Nov2019.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="163" column="70" selection-start-line="163" selection-start-column="70" selection-end-line="163" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NOV2019/WordSearch.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -793,8 +803,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NOV2019/WaystoTraverseaGrid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
+        <state relative-caret-position="300">
           <caret line="99" column="21" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TechLead/StackQueue.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NOV2019/IntersectionLinkedList.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="69" column="23" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_Nov2019.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="171" column="35" selection-start-line="171" selection-start-column="35" selection-end-line="171" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

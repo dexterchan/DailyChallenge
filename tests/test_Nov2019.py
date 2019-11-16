@@ -13,6 +13,8 @@ from NOV2019.CreateaSimpleCalculator import eval
 from NOV2019.LongestSequencewithTwoUniqueNumbers import findSequence as longSeq2UniqueNumber
 from NOV2019.WordSearch import word_search
 from NOV2019.MinimumSizeSubarraySum import Solution as MinSizeSubArray
+from NOV2019.IntersectionLinkedList import intersection as intersectionLinkedList
+from NOV2019.IntersectionLinkedList import Node as INode
 import unittest
 
 
@@ -162,3 +164,13 @@ class NOV2019Suite(unittest.TestCase):
         self.assertEqual(solu.minSubArrayLen([2, 3, 1, 2, 4, 3], 4), 1)
 
         self.assertTrue(solu.minSubArrayLen([8, 3, 5, 2, 1, 10], 8), 1)
+
+    def testIntersectionLinkedList(self):
+        a = INode(1)
+        a.next = INode(2)
+        a.next.next = INode(3)
+        a.next.next.next = INode(4)
+        b = INode(6)
+        b.next = a.next.next
+        c = intersectionLinkedList(a, b)
+        self.assertEqual(c.toString(), "[3, 4]")
