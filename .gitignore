@@ -4,3 +4,4 @@ DailyChallenge.egg-info/
 *.pyc
 .pytest_cache/
 __pycache__/
+.idea
