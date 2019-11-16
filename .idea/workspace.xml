@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af693129-d2bf-425f-99b6-8c54c884e276" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NOV2019/FindCyclesinaGraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/NOV2019/FindCyclesinaGraph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_Nov2019.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_Nov2019.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,29 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NOV2019/CreateaSimpleCalculator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
-              <caret line="74" column="16" selection-start-line="74" selection-start-column="4" selection-end-line="74" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_Nov2019.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
+            <state relative-caret-position="315">
+              <caret line="155" column="23" selection-start-line="155" selection-start-column="23" selection-end-line="155" selection-end-column="23" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -42,20 +25,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NOV2019/FindCyclesinaGraph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="69" selection-start-column="69" selection-end-column="69" />
+            <state relative-caret-position="300">
+              <caret line="49" column="20" lean-forward="true" selection-start-line="49" selection-start-column="2" selection-end-line="49" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TechLead/TraverseColor.py">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="43" column="24" lean-forward="true" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+            <state relative-caret-position="75">
+              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -116,14 +99,13 @@
         <option value="$PROJECT_DIR$/NOV2019/TwoSum.py" />
         <option value="$PROJECT_DIR$/NOV2019/CreateaSimpleCalculator.py" />
         <option value="$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py" />
-        <option value="$PROJECT_DIR$/tests/test_Nov2019.py" />
         <option value="$PROJECT_DIR$/NOV2019/FindCyclesinaGraph.py" />
+        <option value="$PROJECT_DIR$/tests/test_Nov2019.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="40" />
-    <option name="y" value="54" />
+    <option name="y" value="73" />
     <option name="width" value="1400" />
     <option name="height" value="766" />
   </component>
@@ -144,16 +126,6 @@
               <item name="DailyChallenge" type="b2602c69:ProjectViewProjectNode" />
               <item name="DailyChallenge" type="462c0819:PsiDirectoryNode" />
               <item name="NOV2019" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyChallenge" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DailyChallenge" type="462c0819:PsiDirectoryNode" />
-              <item name="OCT2019" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailyChallenge" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DailyChallenge" type="462c0819:PsiDirectoryNode" />
-              <item name="TechLead" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DailyChallenge" type="b2602c69:ProjectViewProjectNode" />
@@ -214,6 +186,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="FindCyclesinaGraph" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DailyChallenge" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NOV2019" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NOV2019/FindCyclesinaGraph.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="LongestSequencewithTwoUniqueNumbers" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DailyChallenge" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -227,27 +220,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NOV2019/LongestSequencewithTwoUniqueNumbers.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TraverseColor" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DailyChallenge" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TechLead" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TechLead/TraverseColor.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -294,10 +266,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Unittests in test_Nov2019.py" />
+        <item itemvalue="Python.FindCyclesinaGraph" />
         <item itemvalue="Python.LongestSequencewithTwoUniqueNumbers" />
         <item itemvalue="Python.CreateaSimpleCalculator" />
         <item itemvalue="Python.fibonacci" />
-        <item itemvalue="Python.TraverseColor" />
       </list>
     </recent_temporary>
   </component>
@@ -330,9 +302,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.09 at 00h 00m 27s.xml">
-      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.09 at 11h 42m 32s.xml">
       <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
     </history-entry>
@@ -360,23 +329,26 @@
     <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.11 at 22h 08m 14s.xml">
       <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_in_test_Nov2019_py - 2019.11.16 at 18h 28m 40s.xml">
+      <configuration name="Unittests in test_Nov2019.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="40" y="54" width="1400" height="766" extended-state="0" />
+    <frame x="0" y="73" width="1400" height="766" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24945612" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24945612" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32937685" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32937685" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.305638" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32937685" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32937685" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -560,7 +532,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -568,13 +540,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
           <caret line="77" selection-start-line="77" selection-end-line="77" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/Cellar/python/3.7.3/Frameworks/Python.framework/Versions/3.7/lib/python3.7/unittest/case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="614" selection-start-line="614" selection-end-line="614" />
         </state>
       </provider>
     </entry>
@@ -761,20 +726,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_Nov2019.py">
+    <entry file="file://$PROJECT_DIR$/NOV2019/FindCyclesinaGraph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="49" column="20" lean-forward="true" selection-start-line="49" selection-start-column="2" selection-end-line="49" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NOV2019/FindCyclesinaGraph.py">
+    <entry file="file:///usr/local/Cellar/python/3.7.3/Frameworks/Python.framework/Versions/3.7/lib/python3.7/unittest/case.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="69" selection-start-column="69" selection-end-column="69" />
+        <state relative-caret-position="142">
+          <caret line="691" selection-start-line="691" selection-end-line="691" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_Nov2019.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="155" column="23" selection-start-line="155" selection-start-column="23" selection-end-line="155" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
