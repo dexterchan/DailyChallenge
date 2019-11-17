@@ -11,13 +11,12 @@ from NOV2019.NumberofWaystoClimbStairs import staircase, staircase_brutal_force
 from NOV2019.FindPythagoreanTriplets import findPythagoreanTriplets_nSquare
 from NOV2019.CreateaSimpleCalculator import eval
 from NOV2019.LongestSequencewithTwoUniqueNumbers import findSequence as longSeq2UniqueNumber
-
 from NOV2019.WordSearch import word_search
 from NOV2019.MinimumSizeSubarraySum import Solution as MinSizeSubArray
 from NOV2019.IntersectionLinkedList import intersection as intersectionLinkedList
 from NOV2019.IntersectionLinkedList import Node as INode
-
 from NOV2019.FindCyclesinaGraph import find_cycle as findCycicGraph
+from NOV2019.FallingDominoes import Solution as Dominos
 
 import unittest
 
@@ -190,3 +189,6 @@ class NOV2019Suite(unittest.TestCase):
         graph['c'] = graph
         self.assertTrue(findCycicGraph(graph))
 
+    def testDominos(self):
+        result = (Dominos().pushDominoes('..R...L..R.'))
+        self.assertEqual(result, "..RR.LL..RR")
