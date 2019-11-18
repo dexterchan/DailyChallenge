@@ -192,3 +192,6 @@ class NOV2019Suite(unittest.TestCase):
     def testDominos(self):
         result = (Dominos().pushDominoes('..R...L..R.'))
         self.assertEqual(result, "..RR.LL..RR")
+
+        result = (Dominos().pushDominoes('R.L...L..R.'))
+        self.assertEqual(result, "R.LLLLL..RR")
