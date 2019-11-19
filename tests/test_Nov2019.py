@@ -17,6 +17,10 @@ from NOV2019.IntersectionLinkedList import intersection as intersectionLinkedLis
 from NOV2019.IntersectionLinkedList import Node as INode
 from NOV2019.FindCyclesinaGraph import find_cycle as findCycicGraph
 from NOV2019.FallingDominoes import Solution as Dominos
+from NOV2019.RemoveConsecutiveNodesthatSumto0 import removeConsecutiveSumTo0
+from NOV2019.RemoveConsecutiveNodesthatSumto0 import Node as CNode
+from NOV2019.Removek_thLastElementFromLinkedList import remove_kth_from_linked_list
+from NOV2019.Removek_thLastElementFromLinkedList import Node as RNode
 
 import unittest
 
@@ -195,3 +199,46 @@ class NOV2019Suite(unittest.TestCase):
 
         result = (Dominos().pushDominoes('R.L...L..R.'))
         self.assertEqual(result, "R.LLLLL..RR")
+
+    def testRemoveConsecutiveNodesthatSumto0(self):
+        node = CNode(10)
+        node.next = CNode(5)
+        node.next.next = CNode(-3)
+        node.next.next.next = CNode(-3)
+        node.next.next.next.next = CNode(1)
+        node.next.next.next.next.next = CNode(4)
+        node.next.next.next.next.next.next = CNode(-4)
+        node = removeConsecutiveSumTo0(node)
+        c = []
+        while node:
+            c.append(node.value)
+            node = node.next
+        self.assertEqual(c, [10])
+
+        node = CNode(5)
+        node.next = CNode(-3)
+        node.next.next = CNode(-3)
+        node.next.next.next = CNode(1)
+        node.next.next.next.next = CNode(20)
+        node.next.next.next.next.next = CNode(4)
+        node.next.next.next.next.next.next = CNode(-4)
+        node = removeConsecutiveSumTo0(node)
+        c = []
+        while node:
+            c.append(node.value)
+            node = node.next
+        self.assertEqual(c, [20])
+
+    def testRemovek_thLastElementFromLinkedList(self):
+        head = RNode(1, RNode(2, RNode(3, RNode(4, RNode(5)))))
+        head = remove_kth_from_linked_list(head, 1)
+        self.assertEqual(str(head), "[1, 2, 3, 4]")
+
+
+        head = RNode(1, RNode(2, RNode(3, RNode(4, RNode(5)))))
+        head = remove_kth_from_linked_list(head, 3)
+        self.assertEqual(str(head), "[1, 2, 4, 5]")
+
+        head = RNode(1, RNode(2, RNode(3)))
+        head = remove_kth_from_linked_list(head, 3)
+        self.assertEqual(str(head), "[2, 3]")
