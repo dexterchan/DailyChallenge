@@ -21,6 +21,7 @@ from NOV2019.RemoveConsecutiveNodesthatSumto0 import removeConsecutiveSumTo0
 from NOV2019.RemoveConsecutiveNodesthatSumto0 import Node as CNode
 from NOV2019.Removek_thLastElementFromLinkedList import remove_kth_from_linked_list
 from NOV2019.Removek_thLastElementFromLinkedList import Node as RNode
+from NOV2019.WitnessofTheTallPeople import witnesses
 
 import unittest
 
@@ -242,3 +243,6 @@ class NOV2019Suite(unittest.TestCase):
         head = RNode(1, RNode(2, RNode(3)))
         head = remove_kth_from_linked_list(head, 3)
         self.assertEqual(str(head), "[2, 3]")
+
+    def testWitnesses(self):
+        self.assertEqual(witnesses([3, 6, 3, 4, 1]),3)
