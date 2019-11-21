@@ -22,6 +22,7 @@ from NOV2019.RemoveConsecutiveNodesthatSumto0 import Node as CNode
 from NOV2019.Removek_thLastElementFromLinkedList import remove_kth_from_linked_list
 from NOV2019.Removek_thLastElementFromLinkedList import Node as RNode
 from NOV2019.WitnessofTheTallPeople import witnesses
+from NOV2019.CoursePrerequisites import courses_to_take
 
 import unittest
 
@@ -246,3 +247,37 @@ class NOV2019Suite(unittest.TestCase):
 
     def testWitnesses(self):
         self.assertEqual(witnesses([3, 6, 3, 4, 1]),3)
+
+    def courses_to_take(self):
+        courses = {
+            'CSC300': ['CSC100', 'CSC200'],
+            'CSC200': ['CSC100'],
+            'CSC100': []
+        }
+        c = courses_to_take(courses)
+        self.assertEqual(c, ['CSC100', 'CSC200', 'CSC300'])
+
+        courses = {
+            'CSC300': ['CSC100', 'CSC200'],
+            'CSC200': ['CSC100']
+        }
+        c = courses_to_take(courses)
+        self.assertEqual(c, None)
+
+        courses = {
+            'CSC100': [],
+            'CSC300': ['CSC100', 'CSC200'],
+            'CSC200': ['CSC100']
+
+        }
+        c = courses_to_take(courses)
+        self.assertEqual(c, ['CSC100', 'CSC200', 'CSC300'])
+
+        courses = {
+            'CSC100': [],
+            'CSC300': ['CSC100', 'CSC200', 'ELE100'],
+            'CSC200': ['CSC100']
+
+        }
+        c = courses_to_take(courses)
+        self.assertEqual(c, None)
