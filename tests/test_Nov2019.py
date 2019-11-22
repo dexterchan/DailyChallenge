@@ -23,6 +23,7 @@ from NOV2019.Removek_thLastElementFromLinkedList import remove_kth_from_linked_l
 from NOV2019.Removek_thLastElementFromLinkedList import Node as RNode
 from NOV2019.WitnessofTheTallPeople import witnesses
 from NOV2019.CoursePrerequisites import courses_to_take
+from NOV2019.MoveZeros import Solution as MoveZeros
 
 import unittest
 
@@ -281,3 +282,8 @@ class NOV2019Suite(unittest.TestCase):
         }
         c = courses_to_take(courses)
         self.assertEqual(c, None)
+
+    def testMoveZeros(self):
+        nums = [0, 0, 0, 2, 0, 1, 3, 4, 0, 0]
+        MoveZeros().moveZeros(nums)
+        self.assertEqual(nums, [2,1,3,4,0,0,0,0,0,0])
