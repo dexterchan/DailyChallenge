@@ -29,6 +29,9 @@ def heapSort(arr):
     # Build a maxheap.
     for i in range(n, -1, -1):
         heapify(arr, n, i)
+    #It will not work if build from top
+    #for i in range(n+1):
+    #    heapify(arr, n, i)
 
         # One by one extract elements
     for i in range(n - 1, 0, -1):
@@ -38,7 +41,7 @@ def heapSort(arr):
     # Driver code to test above
 
 if __name__ == "__main__":
-    arr = [12, 11, 13, 5, 6, 7]
+    arr = [12, 11, 13, 50, 60, 7]
     heapSort(arr)
     n = len(arr)
     print("Sorted array is")
