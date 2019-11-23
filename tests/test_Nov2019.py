@@ -24,6 +24,7 @@ from NOV2019.Removek_thLastElementFromLinkedList import Node as RNode
 from NOV2019.WitnessofTheTallPeople import witnesses
 from NOV2019.CoursePrerequisites import courses_to_take
 from NOV2019.MoveZeros import Solution as MoveZeros
+from NOV2019.FindthekthLargestElementinaList import findKthLargest
 
 import unittest
 
@@ -287,3 +288,10 @@ class NOV2019Suite(unittest.TestCase):
         nums = [0, 0, 0, 2, 0, 1, 3, 4, 0, 0]
         MoveZeros().moveZeros(nums)
         self.assertEqual(nums, [2,1,3,4,0,0,0,0,0,0])
+
+    def testfindKthLargest(self):
+        nums = [3, 5, 2, 4, 6, 8]
+        res = findKthLargest(nums, 3)
+        self.assertEqual(res, 5)
+        res = findKthLargest(nums, 2)
+        self.assertEqual(res, 6)
