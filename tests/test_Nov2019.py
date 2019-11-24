@@ -25,6 +25,7 @@ from NOV2019.WitnessofTheTallPeople import witnesses
 from NOV2019.CoursePrerequisites import courses_to_take
 from NOV2019.MoveZeros import Solution as MoveZeros
 from NOV2019.FindthekthLargestElementinaList import findKthLargest
+from NOV2019.SpiralTraversalofGrid import  matrix_spiral_print
 
 import unittest
 
@@ -295,3 +296,12 @@ class NOV2019Suite(unittest.TestCase):
         self.assertEqual(res, 5)
         res = findKthLargest(nums, 2)
         self.assertEqual(res, 6)
+
+    def testmatrix_spiral_print(self):
+        grid = [[1, 2, 3, 4, 5],
+                [6, 7, 8, 9, 10],
+                [11, 12, 13, 14, 15],
+                [16, 17, 18, 19, 20]]
+
+        l = matrix_spiral_print(grid)
+        self.assertEqual(l, [1,2,3,4,5,10,15,20,19,18,17,16,11,6,7,8,9,14,13,12])
