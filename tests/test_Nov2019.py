@@ -26,6 +26,7 @@ from NOV2019.CoursePrerequisites import courses_to_take
 from NOV2019.MoveZeros import Solution as MoveZeros
 from NOV2019.FindthekthLargestElementinaList import findKthLargest
 from NOV2019.SpiralTraversalofGrid import  matrix_spiral_print
+from NOV2019.LargestProductof3Elements import maximum_product_of_three
 
 import unittest
 
@@ -305,3 +306,10 @@ class NOV2019Suite(unittest.TestCase):
 
         l = matrix_spiral_print(grid)
         self.assertEqual(l, [1,2,3,4,5,10,15,20,19,18,17,16,11,6,7,8,9,14,13,12])
+
+    def test_maximum_product_of_three(self):
+        self.assertEqual(maximum_product_of_three([-4, -4, 2, 8]), (-4)*(-4)*8)
+        self.assertEqual(maximum_product_of_three([-4, -4, -6, 2, 8]), 4*6*8)
+        self.assertEqual(maximum_product_of_three([-4, -4, -6, 2, -20, -20]), 20*20*2)
+        self.assertEqual(maximum_product_of_three([-4, -4, -6, -2, -20, -20]), (-2) * (-4) * (-4))
+        self.assertEqual(maximum_product_of_three([-4, -4, 6, -2, 20, 20]), 20*20*6)
