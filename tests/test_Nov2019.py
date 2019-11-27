@@ -27,6 +27,7 @@ from NOV2019.MoveZeros import Solution as MoveZeros
 from NOV2019.FindthekthLargestElementinaList import findKthLargest
 from NOV2019.SpiralTraversalofGrid import  matrix_spiral_print
 from NOV2019.LargestProductof3Elements import maximum_product_of_three
+from NOV2019.MergeOverlappingIntervals import merge as mergeoverlapinterval
 
 import unittest
 
@@ -313,3 +314,8 @@ class NOV2019Suite(unittest.TestCase):
         self.assertEqual(maximum_product_of_three([-4, -4, -6, 2, -20, -20]), 20*20*2)
         self.assertEqual(maximum_product_of_three([-4, -4, -6, -2, -20, -20]), (-2) * (-4) * (-4))
         self.assertEqual(maximum_product_of_three([-4, -4, 6, -2, 20, 20]), 20*20*6)
+
+    def test_mergeoverlapinterval(self):
+        self.assertEqual(mergeoverlapinterval([(1, 3), (5, 8), (4, 10), (20, 25)]), [(1, 3), (4, 10), (20, 25)])
+
+        self.assertEqual(mergeoverlapinterval([(1, 3), (5, 8), (2, 10), (20, 25)]), [(1, 10), (20, 25)])
