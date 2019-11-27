@@ -28,6 +28,7 @@ from NOV2019.FindthekthLargestElementinaList import findKthLargest
 from NOV2019.SpiralTraversalofGrid import  matrix_spiral_print
 from NOV2019.LargestProductof3Elements import maximum_product_of_three
 from NOV2019.MergeOverlappingIntervals import merge as mergeoverlapinterval
+from NOV2019.MaximumProfitFromStocks import  buy_and_sell as buylowsellhigh
 
 import unittest
 
@@ -319,3 +320,10 @@ class NOV2019Suite(unittest.TestCase):
         self.assertEqual(mergeoverlapinterval([(1, 3), (5, 8), (4, 10), (20, 25)]), [(1, 3), (4, 10), (20, 25)])
 
         self.assertEqual(mergeoverlapinterval([(1, 3), (5, 8), (2, 10), (20, 25)]), [(1, 10), (20, 25)])
+
+    def test_buylowsellhigh(self):
+        self.assertEqual(buylowsellhigh([9, 11, 8, 5, 7, 10]) , 5)
+
+        self.assertEqual(buylowsellhigh([9, 11, 8, 5, 7, 10, 1, 2]), 5)
+
+        self.assertEqual(buylowsellhigh([9, 11, 8, 5, 7, 10, 1, 10]), 9)
