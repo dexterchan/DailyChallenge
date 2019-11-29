@@ -29,6 +29,7 @@ from NOV2019.SpiralTraversalofGrid import  matrix_spiral_print
 from NOV2019.LargestProductof3Elements import maximum_product_of_three
 from NOV2019.MergeOverlappingIntervals import merge as mergeoverlapinterval
 from NOV2019.MaximumProfitFromStocks import  buy_and_sell as buylowsellhigh
+from NOV2019.ContiguousSubarraywithMaximumSum import max_subarray_sum as max_subarray_sum
 
 import unittest
 
@@ -327,3 +328,11 @@ class NOV2019Suite(unittest.TestCase):
         self.assertEqual(buylowsellhigh([9, 11, 8, 5, 7, 10, 1, 2]), 5)
 
         self.assertEqual(buylowsellhigh([9, 11, 8, 5, 7, 10, 1, 10]), 9)
+
+    def test_max_subarray_sum(self):
+        self.assertEqual(max_subarray_sum([34, -50, 42, 14, -5, 86]), 137)
+        # 137
+
+        self.assertEqual(max_subarray_sum([34, -50, 42, 14, -5, 2, 2, 2, 2, 2]),61 )
+
+        self.assertEqual(max_subarray_sum([100, -34, -50, 42, 100]), 158)
