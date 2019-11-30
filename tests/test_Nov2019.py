@@ -30,7 +30,7 @@ from NOV2019.LargestProductof3Elements import maximum_product_of_three
 from NOV2019.MergeOverlappingIntervals import merge as mergeoverlapinterval
 from NOV2019.MaximumProfitFromStocks import  buy_and_sell as buylowsellhigh
 from NOV2019.ContiguousSubarraywithMaximumSum import max_subarray_sum as max_subarray_sum
-
+from NOV2019.MergeKSortedLinkedLists import merge as MergeKSortedLinkedLists, Node as slNode
 import unittest
 
 
@@ -336,3 +336,18 @@ class NOV2019Suite(unittest.TestCase):
         self.assertEqual(max_subarray_sum([34, -50, 42, 14, -5, 2, 2, 2, 2, 2]),61 )
 
         self.assertEqual(max_subarray_sum([100, -34, -50, 42, 100]), 158)
+    def test_MergeKSortedLinkedLists(self):
+
+
+        a = slNode(1, slNode(3, slNode(5)))
+        b = slNode(2, slNode(4, slNode(6)))
+        s = str(MergeKSortedLinkedLists([a, b]))
+        self.assertEqual(s, '123456')
+        # 123456
+
+        a = slNode(1, slNode(4, slNode(5)))
+        b = slNode(3, slNode(7, slNode(9)))
+        c = slNode(2, slNode(6, slNode(8)))
+        s = str(MergeKSortedLinkedLists([a, b, c]))
+        self.assertEqual(s, '123456789')
+        # 123456789
