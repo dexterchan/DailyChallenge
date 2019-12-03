@@ -1,4 +1,3 @@
-from .context import NOV2019
 from NOV2019.TwoSum import two_sum, two_sum_HashSet
 from NOV2019.SingleNumber import singleNumber
 from NOV2019.NondecreasingArraywithSingleModification import Solution as NAS
@@ -31,6 +30,8 @@ from NOV2019.MergeOverlappingIntervals import merge as mergeoverlapinterval
 from NOV2019.MaximumProfitFromStocks import  buy_and_sell as buylowsellhigh
 from NOV2019.ContiguousSubarraywithMaximumSum import max_subarray_sum as max_subarray_sum
 from NOV2019.MergeKSortedLinkedLists import merge as MergeKSortedLinkedLists, Node as slNode
+from NOV2019.Createabalancedbinarysearchtree import createBalancedBST
+
 import unittest
 
 
@@ -351,3 +352,11 @@ class NOV2019Suite(unittest.TestCase):
         s = str(MergeKSortedLinkedLists([a, b, c]))
         self.assertEqual(s, '123456789')
         # 123456789
+
+    def test_createBalancedBST(self):
+        s = str(createBalancedBST([1, 2, 3, 4, 5, 6, 7]) )
+        self.assertEqual(s, "4261357")
+
+        s = str(createBalancedBST([1, 2, 3, 4, 5]))
+        self.assertEqual(s,"32514")
+
