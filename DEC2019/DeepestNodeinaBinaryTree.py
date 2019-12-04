@@ -60,7 +60,7 @@ class Solution:
             tNode, lvl = stack.pop()
             if lvl > deepestlvl:
                 deepestlvl = lvl
-                deepestVal = tNode.val
+                deepestVal = tNode
             if tNode.left is not None:
                 stack.append((tNode.left, lvl + 1))
             if tNode.right is not None:

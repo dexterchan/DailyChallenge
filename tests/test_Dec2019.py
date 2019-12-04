@@ -25,7 +25,7 @@ class Dec2019Suite(unittest.TestCase):
         root.left.left = BNode('d')
         root.right = BNode('c')
 
-        self.assertEqual(DeepestNodeBTree(root), ('d',3))
+        self.assertEqual(DeepestNodeBTree(root), (root.left.left,3))
         # (d, 3)
 
         root = BNode('a')
@@ -35,4 +35,4 @@ class Dec2019Suite(unittest.TestCase):
         root.right.left = BNode('e')
         root.right.left.right = BNode('f')
         root.right.left.right.left = BNode('g')
-        self.assertEqual(DeepestNodeBTree(root), ('g', 5))
+        self.assertEqual(DeepestNodeBTree(root), (root.right.left.right.left, 5))
