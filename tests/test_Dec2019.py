@@ -1,5 +1,6 @@
 from DEC2019.TrappingRainwater import capacity as trapwatercapacity
 from DEC2019.BuddyStrings import Solution as buddyStringSolu
+from DEC2019.DeepestNodeinaBinaryTree import deepest as DeepestNodeBTree, Node as BNode
 import unittest
 
 
@@ -18,3 +19,20 @@ class Dec2019Suite(unittest.TestCase):
 
         self.assertTrue(buddyStringSolu().buddyStrings('aaa', 'aaa'))
         # True
+    def test_DeepestNodeBTree(self):
+        root = BNode('a')
+        root.left = BNode('b')
+        root.left.left = BNode('d')
+        root.right = BNode('c')
+
+        self.assertEqual(DeepestNodeBTree(root), ('d',3))
+        # (d, 3)
+
+        root = BNode('a')
+        root.left = BNode('b')
+        root.left.left = BNode('d')
+        root.right = BNode('c')
+        root.right.left = BNode('e')
+        root.right.left.right = BNode('f')
+        root.right.left.right.left = BNode('g')
+        self.assertEqual(DeepestNodeBTree(root), ('g', 5))
