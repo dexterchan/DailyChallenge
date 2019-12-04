@@ -37,10 +37,10 @@ class Solution:
 
         leftval, leftlvl = self.recusiveDeepest(node.left, leftlvl+1)
         if leftlvl == level:
-            leftval = node.val
+            leftval = node
         rightval, rightlvl = self.recusiveDeepest(node.right, rightlvl+1)
         if rightlvl == level:
-            rightval = node.val
+            rightval = node
 
         if leftlvl > rightlvl:
             #print ("left %d: %s"%(leftlvl, node.val))
