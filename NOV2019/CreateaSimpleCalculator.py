@@ -30,34 +30,55 @@ class Calculator:
             opt = exp[i+1]
             if result is None:
                 result = int(exp[i])
-            if opt == "+":
-                operand, nextPos =  self.__operandHelper(exp[i+2:])
-                result = self.__add(result, operand)
+            if opt == "+" or opt=="-" or opt == "*" or opt =="/":
+                result, nextPos = self.__arithmeticHelper(result, exp, i)
                 i = i + nextPos
-                continue
-            elif opt == "-":
-                operand, nextPos = self.__operandHelper(exp[i+2:])
-                result = self.__substract(result, operand)
-                i = i + nextPos
-                continue
             elif opt == ")":
                 return (result, i+2)
                 continue
         return (result, len(exp))
 
-    def __operandHelper(self, exp):
+    def __parenthesesHelper(self, exp):
         operand = exp[0]
-        if exp[0]=="(" :
+        if operand=="(" :
             result, nextPos = self.__calculateRecursive(exp[1:])
             return result, nextPos+2
         else:
-            return int(exp[0]), 2
+            return int(operand), 2
+
+    def __arithmeticHelper(self, result, exp, i):
+        opt = exp[i + 1]
+
+        operand, nextPos = self.__parenthesesHelper(exp[i + 2:])
+
+        #Check parethese if nextPos !=2
+        if (opt == "+" or opt == "-") and nextPos==2 and i+4 < len(exp):
+            nextOpt = exp[i+3]
+            if nextOpt == "*" or nextOpt == "/":
+                operand, nextPos = self.__calculateRecursive(exp[i+2:])
+                nextPos += 1
+
+
+        if opt == "+":
+            result = self.__add(result, operand)
+        elif opt == "-":
+            result = self.__substract(result, operand)
+        elif opt == "*":
+            result = self.__multiple(result, operand)
+        elif opt == "/":
+            result = self.__divide(result, operand)
+
+        return result, nextPos
 
 
     def __add (self, num1 , num2):
         return num1 + num2
     def __substract(self, num1, num2):
         return num1 - num2
+    def __multiple(self, num1, num2):
+        return num1 * num2
+    def __divide(self, num1, num2):
+        return num1 / num2
 
 
 
@@ -69,11 +90,12 @@ def eval(expression):
 
 
 if __name__ == '__main__':
-    print(eval('2+(3+5)'))
-    print (eval ('2+(3+5)+1') )
+    print(eval('2+3*(5+2*5)'))
+    #print(eval('2+(3+5)'))
+    #print (eval ('2+(3+5)+1') )
 
-    print(eval('2+(3+5+(2-3))+1'))
-    print(eval('-2+3'))
-    print(eval('-(2+3)'))
-    print ( eval('- (3 + ( 2 - 1 ) )') )
+    #print(eval('2+(3+5+(2-3))+1'))
+    #print(eval('-2+3'))
+    #print(eval('-(2+3)'))
+    #print ( eval('- (3 + ( 2 - 1 ) )') )
 # -4

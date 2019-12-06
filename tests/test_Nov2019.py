@@ -160,6 +160,11 @@ class NOV2019Suite(unittest.TestCase):
         self.assertEqual(eval('-(2+3)'), -5)
         self.assertEqual(eval('- (3 + ( 2 - 1 ) )'), -4)
 
+        self.assertEqual(eval('3*4'), 12)
+        self.assertEqual(eval('3*4+1'), 13)
+        self.assertEqual(eval('2+3*4+1'), 15)
+        self.assertEqual(eval('2+3*(5+2*5)'), 47)
+
     def testlongSeq2UniqueNumber(self):
         self.assertEqual (longSeq2UniqueNumber([1, 3, 5, 3, 1, 3, 1, 5]), 4)
         self.assertEqual(longSeq2UniqueNumber([1, 3, 0, 1, 1, 3, 1, 5]), 4)

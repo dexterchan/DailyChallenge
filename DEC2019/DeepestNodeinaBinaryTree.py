@@ -25,11 +25,11 @@ class Node(object):
 class Solution:
     def findDeepest(self, node):
 
-        #return self.recusiveDeepest(node, 1)
-        return self.iterativeDeepest(node)
+        #return self.__recusiveDeepest(node, 1)
+        return self.__iterativeDeepest(node)
 
     #Cost O(N), space O(N)
-    def recusiveDeepest(self, node, level):
+    def __recusiveDeepest(self, node, level):
         if node is None:
             return None, level-1
         leftlvl = level
@@ -50,7 +50,7 @@ class Solution:
             return (rightval, rightlvl)
 
     # Cost O(N), space O(N)
-    def iterativeDeepest(self, node):
+    def __iterativeDeepest(self, node):
         curr = node
         stack = []
         stack.append((curr,1))
