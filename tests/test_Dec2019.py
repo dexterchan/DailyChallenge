@@ -2,6 +2,7 @@ from DEC2019.TrappingRainwater import capacity as trapwatercapacity
 from DEC2019.BuddyStrings import Solution as buddyStringSolu
 from DEC2019.DeepestNodeinaBinaryTree import deepest as DeepestNodeBTree, Node as BNode
 from DEC2019.FirstMissingPositiveInteger import first_missing_positive
+from DEC2019.ValidateBinarySearchTree import is_bst, TreeNode as TNode
 import unittest
 
 
@@ -46,3 +47,37 @@ class Dec2019Suite(unittest.TestCase):
         self.assertEqual(first_missing_positive([7, 2, 3, 4, 5, -1, 1]), 6)
 
         self.assertEqual(first_missing_positive([3, 4, -1, 1]), 2)
+
+    def test_isbst(self):
+        a = TNode(5)
+        a.left = TNode(3)
+        a.right = TNode(7)
+        a.left.left = TNode(1)
+        a.left.right = TNode(10)
+        a.right.left = TNode(6)
+        self.assertFalse(is_bst(a, False))
+
+        a = TNode(5)
+        a.left = TNode(3)
+        a.right = TNode(7)
+        a.left.left = TNode(1)
+        a.left.right = TNode(2)
+        a.right.left = TNode(6)
+        self.assertFalse(is_bst(a, False))
+
+        a = TNode(5)
+        a.left = TNode(3)
+        a.right = TNode(7)
+        a.left.left = TNode(1)
+        a.left.right = TNode(4)
+        a.right.left = TNode(6)
+        self.assertTrue(is_bst(a, False))
+
+        a = TNode(5)
+        a.left = TNode(3)
+        a.right = TNode(7)
+        a.left.left = TNode(1)
+        a.left.right = TNode(10)
+        a.right.left = TNode(6)
+        a.left.right.left = TNode(4)
+        self.assertFalse(is_bst(a, False))
