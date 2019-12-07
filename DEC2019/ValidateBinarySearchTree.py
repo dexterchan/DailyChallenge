@@ -15,24 +15,43 @@ class Solution:
         self.debug = isDebug
     def is_bst(self, root):
         try:
-            low, high = self.__depthFirstSearchChecker(root)
+            low, high = self.__depthFirstSearchRecursive(root)
         except Exception as ex:
             if self.debug:
                 print (ex)
             return False
         return True
 
-    def __depthFirstSearchChecker(self, node):
+    def is_betHelper(self, root):
+        isIterative = True
+        if isIterative:
+            try:
+                self.__depthFirstSearchIterative(root)
+            except Exception as ex:
+                if self.debug:
+                    print(ex)
+                return False
+        else:
+            try:
+                low, high = self.__depthFirstSearchRecursive(root)
+            except Exception as ex:
+                if self.debug:
+                    print(ex)
+                return False
+
+        return True
+
+    def __depthFirstSearchRecursive(self, node):
         if node is None:
             raise Exception("Node is None")
 
         if node.left is not None:
-            leftLow, leftHigh = self.__depthFirstSearchChecker( node.left)
+            leftLow, leftHigh = self.__depthFirstSearchRecursive( node.left)
         else:
             leftLow = leftHigh = node.key
 
         if node.right is not None:
-            rightLow, rightHigh = self.__depthFirstSearchChecker( node.right)
+            rightLow, rightHigh = self.__depthFirstSearchRecursive( node.right)
         else:
             rightLow = rightHigh = node.key
 
@@ -41,6 +60,49 @@ class Solution:
         if rightLow < node.key:
             raise Exception ("at (%d), right subtree lowest value (%d) is smaller than node value" % (node.key, rightLow))
         return leftLow, rightHigh
+
+    def __depthFirstSearchIterative(self, root):
+        cacheresult = {}
+        stack = []
+        stack.append(root)
+
+        while len(stack) > 0:
+            node = stack[-1]
+
+            if node.left is None and node.right is None:
+                cacheresult[node] = (node.key, node.key)
+                stack.pop()
+                continue
+            leftLow = None
+            leftHigh = None
+            rightLow = None
+            rightHigh = None
+            if node.left is not None and node.left not in cacheresult:
+                stack.append(node.left)
+                continue
+            elif node.left is not None and node.left in cacheresult:
+                leftLow, leftHigh = cacheresult[node.left]
+            else:
+                leftLow = leftHigh = node.key
+
+            if node.right is not None and node.right not in cacheresult:
+                stack.append(node.right)
+                continue
+            elif node.left not in cacheresult and node.right not in cacheresult:
+                rightLow, rightHigh = cacheresult[node.right]
+            else:
+                rightLow = rightHigh = node.key
+
+            if leftHigh > node.key:
+                raise Exception(
+                    "at (%d), left subtree highest value (%d) is greater than node value" % (node.key, leftHigh))
+            if rightLow < node.key:
+                raise Exception(
+                    "at (%d), right subtree lowest value (%d) is smaller than node value" % (node.key, rightLow))
+            cacheresult[node]= (leftLow, rightHigh)
+            stack.pop()
+        return True
+
 
 
 #Wrong!!!
