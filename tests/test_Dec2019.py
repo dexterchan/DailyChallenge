@@ -3,6 +3,7 @@ from DEC2019.BuddyStrings import Solution as buddyStringSolu
 from DEC2019.DeepestNodeinaBinaryTree import deepest as DeepestNodeBTree, Node as BNode
 from DEC2019.FirstMissingPositiveInteger import first_missing_positive
 from DEC2019.ValidateBinarySearchTree import is_bst, TreeNode as TNode
+from DEC2019.GetallValuesataCertainHeightinaBinaryTree import valuesAtHeight, Node as HNode
 import unittest
 
 
@@ -81,3 +82,21 @@ class Dec2019Suite(unittest.TestCase):
         a.right.left = TNode(6)
         a.left.right.left = TNode(4)
         self.assertFalse(is_bst(a, False))
+
+    def test_valuesAtHeight(self):
+        a = HNode(1)
+        a.left = HNode(2)
+        a.right = HNode(3)
+        a.left.left = HNode(4)
+        a.left.right = HNode(5)
+        a.right.right = HNode(7)
+        self.assertEqual(valuesAtHeight(a, 3), [4,5,7])
+        # [4, 5, 7]
+
+        a = HNode(1)
+        a.left = HNode(2)
+        a.right = HNode(3)
+        a.left.left = HNode(4)
+        a.left.right = HNode(5)
+        a.right.right = HNode(7)
+        self.assertEqual(valuesAtHeight(a, 2), [2,3])

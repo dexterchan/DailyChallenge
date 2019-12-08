@@ -9,32 +9,37 @@ class TreeNode:
       self.right = None
       self.key = key
 
-#Cost: O(N) Space O(1)
+class InvalidNodeException (Exception):
+    def __init__(self,*args,**kwargs):
+        Exception.__init__(self,*args,**kwargs)
+
+
+#Cost: O(N) Space O(N)
 class Solution:
     def __init__(self, isDebug = True):
         self.debug = isDebug
     def is_bst(self, root):
         try:
-            low, high = self.__depthFirstSearchRecursive(root)
-        except Exception as ex:
+            return self.__is_betHelper(root)
+        except InvalidNodeException as ex:
             if self.debug:
                 print (ex)
             return False
         return True
 
-    def is_betHelper(self, root):
+    def __is_betHelper(self, root):
         isIterative = True
         if isIterative:
             try:
                 self.__depthFirstSearchIterative(root)
-            except Exception as ex:
+            except InvalidNodeException as ex:
                 if self.debug:
                     print(ex)
                 return False
         else:
             try:
                 low, high = self.__depthFirstSearchRecursive(root)
-            except Exception as ex:
+            except InvalidNodeException as ex:
                 if self.debug:
                     print(ex)
                 return False
@@ -56,9 +61,9 @@ class Solution:
             rightLow = rightHigh = node.key
 
         if leftHigh > node.key:
-            raise Exception ("at (%d), left subtree highest value (%d) is greater than node value" % (node.key, leftHigh))
+            raise InvalidNodeException ("at (%d), left subtree highest value (%d) is greater than node value" % (node.key, leftHigh))
         if rightLow < node.key:
-            raise Exception ("at (%d), right subtree lowest value (%d) is smaller than node value" % (node.key, rightLow))
+            raise InvalidNodeException ("at (%d), right subtree lowest value (%d) is smaller than node value" % (node.key, rightLow))
         return leftLow, rightHigh
 
     def __depthFirstSearchIterative(self, root):
@@ -88,16 +93,16 @@ class Solution:
             if node.right is not None and node.right not in cacheresult:
                 stack.append(node.right)
                 continue
-            elif node.left not in cacheresult and node.right not in cacheresult:
+            elif node.right is not None and node.right in cacheresult:
                 rightLow, rightHigh = cacheresult[node.right]
             else:
                 rightLow = rightHigh = node.key
 
             if leftHigh > node.key:
-                raise Exception(
+                raise InvalidNodeException(
                     "at (%d), left subtree highest value (%d) is greater than node value" % (node.key, leftHigh))
             if rightLow < node.key:
-                raise Exception(
+                raise InvalidNodeException(
                     "at (%d), right subtree lowest value (%d) is smaller than node value" % (node.key, rightLow))
             cacheresult[node]= (leftLow, rightHigh)
             stack.pop()
@@ -175,6 +180,12 @@ def is_bst(root, isDEBUG=True):
 
 
 if __name__ == "__main__":
+    a = TreeNode(5)
+    a.left = TreeNode(3)
+    a.right = TreeNode(2)
+
+    print(is_bst(a))
+
     a = TreeNode(5)
     a.left = TreeNode(3)
     a.right = TreeNode(7)
