@@ -4,6 +4,7 @@ from DEC2019.DeepestNodeinaBinaryTree import deepest as DeepestNodeBTree, Node a
 from DEC2019.FirstMissingPositiveInteger import first_missing_positive
 from DEC2019.ValidateBinarySearchTree import is_bst, TreeNode as TNode
 from DEC2019.GetallValuesataCertainHeightinaBinaryTree import valuesAtHeight, Node as HNode
+from DEC2019.LongestSubstringWithKDistinctCharacters import longest_substring_with_k_distinct_characters
 import unittest
 
 
@@ -100,3 +101,6 @@ class Dec2019Suite(unittest.TestCase):
         a.left.right = HNode(5)
         a.right.right = HNode(7)
         self.assertEqual(valuesAtHeight(a, 2), [2,3])
+
+    def test_longest_substring_with_k_distinct_characters(self):
+        self.assertEqual(longest_substring_with_k_distinct_characters('aabcdefff', 3), 5)
