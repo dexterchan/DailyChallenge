@@ -5,6 +5,7 @@ from DEC2019.FirstMissingPositiveInteger import first_missing_positive
 from DEC2019.ValidateBinarySearchTree import is_bst, TreeNode as TNode
 from DEC2019.GetallValuesataCertainHeightinaBinaryTree import valuesAtHeight, Node as HNode
 from DEC2019.LongestSubstringWithKDistinctCharacters import longest_substring_with_k_distinct_characters
+from DEC2019.CountNumberofUnivalSubtrees import count_unival_subtrees, Node as UNode
 import unittest
 
 
@@ -104,3 +105,73 @@ class Dec2019Suite(unittest.TestCase):
 
     def test_longest_substring_with_k_distinct_characters(self):
         self.assertEqual(longest_substring_with_k_distinct_characters('aabcdefff', 3), 5)
+
+    def test_count_unival_subtrees(self):
+        a = UNode(0)
+        a.left = UNode(1)
+        a.right = UNode(1)
+        a.right.left = UNode(1)
+        a.right.left.left = UNode(1)
+        a.right.left.right = UNode(1)
+        #   0
+        #  / \
+        # 1   1
+        #    /
+        #   1
+        #  / \
+        # 1   1
+        self.assertEqual(count_unival_subtrees(a), 5)
+        # 5
+
+        a = UNode(0)
+        a.left = UNode(1)
+        a.right = UNode(1)
+        a.right.left = UNode(1)
+        a.right.right = UNode(0)
+        a.right.left.left = UNode(1)
+        a.right.left.right = UNode(1)
+        #   0
+        #  / \
+        # 1   1
+        #    / \
+        #   1   0
+        #  / \
+        # 1   1
+        self.assertEqual(count_unival_subtrees(a), 5)
+        # 5
+
+        a = UNode(0)
+        a.left = UNode(1)
+        a.right = UNode(0)
+        a.right.left = UNode(1)
+        a.right.right = UNode(0)
+        a.right.left.left = UNode(1)
+        a.right.left.right = UNode(1)
+
+        #   0
+        #  / \
+        # 1   0
+        #    / \
+        #   1   0
+        #  / \
+        # 1   1
+        self.assertEqual(count_unival_subtrees(a),5)
+        # 5
+
+        a = UNode(0)
+        a.left = UNode(1)
+        a.right = UNode(1)
+        a.right.left = UNode(1)
+        a.right.right = UNode(1)
+        a.right.left.left = UNode(1)
+        a.right.left.right = UNode(1)
+
+        #   0
+        #  / \
+        # 1   1
+        #    / \
+        #   1   1
+        #  / \
+        # 1   1
+        self.assertEqual(count_unival_subtrees(a), 6)
+        # 6

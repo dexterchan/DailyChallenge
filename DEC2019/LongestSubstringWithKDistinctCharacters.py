@@ -20,7 +20,7 @@ class Solution:
         brutalForce = True
         if brutalForce:
             substr = self.__brutalForce(s, k)
-            print ("SubString is %s" % (substr))
+            #print ("SubString is %s" % (substr))
             return len(substr)
         else:
             raise NotYetImplemented("Not yet implemented")
