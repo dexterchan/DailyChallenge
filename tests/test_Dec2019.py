@@ -6,6 +6,7 @@ from DEC2019.ValidateBinarySearchTree import is_bst, TreeNode as TNode
 from DEC2019.GetallValuesataCertainHeightinaBinaryTree import valuesAtHeight, Node as HNode
 from DEC2019.LongestSubstringWithKDistinctCharacters import longest_substring_with_k_distinct_characters
 from DEC2019.CountNumberofUnivalSubtrees import count_unival_subtrees, Node as UNode
+from DEC2019.ReconstrunctBinaryTreefromPreorderandInorderTraversals import reconstruct, Node as RNode
 import unittest
 
 
@@ -175,3 +176,13 @@ class Dec2019Suite(unittest.TestCase):
         # 1   1
         self.assertEqual(count_unival_subtrees(a), 6)
         # 6
+    def test_reconstruct(self):
+        tree = reconstruct(['a', 'b', 'd', 'e', 'c', 'f', 'g'],
+                           ['d', 'b', 'e', 'a', 'f', 'c', 'g'])
+        self.assertEqual(str(tree), 'abcdefg')
+
+        tree = reconstruct(list('bdeij'), list('dbiej'))
+        self.assertEqual(str(tree),'bdeij')
+
+        tree = reconstruct(list('abdeijcfg'), list('dbiejafcg'))
+        self.assertEqual(str(tree),'abcdefgij')
