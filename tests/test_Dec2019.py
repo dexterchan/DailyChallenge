@@ -7,8 +7,9 @@ from DEC2019.GetallValuesataCertainHeightinaBinaryTree import valuesAtHeight, No
 from DEC2019.LongestSubstringWithKDistinctCharacters import longest_substring_with_k_distinct_characters
 from DEC2019.CountNumberofUnivalSubtrees import count_unival_subtrees, Node as UNode
 from DEC2019.ReconstrunctBinaryTreefromPreorderandInorderTraversals import reconstruct, Node as RNode
+from DEC2019.ThreeSum import Solution as ThreeSumSolution
 import unittest
-
+import functools
 
 class Dec2019Suite(unittest.TestCase):
     def test_trapwatercapacity(self):
@@ -186,3 +187,19 @@ class Dec2019Suite(unittest.TestCase):
 
         tree = reconstruct(list('abdeijcfg'), list('dbiejafcg'))
         self.assertEqual(str(tree),'abcdefgij')
+
+
+    def test_ThreeSumSolution(self):
+        nums = [1, -2, 1, 0, 5]
+        r = (ThreeSumSolution().threeSum(nums))
+        self.assertEqual(len(r), 1)
+        for array in r:
+            self.assertEqual( functools.reduce(lambda a,b: a+b, array ), 0 )
+
+        # [[-2, 1, 1]]
+
+        nums = [0, -1, 2, -3, 1]
+        r = (ThreeSumSolution().threeSum(nums))
+        self.assertEqual(len(r), 2)
+        for array in r:
+            self.assertEqual( functools.reduce(lambda a,b: a+b, array ), 0 )
