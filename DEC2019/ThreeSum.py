@@ -5,6 +5,33 @@
 #Input: nums = [0, -1, 2, -3, 1]
 #Output: [0, -1, 1], [2, -3, 1]
 #Here's a starting point:
+from typing import List
+
+class Solution_Sort:
+    def threeSum(self, nums: List[int]):
+        nums.sort()
+
+        res = []
+        l = len(nums)
+        for i in range (l-2):
+            k = i + 1
+            j = l - 1
+            while k < j:
+                s = nums[i] + nums[j] + nums[k]
+                if s == 0:
+                    res.append([nums[i], nums[k], nums[j]])
+                    break
+                elif s > 0:
+                    j = j - 1
+                else:
+                    k = k + 1
+
+        return res
+
+
+
+
+
 
 class Solution(object):
     def threeSum(self, nums):
@@ -71,4 +98,7 @@ if __name__ == "__main__":
     # [[-2, 1, 1]]
 
     nums = [0, -1, 2, -3, 1]
-    print(Solution().threeSum(nums))
+    print(Solution_Sort().threeSum(nums))
+
+    nums = [-1,0, 1, 2, -1, -4]
+    print(Solution_Sort().threeSum(nums))

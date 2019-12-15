@@ -7,7 +7,7 @@ from DEC2019.GetallValuesataCertainHeightinaBinaryTree import valuesAtHeight, No
 from DEC2019.LongestSubstringWithKDistinctCharacters import longest_substring_with_k_distinct_characters
 from DEC2019.CountNumberofUnivalSubtrees import count_unival_subtrees, Node as UNode
 from DEC2019.ReconstrunctBinaryTreefromPreorderandInorderTraversals import reconstruct, Node as RNode
-from DEC2019.ThreeSum import Solution as ThreeSumSolution
+from DEC2019.ThreeSum import Solution_Sort as ThreeSumSolution
 import unittest
 import functools
 
