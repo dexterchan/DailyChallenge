@@ -8,7 +8,7 @@
 from typing import List
 
 class Solution_Sort:
-    def threeSum(self, nums: List[int]):
+    def threeSum(self, nums: List[int]) -> List[ List[int] ] :
         nums.sort()
 
         res = []

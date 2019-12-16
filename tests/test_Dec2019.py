@@ -8,6 +8,7 @@ from DEC2019.LongestSubstringWithKDistinctCharacters import longest_substring_wi
 from DEC2019.CountNumberofUnivalSubtrees import count_unival_subtrees, Node as UNode
 from DEC2019.ReconstrunctBinaryTreefromPreorderandInorderTraversals import reconstruct, Node as RNode
 from DEC2019.ThreeSum import Solution_Sort as ThreeSumSolution
+from DEC2019.LargestBSTinaBinaryTree import largest_bst_subtree, TreeNode as tNode
 import unittest
 import functools
 
@@ -203,3 +204,43 @@ class Dec2019Suite(unittest.TestCase):
         self.assertEqual(len(r), 2)
         for array in r:
             self.assertEqual( functools.reduce(lambda a,b: a+b, array ), 0 )
+
+
+    def test_largest_bst_subtree(self):
+        #     5
+        #    / \
+        #   6   7
+        node = tNode(5)
+        node.left = tNode(6)
+        node.right = tNode(7)
+        t = largest_bst_subtree(node)
+        self.assertEqual(str(t), "6")
+        # 749
+
+        #     5
+        #    / \
+        #   6   7
+        #  /   / \
+        # 2   4   9
+        node = tNode(5)
+        node.left = tNode(6)
+        node.right = tNode(7)
+        node.left.left = tNode(2)
+        node.right.left = tNode(4)
+        node.right.right = tNode(9)
+        t = largest_bst_subtree(node)
+        self.assertEqual(str(t), "749")
+
+        #     5
+        #    / \
+        #   3   7
+        #  /   / \
+        # 2   4   9
+        node = tNode(5)
+        node.left = tNode(3)
+        node.right = tNode(7)
+        node.left.left = tNode(2)
+        node.right.left = tNode(4)
+        node.right.right = tNode(9)
+        t = largest_bst_subtree(node)
+        self.assertEqual(str(t), "532749")
