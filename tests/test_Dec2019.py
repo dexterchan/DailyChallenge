@@ -9,6 +9,7 @@ from DEC2019.CountNumberofUnivalSubtrees import count_unival_subtrees, Node as U
 from DEC2019.ReconstrunctBinaryTreefromPreorderandInorderTraversals import reconstruct, Node as RNode
 from DEC2019.ThreeSum import Solution_Sort as ThreeSumSolution
 from DEC2019.LargestBSTinaBinaryTree import largest_bst_subtree, TreeNode as tNode
+from DEC2019.GroupWordsthatareAnagrams import groupAnagramWords
 import unittest
 import functools
 
@@ -244,3 +245,10 @@ class Dec2019Suite(unittest.TestCase):
         node.right.right = tNode(9)
         t = largest_bst_subtree(node)
         self.assertEqual(str(t), "532749")
+
+    def test_groupAnagramWords(self):
+        result = groupAnagramWords(['abc', 'bcd', 'cba', 'cbd', 'efg'])
+
+        self.assertIn(['abc', 'cba'], result)
+        self.assertIn(['efg'], result)
+        self.assertIn(['bcd', 'cbd'], result)
