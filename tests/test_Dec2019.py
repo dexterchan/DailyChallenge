@@ -10,6 +10,7 @@ from DEC2019.ReconstrunctBinaryTreefromPreorderandInorderTraversals import recon
 from DEC2019.ThreeSum import Solution_Sort as ThreeSumSolution
 from DEC2019.LargestBSTinaBinaryTree import largest_bst_subtree, TreeNode as tNode
 from DEC2019.GroupWordsthatareAnagrams import groupAnagramWords
+from DEC2019.MinimumRemovalsforValidParenthesis import count_invalid_parenthesis
 import unittest
 import functools
 
@@ -252,3 +253,16 @@ class Dec2019Suite(unittest.TestCase):
         self.assertIn(['abc', 'cba'], result)
         self.assertIn(['efg'], result)
         self.assertIn(['bcd', 'cbd'], result)
+
+    def test_count_invalid_parenthesis(self):
+        self.assertEqual(count_invalid_parenthesis("()())()"),1)
+        # 1
+
+        self.assertEqual(count_invalid_parenthesis("()"),0)
+        # 0
+
+        self.assertEqual(count_invalid_parenthesis("((()())()"), 1)
+        # 1
+
+        self.assertEqual(count_invalid_parenthesis(")()("), 2)
+        # 0
