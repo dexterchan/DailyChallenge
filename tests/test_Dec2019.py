@@ -11,6 +11,7 @@ from DEC2019.ThreeSum import Solution_Sort as ThreeSumSolution
 from DEC2019.LargestBSTinaBinaryTree import largest_bst_subtree, TreeNode as tNode
 from DEC2019.GroupWordsthatareAnagrams import groupAnagramWords
 from DEC2019.MinimumRemovalsforValidParenthesis import count_invalid_parenthesis
+from DEC2019.RunningMedian import running_median
 import unittest
 import functools
 
@@ -266,3 +267,7 @@ class Dec2019Suite(unittest.TestCase):
 
         self.assertEqual(count_invalid_parenthesis(")()("), 2)
         # 0
+
+    def test_running_median(self):
+        m = running_median([2, 1, 4, 7, 2, 0, 5])
+        self.assertEqual(m, [2, 1.5, 2, 3.0, 2, 2.0, 2])
