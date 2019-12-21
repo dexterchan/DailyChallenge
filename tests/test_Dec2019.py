@@ -12,6 +12,7 @@ from DEC2019.LargestBSTinaBinaryTree import largest_bst_subtree, TreeNode as tNo
 from DEC2019.GroupWordsthatareAnagrams import groupAnagramWords
 from DEC2019.MinimumRemovalsforValidParenthesis import count_invalid_parenthesis
 from DEC2019.RunningMedian import running_median
+from DEC2019.SortColors import ConstantSolution as SortColorSolution
 import unittest
 import functools
 
@@ -271,3 +272,12 @@ class Dec2019Suite(unittest.TestCase):
     def test_running_median(self):
         m = running_median([2, 1, 4, 7, 2, 0, 5])
         self.assertEqual(m, [2, 1.5, 2, 3.0, 2, 2.0, 2])
+
+    def test_SortColorSolution(self):
+        nums = [0, 1, 2, 2, 1, 1, 2, 2, 0, 0, 0, 0, 2, 1]
+        SortColorSolution().sortColors(nums)
+        self.assertEqual(nums, [0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2])
+
+        nums = [0, 2, 1, 0, 1, 2]
+        SortColorSolution().sortColors(nums)
+        self.assertEqual(nums, [0,0,1,1,2,2])
