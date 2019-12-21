@@ -13,6 +13,7 @@ from DEC2019.GroupWordsthatareAnagrams import groupAnagramWords
 from DEC2019.MinimumRemovalsforValidParenthesis import count_invalid_parenthesis
 from DEC2019.RunningMedian import running_median
 from DEC2019.SortColors import ConstantSolution as SortColorSolution
+from DEC2019.WordOrderinginaDifferentAlphabeticalOrder import isSorted
 import unittest
 import functools
 
@@ -281,3 +282,9 @@ class Dec2019Suite(unittest.TestCase):
         nums = [0, 2, 1, 0, 1, 2]
         SortColorSolution().sortColors(nums)
         self.assertEqual(nums, [0,0,1,1,2,2])
+
+    def test_isSorted(self):
+        self.assertFalse(isSorted(["abcd", "efgh"], "zyxwvutsrqponmlkjihgfedcba"))
+        # False
+        self.assertTrue(isSorted(["zyx", "zyxw", "zyxwy"],
+                       "zyxwvutsrqponmlkjihgfedcba"))
