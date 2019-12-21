@@ -43,6 +43,7 @@ class InvalidNodeException (Exception):
     def __init__(self,*args,**kwargs):
         Exception.__init__(self,*args,**kwargs)
 
+#Cost O(N log N) space: O(N)
 class Solution:
     def reconstructTree(self, preorder, inorder):
         l = len(preorder)
