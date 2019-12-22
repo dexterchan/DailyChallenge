@@ -14,6 +14,7 @@ from DEC2019.MinimumRemovalsforValidParenthesis import count_invalid_parenthesis
 from DEC2019.RunningMedian import running_median
 from DEC2019.SortColors import ConstantSolution as SortColorSolution
 from DEC2019.WordOrderinginaDifferentAlphabeticalOrder import isSorted
+from DEC2019.MergeListOfNumberIntoRanges import findRanges
 import unittest
 import functools
 
@@ -288,3 +289,10 @@ class Dec2019Suite(unittest.TestCase):
         # False
         self.assertTrue(isSorted(["zyx", "zyxw", "zyxwy"],
                        "zyxwvutsrqponmlkjihgfedcba"))
+
+    def test_findRanges(self):
+        self.assertEqual(findRanges([0, 1, 2, 5, 7, 8, 9, 9, 10, 11, 15]), ['0-2', '5-5', '7-11', '15-15'])
+        # ['0->2', '5->5', '7->11', '15->15']
+
+        self.assertEqual(findRanges([0, 1, 2, 5, 7, 8, 9, 9, 10, 11, 12]), ['0-2', '5-5', '7-12'])
+        # ['0->2', '5->5', '7->12']
