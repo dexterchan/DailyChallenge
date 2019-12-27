@@ -15,6 +15,7 @@ from DEC2019.RunningMedian import running_median
 from DEC2019.SortColors import ConstantSolution as SortColorSolution
 from DEC2019.WordOrderinginaDifferentAlphabeticalOrder import isSorted
 from DEC2019.MergeListOfNumberIntoRanges import findRanges
+from DEC2019.ArithmeticBinaryTree import evaluate as evaulateBFS, Node as ANode
 import unittest
 import functools
 
@@ -296,3 +297,19 @@ class Dec2019Suite(unittest.TestCase):
 
         self.assertEqual(findRanges([0, 1, 2, 5, 7, 8, 9, 9, 10, 11, 12]), ['0-2', '5-5', '7-12'])
         # ['0->2', '5->5', '7->12']
+
+    def test_evaulateBFS(self):
+        PLUS = "+"
+        MINUS = "-"
+        TIMES = "*"
+        DIVIDE = "/"
+
+        tree = ANode(TIMES)
+        tree.left = ANode(PLUS)
+        tree.left.left = ANode(3)
+        tree.left.right = ANode(2)
+        tree.right = ANode(PLUS)
+        tree.right.left = ANode(4)
+        tree.right.right = ANode(5)
+
+        self.assertEqual(evaulateBFS(tree), 45)
