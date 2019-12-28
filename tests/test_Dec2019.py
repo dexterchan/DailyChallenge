@@ -16,6 +16,7 @@ from DEC2019.SortColors import ConstantSolution as SortColorSolution
 from DEC2019.WordOrderinginaDifferentAlphabeticalOrder import isSorted
 from DEC2019.MergeListOfNumberIntoRanges import findRanges
 from DEC2019.ArithmeticBinaryTree import evaluate as evaulateBFS, Node as ANode
+from DEC2019.TreeSerialization import serialize, deserialize, Node as TDSNode
 import unittest
 import functools
 
@@ -313,3 +314,14 @@ class Dec2019Suite(unittest.TestCase):
         tree.right.right = ANode(5)
 
         self.assertEqual(evaulateBFS(tree), 45)
+
+    def test_TreeSerialization(self):
+        tree = TDSNode(1)
+        tree.left = TDSNode(3)
+        tree.left.left = TDSNode(2)
+        tree.left.right = TDSNode(5)
+        tree.right = TDSNode(4)
+        tree.right.right = TDSNode(7)
+
+        self.assertEqual(serialize(tree), "1 3 2 # # 5 # # 4 # 7 # #")
+        self.assertEqual(str(deserialize('1 3 2 # # 5 # # 4 # 7 # #')), "132547")
