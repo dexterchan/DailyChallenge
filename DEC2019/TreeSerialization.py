@@ -79,6 +79,9 @@ class DeSerializeSolution:
         if lst[inx + 1] != "#":
             node.left, inx = self.__recursive(lst, inx + 1)
 
+        if lst[inx + 1] == "#" and lst[inx+2] == "#":
+            return node, inx+ 1
+
         if lst[inx + 1] == "#":
             node.right, inx = self.__recursive(lst, inx + 2)
 
@@ -111,3 +114,14 @@ if __name__ == "__main__":
     # 1 3 2 # # 5 # # 4 # 7 # #
     print (deserialize('1 3 2 # # 5 # # 4 # 7 # #'))
     # 132547
+
+    tree = Node(1)
+    tree.left = Node(3)
+    tree.left.left = Node(2)
+    tree.right = Node(4)
+    tree.right.right = Node(7)
+
+    print (serialize(tree))
+
+    r = deserialize('1 3 2 # # # 4 # 7 # #')
+    print (str(r))
