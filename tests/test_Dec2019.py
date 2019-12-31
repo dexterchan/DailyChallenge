@@ -17,6 +17,7 @@ from DEC2019.WordOrderinginaDifferentAlphabeticalOrder import isSorted
 from DEC2019.MergeListOfNumberIntoRanges import findRanges
 from DEC2019.ArithmeticBinaryTree import evaluate as evaulateBFS, Node as ANode
 from DEC2019.TreeSerialization import serialize, deserialize, Node as TDSNode
+from DEC2019.MinRangeNeededtoSort import findRange
 import unittest
 import functools
 
@@ -325,3 +326,16 @@ class Dec2019Suite(unittest.TestCase):
 
         self.assertEqual(serialize(tree), "1 3 2 # # 5 # # 4 # 7 # #")
         self.assertEqual(str(deserialize('1 3 2 # # 5 # # 4 # 7 # #')), "132547")
+
+    def test_findRange(self):
+        self.assertEqual(findRange([1, 2, 4, 8, 7, 10, 80, 100]), [3,4])
+        # (3, 4)
+
+        self.assertEqual(findRange([1, 2, 9, 5, 7, 10, 4, 100]), [2,6])
+        # (2, 6)
+
+        self.assertEqual(findRange([1, 2, 9, 5, 7, 10, 4]),[2,6])
+        # (2, 6)
+
+        self.assertEqual(findRange([1, 7, 9, 5, 7, 8, 10]),[1,5])
+        # (1, 5)
