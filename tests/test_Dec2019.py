@@ -18,6 +18,7 @@ from DEC2019.MergeListOfNumberIntoRanges import findRanges
 from DEC2019.ArithmeticBinaryTree import evaluate as evaulateBFS, Node as ANode
 from DEC2019.TreeSerialization import serialize, deserialize, Node as TDSNode
 from DEC2019.MinRangeNeededtoSort import findRange
+from DEC2019.MinStack import minStack
 import unittest
 import functools
 
@@ -339,3 +340,24 @@ class Dec2019Suite(unittest.TestCase):
 
         self.assertEqual(findRange([1, 7, 9, 5, 7, 8, 10]),[1,5])
         # (1, 5)
+
+    def test_minStack(self):
+        x = minStack()
+        x.push(-2)
+        x.push(0)
+        x.push(-3)
+        self.assertEqual(x.getMin(), -3)
+
+        self.assertEqual(x.pop(), -3)
+        self.assertEqual(x.top(), 0)
+        # 0
+        self.assertEqual(x.getMin(), -2)
+        # -2
+        self.assertEqual(x.pop(), 0)
+        self.assertEqual(x.getMin(), -2)
+
+        self.assertEqual(x.pop(), -2)
+        self.assertIsNone(x.getMin())
+
+        x.push(0)
+        self.assertEqual(x.getMin(),0)
