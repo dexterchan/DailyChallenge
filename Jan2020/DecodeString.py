@@ -15,7 +15,7 @@
 import re
 class Solution:
     def __init__(self):
-        self.pattern = '(\d+)\['
+        self.pattern = '(\\d+)\\['
 
     def decodeString(self, s):
         return self.__recurseDecode (s)
@@ -23,22 +23,24 @@ class Solution:
     def __recurseDecode(self, str):
         cpos = 0
         result = ""
-
-
-
-        s = str[cpos:]
-        m = re.search(self.pattern, s)
+        m = re.search(self.pattern, str[cpos:])
         if m is None:
-            return s
-        (start, end) = m.span(0)
-        N = int( m.group(1))
-        cpos = self.__findclosing(s)
-        substr = s[end:cpos]
-        tmpresult = self.__recurseDecode(substr)
-        result = result + s[0:start]
-        for i in range(N):
-            result = result + tmpresult
-        result = result + s[cpos+1:]
+            return str
+        s = str
+        while (m != None):
+            (start, end) = m.span(0)
+            N = int( m.group(1))
+            cpos = self.__findclosing(s)
+            substr = s[end:cpos]
+            tmpresult = self.__recurseDecode(substr)
+            result = result + s[0:start]
+            for i in range(N):
+                result = result + tmpresult
+            s = s[cpos+1:]
+            m = re.search(self.pattern, s)
+            if m is None:
+                result = result + s
+
         return result
 
     def __findclosing (self, s):
@@ -64,3 +66,5 @@ if __name__ == "__main__":
     # abbcabbc
 
     print(decodeString('a2[a]2[b]'))
+
+    print(decodeString('2[a2[b]c2[d]]'))
