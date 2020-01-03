@@ -17,6 +17,7 @@
 # if yes, find parent node and replace the node with that only child (by comparing parent left and right)
 # if no, append (left child, node), (right child, node) into stack
 # pop of stack for next item
+# Time cost: O(N) Space cost O(N)
 
 from collections import deque
 
