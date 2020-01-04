@@ -30,7 +30,7 @@
 # then search in head to link to, it is found, tail link to second, remove head map k->second
 # until end of array
 # in the end, check if circle linked list
-# iterate the linked list for N times, if it reach the first node at N.... it is circle, otherwise it is not a circle
+# iterate the linked list for N+1 times, if it reach the first node at N+1.... it is circle, otherwise it is not a circle
 # MVP ... assume mp repeated character in head and tail....
 # next, the head, tail map should contain linked list for repeated character..... <--- defaultdict would help
 # Time cost : O(N)
