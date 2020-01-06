@@ -21,7 +21,7 @@
 
 #pick current number at index (n),
 # iterate from 1 to n , 2 choices:
-# if 0+1, 0+2 , 0+n == final index, return list(final Node: type=dequeue, cost=1)
+# if 0+1, 0+2 , 0+n == final index, return list(final Node: type=dequeue)
 # to call findPath(0+1), findPath(0+1), findPath(0+n)
 #Gather all result of List from all path and append itself to the left of the result
 # each return , appendleft to the dequeue and add 1 to the cost....
