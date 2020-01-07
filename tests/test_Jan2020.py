@@ -2,6 +2,7 @@ from Jan2020.FullBinaryTree import fullBinaryTree, Node as fNode
 from Jan2020.DecodeString import decodeString
 from Jan2020.CircleOfChainedWords import chainedWords
 from Jan2020.JumpToTheEnd import jumpToEnd
+from Jan2020.H_Index import hIndex
 
 import unittest
 import functools
@@ -41,3 +42,7 @@ class Jan2020Suite(unittest.TestCase):
         self.assertEqual(3, jumpToEnd([3, 2, 4, 1, 1, 9, 3, 4]))
 
         self.assertEqual(2, jumpToEnd([3, 2, 5, 1, 1, 9, 3, 4]))
+
+    def test_hIndex(self):
+        self.assertEqual(hIndex([5, 3, 3, 1, 0]), 3)
+        self.assertEqual(hIndex([5, 3, 3, 1, 4, 4, 4, 0]), 4)
