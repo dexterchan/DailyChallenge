@@ -3,6 +3,7 @@ from Jan2020.DecodeString import decodeString
 from Jan2020.CircleOfChainedWords import chainedWords
 from Jan2020.JumpToTheEnd import jumpToEnd
 from Jan2020.H_Index import hIndex
+from Jan2020.SymmetricKaryTree import is_symmetric as is_SubTree_Symmetric, Node as SNode
 
 import unittest
 import functools
@@ -46,3 +47,62 @@ class Jan2020Suite(unittest.TestCase):
     def test_hIndex(self):
         self.assertEqual(hIndex([5, 3, 3, 1, 0]), 3)
         self.assertEqual(hIndex([5, 3, 3, 1, 4, 4, 4, 0]), 4)
+
+    def test_is_SubTree_Symmetric(self):
+        tree = SNode(4)
+        tree.children = [SNode(3), SNode(3)]
+        tree.children[0].children = [SNode(9), SNode(4)]
+        tree.children[1].children = [SNode(4), SNode(9)]
+        tree.children[0].children[0].children = [SNode(10)]
+        tree.children[1].children[0].children = [SNode(10)]
+        self.assertFalse(is_SubTree_Symmetric(tree))
+        # False
+
+        tree = SNode(4)
+        tree.children = [SNode(3), SNode(3)]
+        tree.children[0].children = [SNode(9), SNode(4)]
+        tree.children[1].children = [SNode(4), SNode(9), SNode(5)]
+        tree.children[0].children[0].children = [SNode(10)]
+        tree.children[1].children[1].children = [SNode(10)]
+        self.assertFalse(is_SubTree_Symmetric(tree))
+        # False
+
+        tree = SNode(4)
+        tree.children = [SNode(3), SNode(3)]
+        tree.children[0].children = [SNode(9), SNode(4)]
+        tree.children[1].children = [SNode(4), SNode(9)]
+        tree.children[0].children[0].children = [SNode(10)]
+        tree.children[1].children[1].children = [SNode(10)]
+        self.assertTrue(is_SubTree_Symmetric(tree))
+        # True
+
+        tree = SNode(4)
+        tree.children = [SNode(3), SNode(3)]
+        tree.children[0].children = [SNode(9), SNode(4), SNode(1)]
+        tree.children[1].children = [SNode(1), SNode(4), SNode(9)]
+        self.assertTrue(is_SubTree_Symmetric(tree))
+        # True
+
+        tree = SNode(4)
+        tree.children = [SNode(3), SNode(3)]
+        tree.children[0].children = [SNode(9), SNode(4), SNode(1)]
+        tree.children[1].children = [SNode(1), SNode(4), SNode(9)]
+        tree.children[0].children[0].children = [SNode(10)]
+        tree.children[1].children[2].children = [SNode(10)]
+        self.assertTrue(is_SubTree_Symmetric(tree))
+        # True
+
+        tree = SNode(4)
+        tree.children = [SNode(3), SNode(3)]
+        tree.children[0].children = [SNode(9), SNode(4), SNode(1)]
+        tree.children[1].children = [SNode(1), SNode(4), SNode(9)]
+        tree.children[0].children[0].children = [SNode(10)]
+        self.assertFalse(is_SubTree_Symmetric(tree))
+        # False
+
+        tree = SNode(4)
+        tree.children = [SNode(3), SNode(3)]
+        tree.children[0].children = [SNode(9), SNode(4), SNode(1)]
+        tree.children[1].children = [SNode(1), SNode(4), SNode(4)]
+        self.assertFalse(is_SubTree_Symmetric(tree))
+        # False
