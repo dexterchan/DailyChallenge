@@ -4,6 +4,8 @@ from Jan2020.CircleOfChainedWords import chainedWords
 from Jan2020.JumpToTheEnd import jumpToEnd
 from Jan2020.H_Index import hIndex
 from Jan2020.SymmetricKaryTree import is_symmetric as is_SubTree_Symmetric, Node as SNode
+from Jan2020.MaxandMinwithLimitedComparisons import find_min_max
+from Jan2020.Fibonacci import Solution as Fibonacci
 
 import unittest
 import functools
@@ -106,3 +108,10 @@ class Jan2020Suite(unittest.TestCase):
         tree.children[1].children = [SNode(1), SNode(4), SNode(4)]
         self.assertFalse(is_SubTree_Symmetric(tree))
         # False
+
+    def test_find_min_max(self):
+        self.assertEqual(find_min_max([3, 5, 1, 2, 4, 8]), (1,8))
+
+    def test_Fibonacci(self):
+        n = 9
+        self.assertEqual(Fibonacci().fibonacci(n), 34)
