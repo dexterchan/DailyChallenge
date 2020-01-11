@@ -6,6 +6,7 @@ from Jan2020.H_Index import hIndex
 from Jan2020.SymmetricKaryTree import is_symmetric as is_SubTree_Symmetric, Node as SNode
 from Jan2020.MaxandMinwithLimitedComparisons import find_min_max
 from Jan2020.Fibonacci import Solution as Fibonacci
+from Jan2020.FindtheSingleElementinanArrayofDuplicates import Solution as FindSingleFromArrayOfDuplicate
 
 import unittest
 import functools
@@ -115,3 +116,7 @@ class Jan2020Suite(unittest.TestCase):
     def test_Fibonacci(self):
         n = 9
         self.assertEqual(Fibonacci().fibonacci(n), 34)
+
+    def test_FindSingleFromArrayOfDuplicate(self):
+        nums = [1, 1, 3, 4, 4, 5, 6, 5, 6]
+        self.assertEqual(3, FindSingleFromArrayOfDuplicate().findSingle(nums))
