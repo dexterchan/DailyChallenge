@@ -7,6 +7,7 @@ from Jan2020.SymmetricKaryTree import is_symmetric as is_SubTree_Symmetric, Node
 from Jan2020.MaxandMinwithLimitedComparisons import find_min_max
 from Jan2020.Fibonacci import Solution as Fibonacci
 from Jan2020.FindtheSingleElementinanArrayofDuplicates import Solution as FindSingleFromArrayOfDuplicate
+from Jan2020.ConvertRomanNumeralstoDecimal import Solution as RomanConversion
 
 import unittest
 import functools
@@ -120,3 +121,14 @@ class Jan2020Suite(unittest.TestCase):
     def test_FindSingleFromArrayOfDuplicate(self):
         nums = [1, 1, 3, 4, 4, 5, 6, 5, 6]
         self.assertEqual(3, FindSingleFromArrayOfDuplicate().findSingle(nums))
+
+    def test_RomanConversion(self):
+        n = 'MCMX'
+        self.assertEqual(1910, RomanConversion().romanToInt(n))
+        # 1910
+
+        self.assertEqual(2910, RomanConversion().romanToInt('MMCMX'))
+        # 2910
+
+        self.assertEqual(2818, RomanConversion().romanToInt('MMCCMXIIX'))
+        # 2918
