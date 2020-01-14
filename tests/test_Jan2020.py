@@ -8,6 +8,7 @@ from Jan2020.MaxandMinwithLimitedComparisons import find_min_max
 from Jan2020.Fibonacci import Solution as Fibonacci
 from Jan2020.FindtheSingleElementinanArrayofDuplicates import Solution as FindSingleFromArrayOfDuplicate
 from Jan2020.ConvertRomanNumeralstoDecimal import Solution as RomanConversion
+from Jan2020.NoAdjRepeatingCharacters import rearrangeString
 
 import unittest
 import functools
@@ -132,3 +133,13 @@ class Jan2020Suite(unittest.TestCase):
 
         self.assertEqual(2818, RomanConversion().romanToInt('MMCCMXIIX'))
         # 2918
+
+    def test_rearrangeString(self):
+        self.assertEqual("cbcacbc",rearrangeString('abbcccc'))
+        # cbcacbc
+
+        self.assertEqual("cbcabc",rearrangeString('abbccc'))
+        # cbcabc
+
+        self.assertIsNone(rearrangeString('abbccccc'))
+        # None
