@@ -9,9 +9,9 @@ from Jan2020.Fibonacci import Solution as Fibonacci
 from Jan2020.FindtheSingleElementinanArrayofDuplicates import Solution as FindSingleFromArrayOfDuplicate
 from Jan2020.ConvertRomanNumeralstoDecimal import Solution as RomanConversion
 from Jan2020.NoAdjRepeatingCharacters import rearrangeString
+from Jan2020.MaketheLargestNumber import largestNum
 
 import unittest
-import functools
 
 class Jan2020Suite(unittest.TestCase):
     def test_fullBinaryTree(self):
@@ -143,3 +143,11 @@ class Jan2020Suite(unittest.TestCase):
 
         self.assertIsNone(rearrangeString('abbccccc'))
         # None
+
+    def test_largestNum(self):
+        self.assertEqual(77245, largestNum([7, 45, 72]))
+
+        self.assertEqual(982245, largestNum([9, 45, 822]))
+
+        self.assertEqual(77245217,largestNum([17, 7, 2, 45, 72]))
+        # 77245217
