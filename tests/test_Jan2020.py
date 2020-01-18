@@ -10,6 +10,8 @@ from Jan2020.FindtheSingleElementinanArrayofDuplicates import Solution as FindSi
 from Jan2020.ConvertRomanNumeralstoDecimal import Solution as RomanConversion
 from Jan2020.NoAdjRepeatingCharacters import rearrangeString
 from Jan2020.MaketheLargestNumber import largestNum
+from Jan2020.SmallestNumberthatisnotaSumofaSubsetofList import findSmallest
+from Jan2020.MaximumPathSuminBinaryTree import maxPathSum, Node as MNode
 
 import unittest
 
@@ -151,3 +153,57 @@ class Jan2020Suite(unittest.TestCase):
 
         self.assertEqual(77245217,largestNum([17, 7, 2, 45, 72]))
         # 77245217
+
+    def test_findSmallest(self):
+        self.assertEqual(7, findSmallest([1, 2, 3, 8, 9, 10]))
+        # 7
+
+        self.assertIsNone(findSmallest([1, 2, 3, 4, 8, 9, 10]))
+        # None
+
+        self.assertEqual(23, findSmallest([1, 2, 3, 7, 9, 100]))
+        # 23
+
+    def test_maxPathSum(self):
+        #       *10
+        #       /  \
+        #     *2   *10
+        #     / \     \
+        #   20  *100    25
+
+        root = MNode(10)
+        root.left = MNode(2)
+        root.right = MNode(10)
+        root.left.left = MNode(20)
+        root.left.right = MNode(100)
+        root.right.right = MNode(25)
+
+        self.assertEqual(147, maxPathSum(root))
+        # 147
+
+        #       *10
+        #       /  \
+        #     *2   *10
+        #     / \     \
+        #   *20  1    -25
+        #             /  \
+        #            3    4
+        root = MNode(10)
+        root.left = MNode(2)
+        root.right = MNode(10)
+        root.left.left = MNode(20)
+        root.left.right = MNode(1)
+        root.right.right = MNode(-25)
+        root.right.right.left = MNode(3)
+        root.right.right.right = MNode(4)
+        self.assertEqual(42, maxPathSum(root))
+        # 42
+
+        #       *10
+        #       /  \
+        #     -2   *10
+        root = MNode(10)
+        root.left = MNode(-2)
+        root.right = MNode(10)
+        self.assertEqual(20, maxPathSum(root))
+        # 20
