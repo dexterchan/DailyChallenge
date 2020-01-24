@@ -12,6 +12,7 @@ from Jan2020.NoAdjRepeatingCharacters import rearrangeString
 from Jan2020.MaketheLargestNumber import largestNum
 from Jan2020.SmallestNumberthatisnotaSumofaSubsetofList import findSmallest
 from Jan2020.MaximumPathSuminBinaryTree import maxPathSum, Node as MNode
+from Jan2020.LowestCommonAncestorof2NodesinBinaryTree import lowestCommonAncestor, TreeNode as LTNode
 
 import unittest
 
@@ -207,3 +208,16 @@ class Jan2020Suite(unittest.TestCase):
         root.right = MNode(10)
         self.assertEqual(20, maxPathSum(root))
         # 20
+
+    def test_lowestCommonAncestor(self):
+        root = LTNode('a')
+        root.left = LTNode('b')
+        root.left.parent = root
+        root.right = LTNode('c')
+        root.right.parent = root
+        a = root.right.left = LTNode('d')
+        root.right.left.parent = root.right
+        b = root.right.right = LTNode('e')
+        root.right.right.parent = root.right
+
+        self.assertEqual('c', lowestCommonAncestor(root, a, b).val)
