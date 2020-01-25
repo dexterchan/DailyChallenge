@@ -13,6 +13,7 @@ from Jan2020.MaketheLargestNumber import largestNum
 from Jan2020.SmallestNumberthatisnotaSumofaSubsetofList import findSmallest
 from Jan2020.MaximumPathSuminBinaryTree import maxPathSum, Node as MNode
 from Jan2020.LowestCommonAncestorof2NodesinBinaryTree import lowestCommonAncestor, TreeNode as LTNode
+from Jan2020.BinaryTreeLevelwithMinimumSum import minimum_level_sum, Node as BTMNode
 
 import unittest
 
@@ -221,3 +222,18 @@ class Jan2020Suite(unittest.TestCase):
         root.right.right.parent = root.right
 
         self.assertEqual('c', lowestCommonAncestor(root, a, b).val)
+
+    def test_minimum_level_sum(self):
+        #     10
+        #    /  \
+        #   2    8
+        #  / \    \
+        # 4   1    2
+        node = BTMNode(10)
+        node.left = BTMNode(2)
+        node.right = BTMNode(8)
+        node.left.left = BTMNode(4)
+        node.left.right = BTMNode(1)
+        node.right.right = BTMNode(2)
+
+        self.assertEqual(7, minimum_level_sum(node))
