@@ -14,6 +14,7 @@ from Jan2020.SmallestNumberthatisnotaSumofaSubsetofList import findSmallest
 from Jan2020.MaximumPathSuminBinaryTree import maxPathSum, Node as MNode
 from Jan2020.LowestCommonAncestorof2NodesinBinaryTree import lowestCommonAncestor, TreeNode as LTNode
 from Jan2020.BinaryTreeLevelwithMinimumSum import minimum_level_sum, Node as BTMNode
+from Jan2020.PlusOne import Solution as PlusOneSolu
 
 import unittest
 
@@ -237,3 +238,10 @@ class Jan2020Suite(unittest.TestCase):
         node.right.right = BTMNode(2)
 
         self.assertEqual(7, minimum_level_sum(node))
+
+    def test_PlusOneSolu(self):
+        num = [2, 9, 9]
+        self.assertEqual([3,0,0], PlusOneSolu().plusOne(num))
+        # [3, 0, 0]
+        num = [9, 9, 9]
+        self.assertEqual([1,0,0,0], PlusOneSolu().plusOne(num))
