@@ -15,6 +15,7 @@ from Jan2020.MaximumPathSuminBinaryTree import maxPathSum, Node as MNode
 from Jan2020.LowestCommonAncestorof2NodesinBinaryTree import lowestCommonAncestor, TreeNode as LTNode
 from Jan2020.BinaryTreeLevelwithMinimumSum import minimum_level_sum, Node as BTMNode
 from Jan2020.PlusOne import Solution as PlusOneSolu
+from Jan2020.TopKFrequentwords import Solution as TopKFreqWords
 
 import unittest
 
@@ -245,3 +246,13 @@ class Jan2020Suite(unittest.TestCase):
         # [3, 0, 0]
         num = [9, 9, 9]
         self.assertEqual([1,0,0,0], PlusOneSolu().plusOne(num))
+
+    def test_TopKFreqWords(self):
+        words = ["daily", "interview", "pro", "pro", "for", "daily", "pro", "problems"]
+        k = 2
+        self.assertEqual(['pro', 'daily'], TopKFreqWords().topKFrequent(words, k))
+        # ['pro', 'daily']
+
+        words = ["daily", "interview", "pro", "pro", "for", "daily", "pro", "problems", "daily"]
+        k = 2
+        self.assertEqual(['daily', 'pro'], TopKFreqWords().topKFrequent(words, k))
