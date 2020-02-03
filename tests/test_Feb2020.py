@@ -1,6 +1,7 @@
 import unittest
 from FEB2020.ReverseaDirectedGraph import reverse_graph, Node as RDNode
 from FEB2020.CompareVersionNumbers import Solution as CmpVersionNumber
+from FEB2020.SpreadsheetColumnTitle import Solution as SpreadSheetColumnTitle
 class Feb2020Suite(unittest.TestCase):
     def test_reverse_graph(self):
         a = RDNode('a')
@@ -33,3 +34,15 @@ class Feb2020Suite(unittest.TestCase):
         version1 = "01.00000.001"
         version2 = "1.000001"
         self.assertEqual(-1, CmpVersionNumber().compareVersion(version1, version2))
+
+    def test_SpreadSheetColumnTitle(self):
+        self.assertEqual("AY", SpreadSheetColumnTitle().convertToTitle(51))
+        input1 = 1
+        input2 = 456976
+        input3 = 28
+        self.assertEqual("A", SpreadSheetColumnTitle().convertToTitle(input1))
+        # A
+        self.assertEqual("YYYZ", SpreadSheetColumnTitle().convertToTitle(input2))
+        # YYYZ
+        self.assertEqual("AB", SpreadSheetColumnTitle().convertToTitle(input3))
+        # AB
