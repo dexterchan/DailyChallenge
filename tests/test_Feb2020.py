@@ -3,6 +3,7 @@ from FEB2020.ReverseaDirectedGraph import reverse_graph, Node as RDNode
 from FEB2020.CompareVersionNumbers import Solution as CmpVersionNumber
 from FEB2020.SpreadsheetColumnTitle import Solution as SpreadSheetColumnTitle
 from FEB2020.GenerateAllIPAddresses import ip_addresses
+from FEB2020.Printatreelevel_by_levelwithline_breaks import Node as PNode
 class Feb2020Suite(unittest.TestCase):
     def test_reverse_graph(self):
         a = RDNode('a')
@@ -50,3 +51,13 @@ class Feb2020Suite(unittest.TestCase):
     def test_ip_addresses(self):
         self.assertEqual(['159.255.101.3', '159.255.10.13'].sort(),ip_addresses('1592551013').sort())
         # ['159.255.101.3', '159.255.10.13']
+
+    def test_Printatreelevel_by_levelwithline_breaks(self):
+        tree = PNode('a')
+        tree.left = PNode('b')
+        tree.right = PNode('c')
+        tree.left.left = PNode('d')
+        tree.left.right = PNode('e')
+        tree.right.left = PNode('f')
+        tree.right.right = PNode('g')
+        self.assertEqual("a\nbc\ndefg", str(tree))
