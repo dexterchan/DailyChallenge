@@ -2,6 +2,7 @@ import unittest
 from FEB2020.ReverseaDirectedGraph import reverse_graph, Node as RDNode
 from FEB2020.CompareVersionNumbers import Solution as CmpVersionNumber
 from FEB2020.SpreadsheetColumnTitle import Solution as SpreadSheetColumnTitle
+from FEB2020.GenerateAllIPAddresses import ip_addresses
 class Feb2020Suite(unittest.TestCase):
     def test_reverse_graph(self):
         a = RDNode('a')
@@ -46,3 +47,6 @@ class Feb2020Suite(unittest.TestCase):
         # YYYZ
         self.assertEqual("AB", SpreadSheetColumnTitle().convertToTitle(input3))
         # AB
+    def test_ip_addresses(self):
+        self.assertEqual(['159.255.101.3', '159.255.10.13'].sort(),ip_addresses('1592551013').sort())
+        # ['159.255.101.3', '159.255.10.13']
