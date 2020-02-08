@@ -4,6 +4,8 @@ from FEB2020.CompareVersionNumbers import Solution as CmpVersionNumber
 from FEB2020.SpreadsheetColumnTitle import Solution as SpreadSheetColumnTitle
 from FEB2020.GenerateAllIPAddresses import ip_addresses
 from FEB2020.Printatreelevel_by_levelwithline_breaks import Node as PNode
+from FEB2020.PalindromeIntegers import is_palindrome
+
 class Feb2020Suite(unittest.TestCase):
     def test_reverse_graph(self):
         a = RDNode('a')
@@ -61,3 +63,16 @@ class Feb2020Suite(unittest.TestCase):
         tree.right.left = PNode('f')
         tree.right.right = PNode('g')
         self.assertEqual("a\nbc\ndefg", str(tree))
+
+    def test_is_palindrome(self):
+        self.assertFalse(is_palindrome(1234322))
+        # False
+
+        self.assertTrue(is_palindrome(1234321))
+        # True
+
+        self.assertFalse(is_palindrome(12))
+        # False
+
+        self.assertTrue(is_palindrome(121))
+        # True
