@@ -31,6 +31,7 @@ from NOV2019.MaximumProfitFromStocks import  buy_and_sell as buylowsellhigh
 from NOV2019.ContiguousSubarraywithMaximumSum import max_subarray_sum as max_subarray_sum
 from NOV2019.MergeKSortedLinkedLists import merge as MergeKSortedLinkedLists, Node as slNode
 from NOV2019.Createabalancedbinarysearchtree import createBalancedBST
+from NOV2019.EditDistance import distance
 
 import unittest
 
@@ -365,3 +366,6 @@ class NOV2019Suite(unittest.TestCase):
         s = str(createBalancedBST([1, 2, 3, 4, 5]))
         self.assertEqual(s,"32514")
 
+    def test_distance(self):
+        self.assertEqual(2, distance('biting', 'sitting'))
+        self.assertEqual(2, distance('alert', 'let'))
