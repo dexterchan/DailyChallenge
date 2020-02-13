@@ -5,6 +5,7 @@ from FEB2020.SpreadsheetColumnTitle import Solution as SpreadSheetColumnTitle
 from FEB2020.GenerateAllIPAddresses import ip_addresses
 from FEB2020.Printatreelevel_by_levelwithline_breaks import Node as PNode
 from FEB2020.PalindromeIntegers import is_palindrome
+from FEB2020.StayingOnChessBoard import is_knight_on_board
 
 class Feb2020Suite(unittest.TestCase):
     def test_reverse_graph(self):
@@ -76,3 +77,8 @@ class Feb2020Suite(unittest.TestCase):
 
         self.assertTrue(is_palindrome(121))
         # True
+
+    def test_is_knight_on_board(self):
+        self.assertAlmostEqual(0.25, is_knight_on_board(0, 0, 1),5)
+        self.assertAlmostEqual(1.0, is_knight_on_board(4, 4, 1), 2)
+        self.assertAlmostEqual(0.75, is_knight_on_board(4, 4, 10), 2)
