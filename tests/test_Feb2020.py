@@ -6,6 +6,7 @@ from FEB2020.GenerateAllIPAddresses import ip_addresses
 from FEB2020.Printatreelevel_by_levelwithline_breaks import Node as PNode
 from FEB2020.PalindromeIntegers import is_palindrome
 from FEB2020.StayingOnChessBoard import is_knight_on_board
+from FEB2020.Kaprekar_Constant import num_kaprekar_iterations
 
 class Feb2020Suite(unittest.TestCase):
     def test_reverse_graph(self):
@@ -82,3 +83,7 @@ class Feb2020Suite(unittest.TestCase):
         self.assertAlmostEqual(0.25, is_knight_on_board(0, 0, 1),5)
         self.assertAlmostEqual(1.0, is_knight_on_board(4, 4, 1), 2)
         self.assertAlmostEqual(0.75, is_knight_on_board(4, 4, 10), 2)
+
+    def test_num_kaprekar_iterations(self):
+        self.assertEqual(3, num_kaprekar_iterations(123))
+        self.assertEqual(7, num_kaprekar_iterations(4560))
