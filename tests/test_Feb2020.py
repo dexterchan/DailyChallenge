@@ -7,6 +7,7 @@ from FEB2020.Printatreelevel_by_levelwithline_breaks import Node as PNode
 from FEB2020.PalindromeIntegers import is_palindrome
 from FEB2020.StayingOnChessBoard import is_knight_on_board
 from FEB2020.Kaprekar_Constant import num_kaprekar_iterations
+from FEB2020.CitySkyline import generate_skyline
 
 class Feb2020Suite(unittest.TestCase):
     def test_reverse_graph(self):
@@ -87,3 +88,6 @@ class Feb2020Suite(unittest.TestCase):
     def test_num_kaprekar_iterations(self):
         self.assertEqual(3, num_kaprekar_iterations(123))
         self.assertEqual(7, num_kaprekar_iterations(4560))
+
+    def test_generate_skyline(self):
+        self.assertEqual([(2, 3), (4, 5), (7, 3), (9, 0)], generate_skyline([(2, 8, 3), (4, 6, 5)]))
