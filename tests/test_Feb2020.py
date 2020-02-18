@@ -8,6 +8,7 @@ from FEB2020.PalindromeIntegers import is_palindrome
 from FEB2020.StayingOnChessBoard import is_knight_on_board
 from FEB2020.Kaprekar_Constant import num_kaprekar_iterations
 from FEB2020.CitySkyline import generate_skyline
+from FEB2020.NumberofCousins import Solution as NumberOfCousins, Node as CNode
 
 class Feb2020Suite(unittest.TestCase):
     def test_reverse_graph(self):
@@ -91,3 +92,35 @@ class Feb2020Suite(unittest.TestCase):
 
     def test_generate_skyline(self):
         self.assertEqual([(2, 3), (4, 5), (7, 3), (9, 0)], generate_skyline([(2, 8, 3), (4, 6, 5)]))
+
+    def test_NumberOfCousins(self):
+        #     1
+        #    / \
+        #   2   3
+        #  / \   \
+        # 4   6   5
+        root = CNode(1)
+        root.left = CNode(2)
+        root.left.left = CNode(4)
+        root.left.right = CNode(6)
+        root.right = CNode(3)
+        root.right.right = CNode(5)
+
+        self.assertEqual([4,6],NumberOfCousins().list_cousins(root, 5))
+        # [4, 6]
+
+        #     1
+        #    /  \
+        #   2    3
+        #  / \   / \
+        # 4   6 7   5
+        root = CNode(1)
+        root.left = CNode(2)
+        root.left.left = CNode(4)
+        root.left.right = CNode(6)
+        root.right = CNode(3)
+        root.right.right = CNode(5)
+        root.right.left = CNode(7)
+
+        self.assertEqual([4,6],NumberOfCousins().list_cousins(root, 5))
+
