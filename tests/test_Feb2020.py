@@ -10,6 +10,7 @@ from FEB2020.Kaprekar_Constant import num_kaprekar_iterations
 from FEB2020.CitySkyline import generate_skyline
 from FEB2020.NumberofCousins import Solution as NumberOfCousins, Node as CNode
 from FEB2020.Unicode8Validator import utf8_validator
+from FEB2020.zigzagBinaryTree import zigzag_order, Node as ZNode
 
 class Feb2020Suite(unittest.TestCase):
     def test_reverse_graph(self):
@@ -139,3 +140,33 @@ class Feb2020Suite(unittest.TestCase):
         self.assertFalse(utf8_validator([0b00000000, 0b10000000]))
         # False
 
+    def test_zigzag_order(self):
+        n4 = ZNode(4)
+        n5 = ZNode(5)
+        n6 = ZNode(6)
+        n7 = ZNode(7)
+        n2 = ZNode(2, n4, n5)
+        n3 = ZNode(3, n6, n7)
+        n1 = ZNode(1, n2, n3)
+
+        self.assertEqual([1, 3, 2, 4, 5, 6, 7], zigzag_order(n1))
+        # [1, 3, 2, 4, 5, 6, 7]
+
+        n15 = ZNode(15)
+        n14 = ZNode(14)
+        n13 = ZNode(13)
+        n12 = ZNode(12)
+        n11 = ZNode(11)
+        n10 = ZNode(10)
+        n9 = ZNode(9)
+        n8 = ZNode(8)
+        n4 = ZNode(4, n8, n9)
+        n5 = ZNode(5, n10, n11)
+        n6 = ZNode(6, n12, n13)
+        n7 = ZNode(7, n14, n15)
+        n2 = ZNode(2, n4, n5)
+        n3 = ZNode(3, n6, n7)
+        n1 = ZNode(1, n2, n3)
+
+        self.assertEqual([1, 3, 2, 4, 5, 6, 7, 15, 14, 13, 12, 11, 10, 9, 8], zigzag_order(n1))
+        # [1, 3, 2, 4, 5, 6, 7, 15, 14, 13, 12, 11, 10, 9, 8]
