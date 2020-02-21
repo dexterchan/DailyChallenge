@@ -9,6 +9,7 @@ from FEB2020.StayingOnChessBoard import is_knight_on_board
 from FEB2020.Kaprekar_Constant import num_kaprekar_iterations
 from FEB2020.CitySkyline import generate_skyline
 from FEB2020.NumberofCousins import Solution as NumberOfCousins, Node as CNode
+from FEB2020.Unicode8Validator import utf8_validator
 
 class Feb2020Suite(unittest.TestCase):
     def test_reverse_graph(self):
@@ -123,4 +124,18 @@ class Feb2020Suite(unittest.TestCase):
         root.right.left = CNode(7)
 
         self.assertEqual([4,6],NumberOfCousins().list_cousins(root, 5))
+
+    def test_utf8_validator(self):
+        self.assertTrue(utf8_validator([0b11000000, 0b10000000, 0b00000001]))
+        # True
+
+        self.assertFalse(utf8_validator([0b11000000, 0b00000000]))
+        # False
+
+        self.assertTrue(utf8_validator([0b11000000, 0b10000000]))
+        # True
+        self.assertTrue(utf8_validator([0b00000000]))
+        # True
+        self.assertFalse(utf8_validator([0b00000000, 0b10000000]))
+        # False
 
