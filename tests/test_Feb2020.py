@@ -11,6 +11,7 @@ from FEB2020.CitySkyline import generate_skyline
 from FEB2020.NumberofCousins import Solution as NumberOfCousins, Node as CNode
 from FEB2020.Unicode8Validator import utf8_validator
 from FEB2020.zigzagBinaryTree import zigzag_order, Node as ZNode
+from FEB2020.RotateLinkedList import rotate_list, Node as rNode
 
 class Feb2020Suite(unittest.TestCase):
     def test_reverse_graph(self):
@@ -170,3 +171,15 @@ class Feb2020Suite(unittest.TestCase):
 
         self.assertEqual([1, 3, 2, 4, 5, 6, 7, 15, 14, 13, 12, 11, 10, 9, 8], zigzag_order(n1))
         # [1, 3, 2, 4, 5, 6, 7, 15, 14, 13, 12, 11, 10, 9, 8]
+
+    def test_rotate_list(self):
+        # Order is 1, 2, 3, 4
+        llist = rNode(1, rNode(2, rNode(3, rNode(4))))
+
+        self.assertEqual("2341", str(rotate_list(llist, 5)))
+        # 2341
+
+        llist = rNode(1, rNode(2, rNode(3, rNode(4))))
+        # Order should now be 3, 4, 1, 2
+        self.assertEqual("3412",str(rotate_list(llist, 2)))
+        # 3412
