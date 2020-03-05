@@ -30,6 +30,13 @@ class Node:
     def isSameCluster(self, node):
         return self.cluster == node.cluster
 
+    def clone(self):
+        newNode = Node()
+        newNode.description = self.description
+        newNode.action = self.action
+        newNode.cluster = self.cluster
+        return newNode
+
     def __str__(self):
         level = 0
         queue = deque()
