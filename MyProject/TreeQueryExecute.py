@@ -70,9 +70,9 @@ class GraphNodePipeline(NodePipeline):
             node = s.popleft()
             dependOnList = self.depends[node]
             if len(dependOnList) == 0:
-                self.abstractInsertNode2Pipeline([None], node)
+                self.insertNode2PipelineHelper([None], node)
             else:
-                self.abstractInsertNode2Pipeline(dependOnList, node)
+                self.insertNode2PipelineHelper(dependOnList, node)
             nextChildLst = self.graph[node]
             for c in nextChildLst:
                 try:
@@ -83,7 +83,7 @@ class GraphNodePipeline(NodePipeline):
 
         return self.pipelineBuilder
 
-    def abstractInsertNode2Pipeline(self, parentList:List[Node], node):
+    def insertNode2PipelineHelper(self, parentList:List[Node], node):
         for p in parentList:
             print("Insert node %s to parents %s"%(node, p))
 
