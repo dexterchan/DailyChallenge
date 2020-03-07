@@ -6,7 +6,7 @@ JsonInput = "TreeQueryInput3.json"
 
 from typing import List
 from collections import defaultdict
-
+from collections import deque
 class NodePipeline(abc.ABC):
     @abc.abstractmethod
     def addNodeToPipeline(self, parentNode:Node, node:Node):
@@ -14,36 +14,89 @@ class NodePipeline(abc.ABC):
     def __retrieveCachedResult(self, identifier):
         pass
 
+#Decorator of normal Node
 class CacheNode(Node):
     def __init__(self, node:Node):
         Node.__init__(self, node.description, node.action, node.cluster)
         self.originalNode = node
+        self.value = None
+
+    def __eq__(self, other):
+        return other == self.originalNode
+    def __hash__(self):
+        return self.originalNode.__hash__()
+
+    def __str__(self):
+        return "CacheData(%s)"%(self.originalNode.description)
+
+    def setRetrievedValue(self, value):
+        self.value = value
 
 
-class DummyNodePipeline(NodePipeline):
+
+class AbstractNodePipeline(NodePipeline):
     def __init__(self, cluster):
         #Init the pipeline here
         #We use Graph to model a pipeline
-        self.Graph = defaultdict(list)
+        self.graph = defaultdict(list)
+        self.depends = defaultdict(list)
         self.cluster = cluster
+        self.pipelineBuilder = None
+
     def addNodeToPipeline(self, parentNode:Node, node: Node):
+        newParentNode = None
         if parentNode.cluster == node.cluster:
-            self.Graph[parentNode].append(node)
+            newParentNode = parentNode
+
         else:
+            cacheNode = CacheNode(parentNode)
             retrievedValue = self.__retrieveCachedResult(parentNode.identifier())
-            self.Graph[retrievedValue].append(node)
+            cacheNode.setRetrievedValue(retrievedValue)
+            assert (cacheNode==parentNode)
+            newParentNode = cacheNode
+        self.graph[newParentNode].append(node)
+        self.depends[node].append(newParentNode)
+
+    def getPipelineBuilder(self):
+        #Fill in blank dependency for root
+        s = deque()
+        for rNode in self.graph.keys():
+            l = self.depends[rNode]
+            if len(l) == 0:
+                s.append(rNode)
+
+        while len(s) > 0:
+            node = s.popleft()
+            dependOnList = self.depends[node]
+            if len(dependOnList) == 0:
+                self.abstractInsertNode2Pipeline([None], node)
+            else:
+                self.abstractInsertNode2Pipeline(dependOnList, node)
+            nextChildLst = self.graph[node]
+            for c in nextChildLst:
+                try:
+                    s.index(c)
+                except ValueError as ve:
+                    s.append(c)
+
+
+        return self.pipelineBuilder
+
+    def abstractInsertNode2Pipeline(self, parentList:List[Node], node):
+        for p in parentList:
+            print("Insert node %s to parents %s"%(node, p))
 
     def __retrieveCachedResult(self, identifier):
         return "%sCache"%(identifier)
 
     def __str__(self):
         output = "Cluster:%s\n"%(self.cluster)
-        for key, value in self.Graph.items():
+        for key, value in self.graph.items():
             output = output + str(key) +"->" +  str(list(map(lambda x:str(x), value)))+","
         return output
 
 
-class NodeExecutor:
+class NodeTraverser:
     def postOrderTraversalExecution(self, root:Node, jobList:List[Node], nodePipeline: NodePipeline)->List[Node]:
         parentCluster = root.cluster
         for child in root.children:
@@ -65,7 +118,7 @@ if __name__ == "__main__":
     #Get workablecluster
     wList = clusterDepGraph.findClusterWithoutDependency()
 
-    solu = NodeExecutor()
+    solu = NodeTraverser()
 
     step = 0
     while True:
@@ -76,12 +129,9 @@ if __name__ == "__main__":
         print("step %d begin" % (step))
         print("\tTask List begin")
         for w in wList:
-            nodePipeline = DummyNodePipeline(w.cluster)
+            nodePipeline = AbstractNodePipeline(w.cluster)
             jobList = solu.postOrderTraversalExecution(w,[], nodePipeline)
-
-            print("\t\t%d" % (cnt), list(map(lambda n:n.description, jobList )))
-            print(str(nodePipeline))
-
+            nodePipeline.getPipelineBuilder()
             node = clusterDepGraph.removeClusterDependency(w)
             cnt += 1
         print ("\tTask List end")
