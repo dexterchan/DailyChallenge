@@ -5,12 +5,13 @@ JsonInput = "TreeQueryInput3.json"
 # Demonstrate Postorder traversal of node tree for execution
 
 from typing import List
+from collections import defaultdict
 
 class NodePipeline(abc.ABC):
     @abc.abstractmethod
     def addNodeToPipeline(self, parentNode:Node, node:Node):
         pass
-    def retrieveCachedResult(self, identifier):
+    def __retrieveCachedResult(self, identifier):
         pass
 
 class CacheNode(Node):
@@ -21,27 +22,36 @@ class CacheNode(Node):
 
 class DummyNodePipeline(NodePipeline):
     def __init__(self, cluster):
-        self.Graph = {}
+        #Init the pipeline here
+        #We use Graph to model a pipeline
+        self.Graph = defaultdict(list)
         self.cluster = cluster
     def addNodeToPipeline(self, parentNode:Node, node: Node):
-        pass
+        if parentNode.cluster == node.cluster:
+            self.Graph[parentNode].append(node)
+        else:
+            retrievedValue = self.__retrieveCachedResult(parentNode.identifier())
+            self.Graph[retrievedValue].append(node)
 
-    def retrieveCachedResult(self, identifier):
-        pass
+    def __retrieveCachedResult(self, identifier):
+        return "%sCache"%(identifier)
 
-
-
+    def __str__(self):
+        output = "Cluster:%s\n"%(self.cluster)
+        for key, value in self.Graph.items():
+            output = output + str(key) +"->" +  str(list(map(lambda x:str(x), value)))+","
+        return output
 
 
 class NodeExecutor:
-
-
-    def postOrderTraversalExecution(self, root:Node, jobList:List, nodePipeline: NodePipeline):
+    def postOrderTraversalExecution(self, root:Node, jobList:List[Node], nodePipeline: NodePipeline)->List[Node]:
         parentCluster = root.cluster
         for child in root.children:
             if parentCluster == child.cluster:
                 self.postOrderTraversalExecution(child, jobList, nodePipeline)
-        jobList.append(root.description)
+            nodePipeline.addNodeToPipeline(child, root)
+        jobList.append(root)
+
         return jobList
 
 
@@ -68,7 +78,10 @@ if __name__ == "__main__":
         for w in wList:
             nodePipeline = DummyNodePipeline(w.cluster)
             jobList = solu.postOrderTraversalExecution(w,[], nodePipeline)
-            print("\t\t%d"%(cnt),jobList)
+
+            print("\t\t%d" % (cnt), list(map(lambda n:n.description, jobList )))
+            print(str(nodePipeline))
+
             node = clusterDepGraph.removeClusterDependency(w)
             cnt += 1
         print ("\tTask List end")

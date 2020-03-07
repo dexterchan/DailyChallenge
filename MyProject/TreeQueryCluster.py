@@ -37,11 +37,16 @@ class Node:
         newNode.cluster = self.cluster
         return newNode
 
+    def identifier(self):
+        return "identifier_%s"%(self.description)
+
     def __str__(self):
+        return self.description
+    def bfs(self):
         level = 0
         queue = deque()
         queue.append((self, 0))
-        result = ""
+        result = "("
         while len(queue) > 0:
             node, lvl = queue.popleft()
             if lvl != level:
@@ -51,6 +56,7 @@ class Node:
 
             for cNode in node.children:
                 queue.append((cNode, lvl+1))
+        result = result+")"
         return result
 
 def nodeFactory(jNode):
