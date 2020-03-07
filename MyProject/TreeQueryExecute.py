@@ -11,8 +11,6 @@ class NodePipeline(abc.ABC):
     @abc.abstractmethod
     def addNodeToPipeline(self, parentNode:Node, node:Node):
         pass
-    def __retrieveCachedResult(self, identifier):
-        pass
 
 #Decorator of normal Node
 class CacheNode(Node):
@@ -29,8 +27,8 @@ class CacheNode(Node):
     def __str__(self):
         return "CacheData(%s)"%(self.originalNode.description)
 
-    def setRetrievedValue(self, value):
-        self.value = value
+    def getRetrievedValue(self):
+        self.value = "%sCache"%(self.originalNode.identifier())
 
 
 
@@ -54,8 +52,7 @@ class AbstractNodePipeline(NodePipeline):
 
         else:
             cacheNode = CacheNode(parentNode)
-            retrievedValue = self.__retrieveCachedResult(parentNode.identifier())
-            cacheNode.setRetrievedValue(retrievedValue)
+            cacheNode.getRetrievedValue()
             assert (cacheNode==parentNode)
             newParentNode = cacheNode
         self.graph[newParentNode].append(node)
@@ -89,9 +86,6 @@ class AbstractNodePipeline(NodePipeline):
     def abstractInsertNode2Pipeline(self, parentList:List[Node], node):
         for p in parentList:
             print("Insert node %s to parents %s"%(node, p))
-
-    def __retrieveCachedResult(self, identifier):
-        return "%sCache"%(identifier)
 
     def __str__(self):
         output = "Cluster:%s\n"%(self.cluster)
