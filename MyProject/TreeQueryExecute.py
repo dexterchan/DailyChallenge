@@ -45,6 +45,10 @@ class AbstractNodePipeline(NodePipeline):
 
     def addNodeToPipeline(self, parentNode:Node, node: Node):
         newParentNode = None
+
+        if node is None:
+            self.graph[parentNode]=[]
+            return
         if parentNode.cluster == node.cluster:
             newParentNode = parentNode
 
@@ -97,13 +101,15 @@ class AbstractNodePipeline(NodePipeline):
 
 
 class NodeTraverser:
-    def postOrderTraversalExecution(self, root:Node, jobList:List[Node], nodePipeline: NodePipeline)->List[Node]:
-        parentCluster = root.cluster
-        for child in root.children:
+    def postOrderTraversalExecution(self, node:Node, parentNode:Node, jobList:List[Node], nodePipeline: NodePipeline)->List[Node]:
+        parentCluster = node.cluster
+        for child in node.children:
             if parentCluster == child.cluster:
-                self.postOrderTraversalExecution(child, jobList, nodePipeline)
-            nodePipeline.addNodeToPipeline(child, root)
-        jobList.append(root)
+                self.postOrderTraversalExecution(child, node, jobList, nodePipeline)
+            else:
+                nodePipeline.addNodeToPipeline(child, node)
+        nodePipeline.addNodeToPipeline(node, parentNode)
+        jobList.append(node)
 
         return jobList
 
@@ -127,13 +133,15 @@ if __name__ == "__main__":
         if len(wList) == 0:
             break
         print("step %d begin" % (step))
-        print("\tTask List begin")
+
         for w in wList:
+            print("\tPipeline List begin")
             nodePipeline = AbstractNodePipeline(w.cluster)
-            jobList = solu.postOrderTraversalExecution(w,[], nodePipeline)
+            jobList = solu.postOrderTraversalExecution(w, None,[], nodePipeline)
             nodePipeline.getPipelineBuilder()
             node = clusterDepGraph.removeClusterDependency(w)
             cnt += 1
-        print ("\tTask List end")
+            print("\tPipeline List end")
+
         print("step %d end" % (step))
         step += 1
