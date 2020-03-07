@@ -32,7 +32,7 @@ class CacheNode(Node):
 
 
 
-class AbstractNodePipeline(NodePipeline):
+class GraphNodePipeline(NodePipeline):
     def __init__(self, cluster):
         #Init the pipeline here
         #We use Graph to model a pipeline
@@ -130,7 +130,7 @@ if __name__ == "__main__":
 
         for w in wList:
             print("\tPipeline List begin")
-            nodePipeline = AbstractNodePipeline(w.cluster)
+            nodePipeline = GraphNodePipeline(w.cluster)
             jobList = solu.postOrderTraversalExecution(w, None,[], nodePipeline)
             nodePipeline.getPipelineBuilder()
             node = clusterDepGraph.removeClusterDependency(w)
