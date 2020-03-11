@@ -1,6 +1,7 @@
 import unittest
 from MAR2020.MazeProblem import paths_through_maze
 from MAR2020.FilterBinaryTreeLeaves import filter, Node as fNode
+from MAR2020.SwapEveryTwoNodesinaLinkedList import swap_every_two , Node as sNode
 
 class Mar2020Suite(unittest.TestCase):
     def test_paths_through_maze(self):
@@ -18,3 +19,11 @@ class Mar2020Suite(unittest.TestCase):
         n2 = fNode(1, n5)
         n1 = fNode(1, n2, n3)
         self.assertEqual("value: 1, left: (value: 1, left: (value: 2, left: (None), right: (None)), right: (None)), right: (None)",str(filter(n1, 1)))
+
+    def test_swap_every_two(self):
+        llist = sNode(1, sNode(2, sNode(3, sNode(4, sNode(5)))))
+        self.assertEqual("2, (1, (4, (3, (5, (None)))))",str(swap_every_two(llist)))
+        # 2, (1, (4, (3, (5, (None)))))
+
+        llist = sNode(1, sNode(2))
+        self.assertEqual("2, (1, (None))", str(swap_every_two(llist)))
