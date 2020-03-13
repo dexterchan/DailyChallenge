@@ -2,6 +2,7 @@
 #Given a linked list, swap the position of the 1st and 2nd node, then swap the position of the 3rd and 4th node etc.
 
 #Here's some starter code:
+#Time complexity: O(N), space complexity:O(1)
 
 class Node:
     def __init__(self, value, next=None):
