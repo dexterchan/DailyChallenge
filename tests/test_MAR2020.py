@@ -3,6 +3,7 @@ from MAR2020.MazeProblem import paths_through_maze
 from MAR2020.FilterBinaryTreeLeaves import filter, Node as fNode
 from MAR2020.SwapEveryTwoNodesinaLinkedList import swap_every_two , Node as sNode
 from MAR2020.MakingChange import make_change
+from MAR2020.PhoneNumbers import makeWords as phoneNumberMarkWords
 
 class Mar2020Suite(unittest.TestCase):
     def test_paths_through_maze(self):
@@ -37,3 +38,7 @@ class Mar2020Suite(unittest.TestCase):
         # 2 coins (25 + 5)
 
         self.assertEqual("3 coins (25+1+1)",make_change([1, 5, 10, 25], 27))
+
+    def test_phoneNumbers(self):
+        self.assertEqual(['dog', 'fog'], phoneNumberMarkWords('364'))
+        self.assertEqual(['fish'], phoneNumberMarkWords('3474'))
