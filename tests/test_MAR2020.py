@@ -4,6 +4,7 @@ from MAR2020.FilterBinaryTreeLeaves import filter, Node as fNode
 from MAR2020.SwapEveryTwoNodesinaLinkedList import swap_every_two , Node as sNode
 from MAR2020.MakingChange import make_change
 from MAR2020.PhoneNumbers import makeWords as phoneNumberMarkWords
+from MAR2020.LargestPathSumfromRootToLeaf import largest_path_sum, Node as lNode
 
 class Mar2020Suite(unittest.TestCase):
     def test_paths_through_maze(self):
@@ -42,3 +43,28 @@ class Mar2020Suite(unittest.TestCase):
     def test_phoneNumbers(self):
         self.assertEqual(['dog', 'fog'], phoneNumberMarkWords('364'))
         self.assertEqual(['fish'], phoneNumberMarkWords('3474'))
+
+    def test_largest_path_sum(self):
+        tree = lNode(1)
+        tree.left = lNode(3)
+        tree.right = lNode(2)
+        tree.right.left = lNode(4)
+        tree.left.right = lNode(5)
+        #    1
+        #  /   \
+        # 3     2
+        #  \   /
+        #   5 4
+        self.assertEqual([1, 3, 5],largest_path_sum(tree))
+        # [1, 3, 5]
+
+        tree = lNode(1)
+        tree.left = lNode(3)
+        tree.right = lNode(2)
+        tree.right.left = lNode(4)
+        tree.left.right = lNode(5)
+        tree.left.right.left = lNode(6)
+        tree.left.left = lNode(20)
+        print(largest_path_sum(tree))
+        self.assertEqual([1, 3, 20], largest_path_sum(tree))
+
