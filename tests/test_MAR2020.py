@@ -5,6 +5,7 @@ from MAR2020.SwapEveryTwoNodesinaLinkedList import swap_every_two , Node as sNod
 from MAR2020.MakingChange import make_change
 from MAR2020.PhoneNumbers import makeWords as phoneNumberMarkWords
 from MAR2020.LargestPathSumfromRootToLeaf import largest_path_sum, Node as lNode
+from MAR2020.DetermineIfNumber import parse_number
 
 class Mar2020Suite(unittest.TestCase):
     def test_paths_through_maze(self):
@@ -67,4 +68,38 @@ class Mar2020Suite(unittest.TestCase):
         tree.left.left = lNode(20)
         print(largest_path_sum(tree))
         self.assertEqual([1, 3, 20], largest_path_sum(tree))
+
+    def test_parseNumber(self):
+        self.assertTrue(parse_number("-12e2"))
+        # True
+
+        self.assertFalse(parse_number("-1.5.1e2"))
+        # False
+
+        self.assertFalse(parse_number("-1.5e1.55"))
+        # False
+
+        self.assertTrue(parse_number("-1.5e5"))
+        # True
+
+        self.assertFalse(parse_number("1e1.2"))
+        # False
+
+        self.assertFalse(parse_number("1 2"))
+        # False
+
+        self.assertTrue(parse_number("1.5e5"))
+        # True
+
+        self.assertTrue(parse_number("-.3"))
+        # True
+
+        self.assertTrue(parse_number("-123"))
+        # True
+
+        self.assertFalse(parse_number("12a"))
+        # False
+
+        self.assertTrue(parse_number("12.3"))
+        # True
 
