@@ -6,6 +6,8 @@ from MAR2020.MakingChange import make_change
 from MAR2020.PhoneNumbers import makeWords as phoneNumberMarkWords
 from MAR2020.LargestPathSumfromRootToLeaf import largest_path_sum, Node as lNode
 from MAR2020.DetermineIfNumber import parse_number
+from MAR2020.PickingupChange import max_change
+from MAR2020.FindSubtree import find_subtree, Node as fSubNode
 
 class Mar2020Suite(unittest.TestCase):
     def test_paths_through_maze(self):
@@ -103,3 +105,36 @@ class Mar2020Suite(unittest.TestCase):
         self.assertTrue(parse_number("12.3"))
         # True
 
+    def test_max_change(self):
+        mat = [
+            [0, 3, 0, 2],
+            [1, 2, 3, 3],
+            [6, 0, 3, 2]
+        ]
+        self.assertEqual(13, max_change(mat))
+
+    def test_find_subtree(self):
+        t3 = fSubNode(4, fSubNode(3), fSubNode(2))
+        t2 = fSubNode(5, fSubNode(4), fSubNode(-1))
+        t = fSubNode(1, t2, t3)
+
+        s = fSubNode(4, fSubNode(3), fSubNode(1))
+        self.assertFalse(find_subtree(s, t))
+
+        s = fSubNode(4, fSubNode(3), fSubNode(2))
+        """
+        Tree t:
+            1
+           / \
+          4   5 
+         / \ / \
+        3  2 4 -1
+    
+        Tree s:
+          4 
+         / \
+        3  2 
+        """
+
+        self.assertTrue(find_subtree(s, t))
+        # True
