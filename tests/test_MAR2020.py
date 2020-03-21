@@ -18,7 +18,7 @@ class Mar2020Suite(unittest.TestCase):
                                   [0, 0, 1],
                                   [0, 0, 0]]))
 
-    def test_fitler(self):
+    def test_filterBinaryTreeLeave(self):
         n5 = fNode(2)
         n4 = fNode(1)
         n3 = fNode(1, n4)
