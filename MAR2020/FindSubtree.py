@@ -78,19 +78,19 @@ if __name__ == "__main__":
     print(find_subtree(s, t))
 
     s = Node(4, Node(3), Node(2))
-    """
-    Tree t:
-        1
-       / \
-      4   5 
-     / \ / \
-    3  2 4 -1
+    #"""
+    #Tree t:
+    #    1
+    #   / \
+    #  4   5
+    # / \ / \
+    #3  2 4 -1
     
-    Tree s:
-      4 
-     / \
-    3  2 
-    """
+    #Tree s:
+    #  4
+    # / \
+    #3  2
+    #"""
 
     print(find_subtree(s, t))
     # True

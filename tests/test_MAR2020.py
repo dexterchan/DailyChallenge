@@ -8,6 +8,8 @@ from MAR2020.LargestPathSumfromRootToLeaf import largest_path_sum, Node as lNode
 from MAR2020.DetermineIfNumber import parse_number
 from MAR2020.PickingupChange import max_change
 from MAR2020.FindSubtree import find_subtree, Node as fSubNode
+from MAR2020.SwapBits import swap_bits
+from MAR2020.Anagramsinastring import find_anagrams
 
 class Mar2020Suite(unittest.TestCase):
     def test_paths_through_maze(self):
@@ -122,19 +124,28 @@ class Mar2020Suite(unittest.TestCase):
         self.assertFalse(find_subtree(s, t))
 
         s = fSubNode(4, fSubNode(3), fSubNode(2))
-        """
-        Tree t:
-            1
-           / \
-          4   5 
-         / \ / \
-        3  2 4 -1
+        #"""
+        #Tree t:
+        #    1
+        #   / \
+        #  4   5
+        # / \ / \
+        #3  2 4 -1
     
-        Tree s:
-          4 
-         / \
-        3  2 
-        """
+        #Tree s:
+        #  4
+        # / \
+        #3  2
+        #"""
 
         self.assertTrue(find_subtree(s, t))
         # True
+
+    def test_swap_bits(self):
+        self.assertEqual("0b01010101010101010101010101010101",f"0b{swap_bits(0b10101010101010101010101010101010):032b}")
+        # 0b01010101010101010101010101010101
+
+        self.assertEqual("0b00000000000000000000000000111010", f"0b{swap_bits(0b110101):032b}")
+
+    def test_find_anagrams(self):
+        self.assertEqual([3, 7],find_anagrams('acdbacdacb', 'abc'))
