@@ -10,6 +10,7 @@ from MAR2020.PickingupChange import max_change
 from MAR2020.FindSubtree import find_subtree, Node as fSubNode
 from MAR2020.SwapBits import swap_bits
 from MAR2020.Anagramsinastring import find_anagrams
+from MAR2020.SumofSquares import square_sum
 
 class Mar2020Suite(unittest.TestCase):
     def test_paths_through_maze(self):
@@ -144,8 +145,14 @@ class Mar2020Suite(unittest.TestCase):
     def test_swap_bits(self):
         self.assertEqual("0b01010101010101010101010101010101",f"0b{swap_bits(0b10101010101010101010101010101010):032b}")
         # 0b01010101010101010101010101010101
-
         self.assertEqual("0b00000000000000000000000000111010", f"0b{swap_bits(0b110101):032b}")
 
     def test_find_anagrams(self):
         self.assertEqual([3, 7],find_anagrams('acdbacdacb', 'abc'))
+
+    def test_square_sum(self):
+        self.assertEqual(2, square_sum(13))
+        # Min sum is 3^2 + 2^2
+        # 2
+
+        self.assertEqual(2, square_sum(125))
