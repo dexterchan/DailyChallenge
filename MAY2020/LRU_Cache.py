@@ -13,8 +13,7 @@
 # Get in O(N)
 # Put in O(1)
 
-#Cache is a linked list of node
-#LRUCache, contain the size , head and tail of the linked list
+#Cache is an array
 # it pre-initialize the linked list of size N
 #it
 #when insert, insert to the end
