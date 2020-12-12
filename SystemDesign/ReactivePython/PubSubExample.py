@@ -1,12 +1,13 @@
 from __future__ import annotations
-import multiprocessing
+#import multiprocessing
 import random
 import time
 
 import datetime
 
 import rx
-from rx.scheduler import ThreadPoolScheduler, EventLoopScheduler
+from rx.scheduler import ThreadPoolScheduler
+from rx.scheduler import EventLoopScheduler
 from rx import operators as ops
 
 class Request:
@@ -38,6 +39,15 @@ def generate_content(request: Request) -> Response:
     responseString = ("%s-%d-%d"%(request.seed, timestamp, randomValue))
     return Response(request.seed, responseString)
 
+class DataSubscriber:
+    def __init__(self, request:Request) -> None:
+        self.request = request
+    def on_next(self, response:Response) -> None:
+        print("PROCESS %s: %s" % (response.id, str(response)))
+    def on_error(self, ex)->None:
+        print(ex)
+    def on_completed(self)->None:
+        print("PROCESS done!")
 
 
 def runProcess (request:Request, pool_scheduler:ThreadPoolScheduler)->None:
@@ -49,18 +59,31 @@ def runProcess (request:Request, pool_scheduler:ThreadPoolScheduler)->None:
         on_error=lambda e: print(e),
         on_completed=lambda: print("PROCESS done!"),
     )
+def runProcessSubscriber(request:Request, pool_scheduler:ThreadPoolScheduler,
+                         dataSubscriber:DataSubscriber)->None:
+    rx.repeat_value(request).pipe(
+        ops.subscribe_on(pool_scheduler),
+        ops.map(lambda r: generate_content(r)),
+    ).subscribe(
+       on_next=dataSubscriber.on_next,
+        on_error=dataSubscriber.on_error,
+        on_completed=dataSubscriber.on_completed,
+    )
 
 if __name__ == "__main__":
     requestA = Request("A", 10*1000)
     requestB = Request("B", 10*1000)
+    requestC = Request("C", 10*1000)
+    dataSubscriberC = DataSubscriber(requestC)
 
 
     #optimal_thread_count = multiprocessing.cpu_count()
     pool_schedulerA = EventLoopScheduler() #ThreadPoolScheduler(optimal_thread_count)
     runProcess(requestA, pool_schedulerA)
-    pool_schedulerB = EventLoopScheduler()
-    runProcess(requestB, pool_schedulerB)
-
+    #pool_schedulerB = EventLoopScheduler()
+    #runProcess(requestB, pool_schedulerB)
+    pool_schedulerC = EventLoopScheduler()
+    runProcessSubscriber(requestC, pool_schedulerC, dataSubscriberC)
 
     print("running background")
     print("main thread sleep 5 seconds")
@@ -68,3 +91,4 @@ if __name__ == "__main__":
     print("force stop all")
     requestA.stop()
     requestB.stop()
+    requestC.stop()
