@@ -6,7 +6,7 @@ import time
 import datetime
 
 import rx
-from rx.scheduler import ThreadPoolScheduler
+from rx.scheduler import ThreadPoolScheduler,NewThreadScheduler
 from rx.scheduler import EventLoopScheduler
 from rx import operators as ops
 
@@ -76,13 +76,13 @@ if __name__ == "__main__":
     requestC = Request("C", 10*1000)
     dataSubscriberC = DataSubscriber(requestC)
 
-
+    scheduler = NewThreadScheduler()
     #optimal_thread_count = multiprocessing.cpu_count()
-    pool_schedulerA = EventLoopScheduler() #ThreadPoolScheduler(optimal_thread_count)
+    pool_schedulerA = scheduler #NewThreadScheduler()#EventLoopScheduler() #ThreadPoolScheduler(optimal_thread_count)
     runProcess(requestA, pool_schedulerA)
     #pool_schedulerB = EventLoopScheduler()
     #runProcess(requestB, pool_schedulerB)
-    pool_schedulerC = EventLoopScheduler()
+    pool_schedulerC = scheduler#EventLoopScheduler()
     runProcessSubscriber(requestC, pool_schedulerC, dataSubscriberC)
 
     print("running background")
