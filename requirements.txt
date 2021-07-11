@@ -1,5 +1,5 @@
 setuptools
-etcd3
 pytest
 Rx
 asyncio
+pydantic

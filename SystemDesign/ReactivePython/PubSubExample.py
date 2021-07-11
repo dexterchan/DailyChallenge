@@ -1,5 +1,5 @@
 from __future__ import annotations
-#import multiprocessing
+import multiprocessing
 import random
 import time
 
@@ -51,7 +51,7 @@ class DataSubscriber:
 
 
 def runProcess (request:Request, pool_scheduler:ThreadPoolScheduler)->None:
-    rx.repeat_value(request).pipe(
+    rx.repeat_value(request, 10).pipe(
         ops.subscribe_on(pool_scheduler),
         ops.map(lambda r: generate_content(r)),
     ).subscribe(
@@ -61,7 +61,7 @@ def runProcess (request:Request, pool_scheduler:ThreadPoolScheduler)->None:
     )
 def runProcessSubscriber(request:Request, pool_scheduler:ThreadPoolScheduler,
                          dataSubscriber:DataSubscriber)->None:
-    rx.repeat_value(request).pipe(
+    rx.repeat_value(request,10).pipe(
         ops.subscribe_on(pool_scheduler),
         ops.map(lambda r: generate_content(r)),
     ).subscribe(
@@ -76,8 +76,8 @@ if __name__ == "__main__":
     requestC = Request("C", 10*1000)
     dataSubscriberC = DataSubscriber(requestC)
 
-    scheduler = NewThreadScheduler()
-    #optimal_thread_count = multiprocessing.cpu_count()
+    optimal_thread_count = 1# multiprocessing.cpu_count()
+    scheduler = ThreadPoolScheduler(optimal_thread_count)
     pool_schedulerA = scheduler #NewThreadScheduler()#EventLoopScheduler() #ThreadPoolScheduler(optimal_thread_count)
     runProcess(requestA, pool_schedulerA)
     #pool_schedulerB = EventLoopScheduler()
