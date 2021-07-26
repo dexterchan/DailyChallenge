@@ -12,10 +12,11 @@ class Point(BaseModel):
 
     def fall_into_rectangle(self, rectangle: Rectangle) -> bool:
         return rectangle.lower_left.x < self.x < rectangle.upper_right.x \
-                and rectangle.lower_left.y < self.y < rectangle.upper_right.y
+            and rectangle.lower_left.y < self.y < rectangle.upper_right.y
 
     def __str__(self) -> str:
         return f"{self.x},{self.y}"
+
 
 class Rectangle(BaseModel):
     lower_left: Point
@@ -44,9 +45,9 @@ class Rectangle(BaseModel):
         else:
             return False
 
+    @property
+    def area(self) -> float:
+        return (self.upper_right.x - self.lower_left.x) * (self.upper_right.y - self.lower_left.y)
+
     def __str__(self) -> str:
         return f"{str(self.lower_left) } and {str(self.upper_right)}"
-
-
-
-
