@@ -82,10 +82,13 @@ if __name__ == "__main__":
 
     v = lru.get("k")
     v = lru.get("k")
-    print(lru)
+    v = lru.get("k")
+    v = lru.get("k")
+    v = lru.get("k")
     v = lru.get("k")
     print(lru)
-
+    lru.get("b")
+    lru.get("a")
     lru.put("b", "Beetroot")
     print(lru)
 

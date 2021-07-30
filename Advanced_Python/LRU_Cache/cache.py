@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 class Node(BaseModel):
     value: str = 0
+    counter: Optional[int] = 0
     prev_node: Optional[Node] = None
     next_node: Optional[Node] = None
     base: Optional[bool] = False
@@ -32,6 +33,9 @@ class Node(BaseModel):
         self.prev_node = None
         self.next_node = None
 
+    def increment_read_counter(self) -> None:
+        self.counter += 1
+
     def __str__(self) -> str:
         value = self.value
         if self.base:
@@ -40,12 +44,6 @@ class Node(BaseModel):
             return f"{value}->{str(self.next_node)}"
         else:
             return f"{value}"
-
-# class Node():
-#     def __init__(self, value:int, prev_node:Node=None, next_node:Node=None) -> None:
-#         self.value = value
-#         self.prev_node = prev_node
-#         self.next_node = next_node
 
 
 class LRU:
@@ -57,7 +55,7 @@ class LRU:
     def replace(self, key: str, value: Any):
         (_, node) = self.my_dict[key]
         prev_node: Node = node.prev_node
-        new_node: Node = Node(value=key)
+        new_node: Node = Node(value=key, counter=node.counter)
         node.remove_node()
         prev_node.append_node(new_node)
         del self.my_dict[key]
@@ -87,10 +85,15 @@ class LRU:
         if key not in self.my_dict:
             raise "Not found"
         (value, node) = self.my_dict[key]
+        node.increment_read_counter()
+
         next_node: Node = node.next()
-        if next_node is not None:
-            node.remove_node()
-            next_node.append_node(node=node)
+        cur_node: Node = node
+        while next_node is not None and cur_node.counter > next_node.counter:
+            cur_node.remove_node()
+            next_node.append_node(node=cur_node)
+            cur_node = next_node
+            next_node = cur_node.next()
         return value
 
     def __str__(self) -> str:
