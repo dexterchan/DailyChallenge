@@ -89,6 +89,8 @@ if __name__ == "__main__":
     print(lru)
     lru.get("b")
     lru.get("a")
+    lru.get("a")
+    lru.put("a", "Apricots")
     lru.put("b", "Beetroot")
     print(lru)
 
