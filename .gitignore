@@ -7,3 +7,4 @@ __pycache__/
 .idea
 *.txt
 *.html
+.ipynb_checkpoints
