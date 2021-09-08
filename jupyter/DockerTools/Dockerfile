@@ -16,7 +16,7 @@ RUN ln -s /usr/bin/google-chrome-stable /usr/bin/chromium
 
 RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
 RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
-
+ENV DISPLAY=:99
 WORKDIR ${WORKSPACE}
 COPY DockerTools/requirements.txt .
 RUN python3 -m pip install -r requirements.txt
