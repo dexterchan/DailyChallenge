@@ -15,11 +15,14 @@ if __name__ == "__main__":
     security = args.security
     output = args.output
 
-    nasdaq_parser = Nasdaq_Institution_Page_Parser()
+    try:
+        nasdaq_parser = Nasdaq_Institution_Page_Parser()
 
-    df = nasdaq_parser.load_details(security=security, page=1)
+        df = nasdaq_parser.load_details(security=security, page=1)
 
-    date_str = datetime.now().strftime("%Y%m%d")
+        date_str = datetime.now().strftime("%Y%m%d")
 
-    df.to_csv(
-        f"{output}/nasdaq.institution.{date_str}.{security}.csv", index=False)
+        df.to_csv(
+            f"{output}/nasdaq.institution.{date_str}.{security}.csv", index=False)
+    finally:
+        nasdaq_parser.close()

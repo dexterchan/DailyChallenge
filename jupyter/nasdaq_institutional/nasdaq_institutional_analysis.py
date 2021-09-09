@@ -31,6 +31,10 @@ class Nasdaq_Institution_Page_Parser:
         chrome_options.add_experimental_option("prefs", prefs)
         self.driver = webdriver.Chrome(options=chrome_options)
 
+    def close(self) -> None:
+        if self.driver is not None:
+            self.driver.close()
+
     @backoff.on_exception(
         backoff.expo, Exception, max_tries=max_trial, jitter=backoff.full_jitter
     )
