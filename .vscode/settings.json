@@ -1,5 +1,5 @@
 {
-  "python.pythonPath": "/Users/dexter/sandbox/Python/DailyChallenge/venv/bin/python",
+  "python.pythonPath": "jupyter/.venv/bin/python",
   "yaml.customTags": [
     "!And",
     "!And sequence",
