@@ -46,8 +46,6 @@ class Nasdaq_Institution_Page_Parser:
         # chrome_options.add_experimental_option("prefs", prefs)
         self.driver = webdriver.Chrome(options=chrome_options)
 
-        self.page = 1
-
     def close(self) -> None:
         if self.driver is not None:
             self.driver.close()
@@ -65,8 +63,8 @@ class Nasdaq_Institution_Page_Parser:
 
         if page < 1 and page > num_of_pages:
             raise Exception(f"Page should be between {1} and {num_of_pages}")
-
-        if self.page != page:
+        current_page = self._get_current_page()
+        if current_page != page:
             self._go_to_page(page_num=page)
             page_details = self._load_soup()
 
@@ -76,7 +74,6 @@ class Nasdaq_Institution_Page_Parser:
         df: pd.DataFrame = self._load_to_dataframe(
             soup=soup, column_list=column_names
         )
-        self.page = self._get_current_page()
 
         return df
 
@@ -93,9 +90,9 @@ class Nasdaq_Institution_Page_Parser:
         }
 
     def _go_to_page(self, page_num: int) -> None:
-        self.page = self._get_current_page()
-        print(f"We are at page {self.page}, load page {page_num}")
-        if self.page == page_num:
+        current_page = self._get_current_page()
+        print(f"We are at page {current_page}, load page {page_num}")
+        if current_page == page_num:
             return
 
         pageList: List[Page] = []
