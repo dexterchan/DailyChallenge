@@ -30,6 +30,7 @@ class Nasdaq_Institution_Page_Parser:
                  }
         chrome_options.add_experimental_option("prefs", prefs)
         self.driver = webdriver.Chrome(options=chrome_options)
+        self.page = 1
 
     def close(self) -> None:
         if self.driver is not None:
