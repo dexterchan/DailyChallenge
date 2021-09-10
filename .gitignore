@@ -5,6 +5,5 @@ DailyChallenge.egg-info/
 .pytest_cache/
 __pycache__/
 .idea
-*.txt
 *.html
 .ipynb_checkpoints

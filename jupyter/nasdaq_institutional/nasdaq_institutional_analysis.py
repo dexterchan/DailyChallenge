@@ -71,6 +71,11 @@ class Nasdaq_Institution_Page_Parser:
         for bttn in soup.find_all("button", class_="pagination__page"):
             max_page = max(max_page, int(bttn.text))
 
+    def _get_current_page(self, ) -> int:
+        button = self.driver.find_element_by_tag_name(
+            "button.pagination__page--active")
+        return int(button.text)
+
     def _load_to_dataframe(self, soup, column_list=List[str]) -> pd.DataFrame:
         temp_data = defaultdict(list)
         for row in soup.find_all("a", class_="firstCell"):
