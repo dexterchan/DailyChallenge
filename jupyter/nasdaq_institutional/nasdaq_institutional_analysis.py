@@ -5,7 +5,7 @@ import pandas as pd
 from typing import List, Dict
 from collections import defaultdict
 import backoff
-
+import time
 max_trial = 5
 
 
@@ -28,23 +28,28 @@ class Nasdaq_Institution_Page_Parser:
     def __init__(self) -> None:
         user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
         self.url_template = 'https://www.nasdaq.com/market-activity/stocks/{stock}/institutional-holdings'
-        chrome_options = Options()
-        # chrome_options.add_argument("--headless")
-        # chrome_options.add_argument("--no-sandbox")
-        # chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument('user-agent={0}'.format(user_agent))
-        # prefs = {"profile.managed_default_content_settings.images": 2,
-        #          "profile.default_content_setting_values.notifications": 2,
-        #          "profile.managed_default_content_settings.stylesheets": 2,
-        #          "profile.managed_default_content_settings.cookies": 2,
-        #          "profile.managed_default_content_settings.javascript": 1,
-        #          "profile.managed_default_content_settings.plugins": 1,
-        #          "profile.managed_default_content_settings.popups": 2,
-        #          "profile.managed_default_content_settings.geolocation": 2,
-        #          "profile.managed_default_content_settings.media_stream": 2,
-        #          }
-        # chrome_options.add_experimental_option("prefs", prefs)
-        self.driver = webdriver.Chrome(options=chrome_options)
+        options = Options()
+        options.add_argument("--window-size=1920,1080")
+        options.add_argument("--start-maximized")
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument('user-agent={0}'.format(user_agent))
+        prefs = {
+            # "profile.managed_default_content_settings.images": 2,
+            # "profile.default_content_setting_values.notifications": 2,
+            # "profile.managed_default_content_settings.stylesheets": 2,
+            # "profile.managed_default_content_settings.cookies": 2,
+            # "profile.managed_default_content_settings.javascript": 1,
+            # "profile.managed_default_content_settings.plugins": 1,
+            # "profile.managed_default_content_settings.popups": 2,
+            # "profile.managed_default_content_settings.geolocation": 2,
+            # "profile.managed_default_content_settings.media_stream": 2,
+        }
+        options.add_experimental_option("prefs", prefs)
+        options.page_load_strategy = 'eager'
+        self.driver = webdriver.Chrome(options=options)
+        self.driver.set_window_size(1920, 1080)
 
     def close(self) -> None:
         if self.driver is not None:
@@ -66,6 +71,7 @@ class Nasdaq_Institution_Page_Parser:
         current_page = self._get_current_page()
         if current_page != page:
             self._go_to_page(page_num=page)
+            time.sleep(1)
             page_details = self._load_soup()
 
         soup = page_details["soup"]
