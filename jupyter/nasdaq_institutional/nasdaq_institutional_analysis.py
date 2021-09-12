@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver import Firefox, FirefoxOptions
 import pandas as pd
 from typing import List, Dict
 from collections import defaultdict
@@ -28,28 +29,29 @@ class Nasdaq_Institution_Page_Parser:
     def __init__(self) -> None:
         user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
         self.url_template = 'https://www.nasdaq.com/market-activity/stocks/{stock}/institutional-holdings'
-        options = Options()
+        options = FirefoxOptions()
         options.add_argument("--window-size=1920,1080")
         options.add_argument("--start-maximized")
         options.add_argument("--headless")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
+        # options.add_argument("--no-sandbox")
+        # options.add_argument("--disable-dev-shm-usage")
         options.add_argument('user-agent={0}'.format(user_agent))
-        prefs = {
-            # "profile.managed_default_content_settings.images": 2,
-            # "profile.default_content_setting_values.notifications": 2,
-            # "profile.managed_default_content_settings.stylesheets": 2,
-            # "profile.managed_default_content_settings.cookies": 2,
-            # "profile.managed_default_content_settings.javascript": 1,
-            # "profile.managed_default_content_settings.plugins": 1,
-            # "profile.managed_default_content_settings.popups": 2,
-            # "profile.managed_default_content_settings.geolocation": 2,
-            # "profile.managed_default_content_settings.media_stream": 2,
-        }
-        options.add_experimental_option("prefs", prefs)
+        # prefs = {
+        #     # "profile.managed_default_content_settings.images": 2,
+        #     # "profile.default_content_setting_values.notifications": 2,
+        #     # "profile.managed_default_content_settings.stylesheets": 2,
+        #     # "profile.managed_default_content_settings.cookies": 2,
+        #     # "profile.managed_default_content_settings.javascript": 1,
+        #     # "profile.managed_default_content_settings.plugins": 1,
+        #     # "profile.managed_default_content_settings.popups": 2,
+        #     # "profile.managed_default_content_settings.geolocation": 2,
+        #     # "profile.managed_default_content_settings.media_stream": 2,
+        # }
+        # options.add_experimental_option("prefs", prefs)
         options.page_load_strategy = 'eager'
-        self.driver = webdriver.Chrome(options=options)
-        self.driver.set_window_size(1920, 1080)
+        #self.driver = webdriver.Chrome(options=options)
+        self.driver = Firefox(options=options)
+        #self.driver.set_window_size(1920, 1080)
 
     def close(self) -> None:
         if self.driver is not None:
