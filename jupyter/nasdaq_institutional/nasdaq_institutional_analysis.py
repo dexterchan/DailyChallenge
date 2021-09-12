@@ -1,4 +1,6 @@
 from bs4 import BeautifulSoup
+from pandas.core import indexing
+from pandas.core.frame import DataFrame
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import pandas as pd
@@ -27,13 +29,14 @@ class Page:
 class Nasdaq_Institution_Page_Parser:
     def __init__(self) -> None:
         user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
-        self.url_template = 'https://www.nasdaq.com/market-activity/stocks/{stock}/institutional-holdings'
+        self.url_template = 'https://www.nasdaq.com/market-activity/stocks/{security}/institutional-holdings'
         options = Options()
         options.add_argument("--window-size=1920,1080")
-        options.add_argument("--start-maximized")
-        options.add_argument("--headless")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
+        # Headless not working for click action
+        # options.add_argument("--start-maximized")
+        # options.add_argument("--headless")
+        # options.add_argument("--no-sandbox")
+        # options.add_argument("--disable-dev-shm-usage")
         options.add_argument('user-agent={0}'.format(user_agent))
         prefs = {
             # "profile.managed_default_content_settings.images": 2,
@@ -58,14 +61,47 @@ class Nasdaq_Institution_Page_Parser:
     @backoff.on_exception(
         backoff.expo, Exception, max_tries=max_trial, jitter=backoff.full_jitter
     )
-    def load_details(self, security: str, page: int) -> pd.DataFrame:
-        self.driver.get(
-            f'https://www.nasdaq.com/market-activity/stocks/{security}/institutional-holdings')
+    def load_pages_range(self, security: str, page_start: int = 1, page_end: int = 0):
+        self.driver.get(self.url_template.format(security=security))
 
         page_details = self._load_soup()
-
         num_of_pages = page_details["num_of_pages"]
+        print(f"Total number of pages: {num_of_pages}")
+        if page_end <= 0 or page_end > num_of_pages:
+            page_end = num_of_pages
+        page_start = 1 if page_start < 1 or page_start > num_of_pages else page_start
 
+        # navigate to page_start
+        current_page = self._get_current_page()
+        if current_page != page_start:
+            self._go_to_page(page_num=page_start)
+            time.sleep(1)
+
+        df: pd.DataFrame = pd.DataFrame()
+        for p in range(page_start, page_end+1):
+            print(f"loading page {p}")
+            page_details = self._load_soup()
+            soup = page_details["soup"]
+            column_names = page_details["columns"]
+            newdf: pd.DataFrame = self._load_to_dataframe(
+                soup=soup, column_list=column_names
+            )
+            #pd.concat(df, newdf)
+            pd.concat([df, newdf], ignore_index=True)
+            self._go_to_page(page_num=p+1)
+            time.sleep(1)
+
+        return df
+
+    @backoff.on_exception(
+        backoff.expo, Exception, max_tries=max_trial, jitter=backoff.full_jitter
+    )
+    def load_page(self, security: str, page: int) -> pd.DataFrame:
+        self.driver.get(self.url_template.format(security=security))
+
+        page_details = self._load_soup()
+        num_of_pages = page_details["num_of_pages"]
+        print(f"Total number of pages: {num_of_pages}")
         if page < 1 and page > num_of_pages:
             raise Exception(f"Page should be between {1} and {num_of_pages}")
         current_page = self._get_current_page()
@@ -135,8 +171,11 @@ class Nasdaq_Institution_Page_Parser:
 
     def _get_number_of_pages(self, soup) -> int:
         max_page = 0
+        print("Find number of pages:")
         for bttn in soup.find_all("button", class_="pagination__page"):
+            print(f"Got {int(bttn.text)}")
             max_page = max(max_page, int(bttn.text))
+        return max_page
 
     def _get_current_page(self, ) -> int:
         button = self.driver.find_element_by_tag_name(
