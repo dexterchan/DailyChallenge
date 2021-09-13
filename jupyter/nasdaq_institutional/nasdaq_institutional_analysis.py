@@ -8,7 +8,7 @@ from typing import List, Dict
 from collections import defaultdict
 import backoff
 import time
-max_trial = 5
+max_trial = 10
 
 
 class Page:
@@ -87,8 +87,9 @@ class Nasdaq_Institution_Page_Parser:
                 soup=soup, column_list=column_names
             )
             #pd.concat(df, newdf)
-            pd.concat([df, newdf], ignore_index=True)
-            self._go_to_page(page_num=p+1)
+            df = pd.concat([df, newdf], ignore_index=True)
+            if p <= page_end-1:
+                self._go_to_page(page_num=p+1)
             time.sleep(1)
 
         return df
