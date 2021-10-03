@@ -37,6 +37,6 @@ if __name__ == "__main__":
         date_str = datetime.now().strftime("%Y%m%d")
 
         df.to_csv(
-            f"{output}/nasdaq.institution.{date_str}.{security}.page{page_start}.csv", index=False)
+            f"{output}/nasdaq.institution.{date_str}.{security}.page{page_start}_{page_end}.csv", index=False)
     finally:
         nasdaq_parser.close()
