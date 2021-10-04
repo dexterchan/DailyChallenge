@@ -183,97 +183,157 @@ class Judge:
             if new_s_value != slash_mark:
                 slash_win = False
         if backslash_win:
-            if backslash_mark == Mark.CROSS:
-                return GameState.CROSS_WIN, 1
-            elif backslash_mark == Mark.NOUGHT:
-                return GameState.NOUGHT_WIN, 1
-        if slash_win:
-            if slash_mark == Mark.CROSS:
-                return GameState.CROSS_WIN, 2
-            elif slash_mark == Mark.NOUGHT:
-                return GameState.NOUGHT_WIN, 2
-        return GameState.PLAYING, -1
-
-    @staticmethod
-    def check_row_result(grid: Grid) -> Tuple[GameState, int]:
-        row = col = grid.N
-        winner_mark = None
-        all_filled = True
-        win_row = None
-        got_winner = False
-        # Check Row
-        for r in range(1, row+1):
-            first_value = grid.get_value(
-                position=(r, 1)
+            # if backslash_mark == Mark.CROSS:
+            #     return GameState.CROSS_WIN, 1
+            # elif backslash_mark == Mark.NOUGHT:
+            #     return GameState.NOUGHT_WIN, 1
+            return Judge._resolve_CROSS_NOUGHT_WIN(
+                ref_mark=backslash_mark, inx=1
             )
-            if first_value == Mark.BLANK:
-                all_filled = False
-                continue
-            got_winner = True
-            for c in range(2, col+1):
-                _value = grid.get_value(
-                    position=(r, c)
-                )
-                if _value == Mark.BLANK:
-                    all_filled = False
-                if first_value != _value:
-                    got_winner = False
-                    break
-            if got_winner:
-                winner_mark = first_value
-                win_row = r
-                break
-        if got_winner:
-            if winner_mark == Mark.CROSS:
-                return GameState.CROSS_WIN, win_row
-            elif winner_mark == Mark.NOUGHT:
-                return GameState.NOUGHT_WIN, win_row
-            else:
-                raise Exception("Invalid game state")
-        elif all_filled:
-            return GameState.DRAW, -1
+        if slash_win:
+            # if slash_mark == Mark.CROSS:
+            #     return GameState.CROSS_WIN, 2
+            # elif slash_mark == Mark.NOUGHT:
+            #     return GameState.NOUGHT_WIN, 2
+            return Judge._resolve_CROSS_NOUGHT_WIN(
+                ref_mark=slash_mark, inx=2
+            )
         return GameState.PLAYING, -1
 
     @staticmethod
     def check_column_result(grid: Grid) -> Tuple[GameState, int]:
         row = column = grid.N
-        winner_mark = None
         all_filled = True
-        win_column = -1
-        got_winner = False
-        # Check Column
-        for c in range(1, column+1):
-            first_value = grid.get_value(
-                position=(1, c)
+        for col in range(1, column+1):
+            ref_mark = grid.get_value(
+                position=(1, col)
             )
-            if first_value == Mark.BLANK:
+            if ref_mark == Mark.BLANK:
                 all_filled = False
-                continue
-            got_winner = True
-            for r in range(2, row+1):
-                _value = grid.get_value(
-                    position=(r, c)
-                )
-                print(f"check point {(r,c)}")
-                if _value == Mark.BLANK:
+            all_match = True
+            for row in range(2, row+1):
+                value = grid.get_value(position=(row, col))
+                if ref_mark != value:
+                    all_match = False
+                if value == Mark.BLANK:
                     all_filled = False
-                if first_value != _value:
-                    got_winner = False
-                    break
-            if got_winner:
-                winner_mark = first_value
-                win_column = c
-                break
-        if got_winner:
-            if winner_mark == Mark.CROSS:
-                return GameState.CROSS_WIN, win_column
-            elif winner_mark == Mark.NOUGHT:
-                return GameState.NOUGHT_WIN, win_column
-            else:
-                raise Exception("Invalid game state")
-        elif all_filled:
+            if all_match and ref_mark != Mark.BLANK:
+                print(f"Got match in column {col}")
+                return Judge._resolve_CROSS_NOUGHT_WIN(ref_mark=ref_mark, inx=col)
+        if all_filled:
             return GameState.DRAW, -1
         return GameState.PLAYING, -1
+
+    @staticmethod
+    def check_row_result(grid: Grid) -> Tuple[GameState, int]:
+        row = column = grid.N
+        all_filled = True
+        for row in range(1, row+1):
+            ref_mark = grid.get_value(
+                position=(row, 1)
+            )
+            if ref_mark == Mark.BLANK:
+                all_filled = False
+            all_match = True
+            for col in range(2, column+1):
+                value = grid.get_value(position=(row, col))
+                if ref_mark != value:
+                    all_match = False
+                if value == Mark.BLANK:
+                    all_filled = False
+            if all_match and ref_mark != Mark.BLANK:
+                print(f"Got match in row {row}")
+                return Judge._resolve_CROSS_NOUGHT_WIN(ref_mark=ref_mark, inx=row)
+        if all_filled:
+            return GameState.DRAW, -1
+        return GameState.PLAYING, -1
+
+    @staticmethod
+    def _resolve_CROSS_NOUGHT_WIN(ref_mark: Mark, inx: int) -> Tuple[GameState, int]:
+        if ref_mark == Mark.CROSS:
+            return GameState.CROSS_WIN, inx
+        elif ref_mark == Mark.NOUGHT:
+            return GameState.NOUGHT_WIN, inx
+    # @staticmethod
+    # def check_row_result(grid: Grid) -> Tuple[GameState, int]:
+    #     row = col = grid.N
+    #     winner_mark = None
+    #     all_filled = True
+    #     win_row = None
+    #     got_winner = False
+    #     # Check Row
+    #     for r in range(1, row+1):
+    #         first_value = grid.get_value(
+    #             position=(r, 1)
+    #         )
+    #         if first_value == Mark.BLANK:
+    #             all_filled = False
+    #             continue
+    #         got_winner = True
+    #         for c in range(2, col+1):
+    #             _value = grid.get_value(
+    #                 position=(r, c)
+    #             )
+    #             if _value == Mark.BLANK:
+    #                 all_filled = False
+    #             if first_value != _value:
+    #                 got_winner = False
+    #                 break
+    #         if got_winner:
+    #             winner_mark = first_value
+    #             win_row = r
+    #             break
+    #     if got_winner:
+    #         if winner_mark == Mark.CROSS:
+    #             return GameState.CROSS_WIN, win_row
+    #         elif winner_mark == Mark.NOUGHT:
+    #             return GameState.NOUGHT_WIN, win_row
+    #         else:
+    #             raise Exception("Invalid game state")
+    #     elif all_filled:
+    #         return GameState.DRAW, -1
+    #     return GameState.PLAYING, -1
+
+    # @staticmethod
+    # def check_column_result(grid: Grid) -> Tuple[GameState, int]:
+    #     row = column = grid.N
+    #     winner_mark = None
+    #     all_filled = True
+    #     win_column = -1
+    #     got_winner = False
+    #     # Check Column
+    #     for c in range(1, column+1):
+    #         first_value = grid.get_value(
+    #             position=(1, c)
+    #         )
+    #         if first_value == Mark.BLANK:
+    #             all_filled = False
+    #             continue
+    #         got_winner = True
+    #         for r in range(2, row+1):
+    #             _value = grid.get_value(
+    #                 position=(r, c)
+    #             )
+    #             print(f"check point {(r,c)}")
+    #             if _value == Mark.BLANK:
+    #                 all_filled = False
+    #             if first_value != _value:
+    #                 got_winner = False
+    #                 break
+    #         if got_winner:
+    #             winner_mark = first_value
+    #             win_column = c
+    #             break
+    #     if got_winner:
+    #         if winner_mark == Mark.CROSS:
+    #             return GameState.CROSS_WIN, win_column
+    #         elif winner_mark == Mark.NOUGHT:
+    #             return GameState.NOUGHT_WIN, win_column
+    #         else:
+    #             raise Exception("Invalid game state")
+    #     elif all_filled:
+    #         return GameState.DRAW, -1
+    #     return GameState.PLAYING, -1
 
 
 class Tic_Tac_Toe_Game:
