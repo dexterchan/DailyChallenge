@@ -12,6 +12,33 @@ class GameState(Enum):
     DRAW = 4
 
 
+class Memory(Enum):
+    BLANK = 0
+    ME = 1
+    YOU = 2
+
+    @staticmethod
+    def symbol(memory: Memory) -> str:
+        if memory == Memory.BLANK:
+            return " "
+        elif memory == Memory.ME:
+            return "M"
+        elif memory == Memory.YOU:
+            return "Y"
+
+    @staticmethod
+    def translate(mark: Mark, myMark: Mark) -> Memory:
+        """
+            translate the Mark to Memory Unit
+        """
+        if mark == Mark.BLANK:
+            return Memory.BLANK
+        elif mark == myMark:
+            return Memory.ME
+        else:
+            return Memory.YOU
+
+
 class Mark(Enum):
     BLANK = 0
     CROSS = 1
@@ -91,11 +118,67 @@ class Grid():
             raise Exception("update failure")
 
 
+class State:
+    def __init__(self, dimension: int = 3) -> None:
+        self._state = None
+        self.N = dimension
+        self.this_move = None
+        pass
+
+    @classmethod
+    def replicate_from_Grid(cls,
+                            grid: Grid,
+                            my_mark: Mark,
+                            this_move: Tuple[int, int]) -> State:
+        new_state = cls(dimension=grid.N)
+        new_state._state = list(map(
+            lambda m: Memory.translate(
+                mark=m, myMark=my_mark
+            ), grid._grid
+        ))
+        new_state.this_move = this_move
+        return new_state
+
+    def _inx(self, position: Tuple[int, int]) -> None:
+        """
+            translate position to arrayindex
+        """
+        (row, column) = position
+        return (row-1) * self.N + (column-1)
+
+    def __str__(self) -> str:
+        """
+            render the grid
+        """
+        lines = []
+        for r in range(self.N):
+            line = "|"
+            for c in range(self.N):
+                line += Memory.symbol(memory=self._state[
+                    self._inx(
+                        position=(r+1, c+1)
+                    )
+                ])
+                line += "|"
+            lines.append(line)
+        lines.append(f"last move:{self.this_move}")
+        return "\n".join(lines)
+
+
 class Agent():
+    """
+        Agent records each move from Grid to State.
+        Keeping the same coordinate, each Mark of the Grid will be translated to Memory of the State.
+        IN each move, State persists the position of the Move.
+        After each turn of placing, agent will append State into a State List.
+        The state list will be used for training automation bot.
+    """
+
     def __init__(self, name: str, mark: Mark) -> None:
         self.name = name
         self.mark = mark
         self.MAX_TRIAL = 2
+        self.state_history = []
         pass
 
     def place(self, position: Tuple[int, int], grid: Grid) -> None:
@@ -107,6 +190,14 @@ class Agent():
                 num_trial += 1
                 grid.update(position, self.mark)
                 print(f"{self.name} places at {position}")
+
+                state = State.replicate_from_Grid(
+                    grid=grid,
+                    my_mark=self.mark,
+                    this_move=position
+                )
+                print(state)
+                self.state_history.append(state)
                 break
             except Exception as ex:
                 exception = ex
@@ -126,7 +217,7 @@ class Agent():
         """
             basically accept input from the console
         """
-        print(f"{self.name} input now")
+        print(f"{self.name} - {Mark.symbol(self.mark)} input now")
         row: int = int(input("input row coordinate: "))
         column: int = int(input("Input column coordinate: "))
         position = (row, column)
