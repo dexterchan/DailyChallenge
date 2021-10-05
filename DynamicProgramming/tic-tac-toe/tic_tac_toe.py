@@ -1,7 +1,19 @@
 from __future__ import annotations
 from enum import Enum
-from typing import Dict, Tuple
-import pprint
+import logging
+from typing import Dict, Tuple, List
+
+
+logging.basicConfig(
+    format="%(asctime)-15s %(levelname)s %(message)s (%(filename)s:%(lineno)s)")
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+
+class AgentPlayResult(Enum):
+    DRAW = 0
+    WIN = 1
+    LOSS = 2
 
 
 class GameState(Enum):
@@ -120,10 +132,16 @@ class Grid():
 
 class State:
     def __init__(self, dimension: int = 3) -> None:
-        self._state = None
+        self._state: List[Memory] = None
         self.N = dimension
-        self.this_move = None
+        self.this_move: Tuple[int, int] = None
         pass
+
+    @property
+    def key(self) -> str:
+        m_list = [Memory.symbol(m) for m in self._state]
+        key = "".join(m_list).replace(" ", "_")
+        return key
 
     @classmethod
     def replicate_from_Grid(cls,
@@ -131,11 +149,12 @@ class State:
                             my_mark: Mark,
                             this_move: Tuple[int, int]) -> State:
         new_state = cls(dimension=grid.N)
-        new_state._state = list(map(
-            lambda m: Memory.translate(
-                mark=m, myMark=my_mark
-            ), grid._grid
-        ))
+        exclude_index = grid._inx(
+            position=this_move
+        )
+        new_state._state = [Memory.translate(
+            mark=mark, myMark=my_mark) for mark in grid._grid]
+        new_state._state[exclude_index] = Memory.BLANK
         new_state.this_move = this_move
         return new_state
 
@@ -148,9 +167,10 @@ class State:
 
     def __str__(self) -> str:
         """
-            render the grid
+            render the state
         """
-        lines = []
+
+        lines = [f"state:{self.key}"]  # [f"state:{self.key}"]
         for r in range(self.N):
             line = "|"
             for c in range(self.N):
@@ -178,7 +198,7 @@ class Agent():
         self.name = name
         self.mark = mark
         self.MAX_TRIAL = 2
-        self.state_history = []
+        self.state_history: List[State] = []
         pass
 
     def place(self, position: Tuple[int, int], grid: Grid) -> None:
@@ -201,7 +221,7 @@ class Agent():
                 break
             except Exception as ex:
                 exception = ex
-                print(ex)
+                logger.error(ex)
                 print(f"try again... {num_trial}")
             if num_trial < self.MAX_TRIAL:
                 position = self.input()
@@ -396,7 +416,24 @@ class Tic_Tac_Toe_Game:
                 if result["game_state"] != GameState.PLAYING:
                     break
         except Exception as ex:
-            print(ex)
+            logger.error(ex)
+        self.final_game_state = result["game_state"]
+
+    def get_agent_state(self) -> Tuple[AgentPlayResult, AgentPlayResult]:
+        # Agent A state:
+        agentA_state = None
+        agentB_state = None
+
+        if self.final_game_state == GameState.DRAW:
+            agentA_state = AgentPlayResult.DRAW
+            agentB_state = AgentPlayResult.DRAW
+        elif self.final_game_state == GameState.CROSS_WIN:
+            agentA_state = AgentPlayResult.WIN if self.agentA.mark == Mark.CROSS else AgentPlayResult.LOSS
+            agentB_state = AgentPlayResult.WIN if self.agentB.mark == Mark.CROSS else AgentPlayResult.LOSS
+        elif self.final_game_state == GameState.NOUGHT_WIN:
+            agentA_state = AgentPlayResult.WIN if self.agentA.mark == Mark.NOUGHT else AgentPlayResult.LOSS
+            agentB_state = AgentPlayResult.WIN if self.agentB.mark == Mark.NOUGHT else AgentPlayResult.LOSS
+        return agentA_state, agentB_state
 
     def run_agent_turn(self, agent: Agent) -> None:
         position: Tuple[int, int] = agent.input()
