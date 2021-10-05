@@ -147,15 +147,18 @@ class State:
     def replicate_from_Grid(cls,
                             grid: Grid,
                             my_mark: Mark,
-                            this_move: Tuple[int, int]) -> State:
+                            this_move: Tuple[int, int] = None) -> State:
         new_state = cls(dimension=grid.N)
-        exclude_index = grid._inx(
-            position=this_move
-        )
+
         new_state._state = [Memory.translate(
             mark=mark, myMark=my_mark) for mark in grid._grid]
-        new_state._state[exclude_index] = Memory.BLANK
-        new_state.this_move = this_move
+
+        if this_move is not None:
+            exclude_index = grid._inx(
+                position=this_move
+            )
+            new_state._state[exclude_index] = Memory.BLANK
+            new_state.this_move = this_move
         return new_state
 
     def _inx(self, position: Tuple[int, int]) -> None:
@@ -233,11 +236,16 @@ class Agent():
                 f"Exceed MAX {self.MAX_TRIAL} trial... last error....{exception}")
         pass
 
-    def input(self) -> Tuple[int, int]:
+    def input(self, grid: Grid) -> Tuple[int, int]:
         """
             basically accept input from the console
         """
+        state = State.replicate_from_Grid(
+            grid=grid,
+            my_mark=self.mark
+        )
         print(f"{self.name} - {Mark.symbol(self.mark)} input now")
+        print(f"Current state: {state.key}")
         row: int = int(input("input row coordinate: "))
         column: int = int(input("Input column coordinate: "))
         position = (row, column)
@@ -436,7 +444,7 @@ class Tic_Tac_Toe_Game:
         return agentA_state, agentB_state
 
     def run_agent_turn(self, agent: Agent) -> None:
-        position: Tuple[int, int] = agent.input()
+        position: Tuple[int, int] = agent.input(self.grid)
         agent.place(
             position=position,
             grid=self.grid
