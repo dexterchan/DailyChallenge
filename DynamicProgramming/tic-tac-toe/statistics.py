@@ -11,16 +11,13 @@ class Statistics:
         Statistic collects state list and update the win/loss statistic of each move in each state.
         A key is derived from the state. win,loss,draw statistic with the coordinates save into Dict:
         win, loss, draw e.g.
+
         {
             state_key:{
-                win: {
-                <row>_<col>: <win figure>
-                },
-                loss:{
-                    <row>_<col>: <loss figure>
-                }
-                draw: {
-                    <row>_<col> : draw figure
+                <row>_<col>:{
+                    win: <win figure>,
+                    loss:<loss figure>,
+                    draw:<draw figure>
                 }
             }
         }
@@ -44,13 +41,18 @@ class Statistics:
 
         for state in state_list:
             state_key = state.key
+            row_col = f"{state.this_move[0]}_{state.this_move[1]}"
+
             self.my_statistics[state_key] = self.my_statistics.get(
                 state_key, {})
-            self.my_statistics[state_key][flag] = self.my_statistics[state_key].get(flag, {
-            })
-            row_col = f"{state.this_move[0]}_{state.this_move[1]}"
-            self.my_statistics[state_key][flag][row_col] = self.my_statistics[state_key][flag].get(
-                row_col, 0) + 1
+
+            self.my_statistics[state_key][row_col] = self.my_statistics[state_key].get(
+                row_col, {}
+            )
+            self.my_statistics[state_key][row_col][flag] = self.my_statistics[state_key][row_col].get(
+                flag, 0
+            ) + 1
+
             pass
         pass
 

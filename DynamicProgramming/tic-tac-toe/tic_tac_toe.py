@@ -227,7 +227,7 @@ class Agent():
                 logger.error(ex)
                 print(f"try again... {num_trial}")
             if num_trial < self.MAX_TRIAL:
-                position = self.input()
+                position = self.input(grid=grid)
             else:
                 num_trial += 1
 
