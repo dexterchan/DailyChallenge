@@ -28,11 +28,13 @@ class Statistics:
         self.my_statistics = {}
         self.file_name = file_name
         self.dim = dim
+        self.sample = 0
         if os.path.isfile(file_name):
             with open(file_name, "r") as f:
                 obj = json.load(f)
                 self.my_statistics = obj["my_statistics"]
                 self.dim = obj["dim"]
+                self.sample = obj.get("sample", 0)
 
     def update_statistics(self, state_list: List[State], final_game_state: AgentPlayResult) -> None:
         if final_game_state == AgentPlayResult.DRAW:
@@ -57,6 +59,7 @@ class Statistics:
             ) + 1
 
             pass
+        self.sample += 1
         pass
 
     def save(self) -> None:

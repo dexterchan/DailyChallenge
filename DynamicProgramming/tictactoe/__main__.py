@@ -1,4 +1,5 @@
 from __future__ import annotations
+from logging import addLevelName
 from .tic_tac_toe import *
 from .statistics import Statistics
 from .ai import Epsilon_Greedy
@@ -6,16 +7,25 @@ import math
 
 from .loghelper import get_logger, logging
 logger = get_logger(__name__, logging.INFO)
-
+import argparse
 if __name__ == "__main__":
     DIM = 3
     
-    human_player:bool = True
-    min_probability = 0.9
+    parser = argparse.ArgumentParser(description="tictactoe")
+    
+    parser.add_argument("-s","--statisticfile", type=str, default="game.statistics.json")
+    parser.add_argument("--training", dest="training", action = "store_true")
+    # flag_parser = parser.add_argument("--no-training", dest="training", action = "store_false")
+    # parser.set_defaults(training=True)
+    args = parser.parse_args()
+    logger.error(args.training)
+
+    human_player:bool = not args.training
+    min_probability = 0.1
     learning_rate = 0.1
-    max_iteration = 100 if not human_player else 1
+    max_iteration = 1000 if not human_player else 1
     statistics: Statistics = Statistics(
-            "game.statistics.json", dim=DIM
+            args.statisticfile, dim=DIM
         )
     iteration = 1
     while (iteration <= max_iteration):
