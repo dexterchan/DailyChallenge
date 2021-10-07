@@ -4,11 +4,12 @@ from .statistics import Statistics
 
 
 if __name__ == "__main__":
+    DIM = 3
     tic_tac_toe_game: Tic_Tac_Toe_Game = Tic_Tac_Toe_Game(
-        dimension=3
+        dimension=DIM
     )
     statistics: Statistics = Statistics(
-        "game.statistics.json"
+        "game.statistics.json", dim=DIM
     )
     tic_tac_toe_game.play()
     (agentA_state, agentB_state) = tic_tac_toe_game.get_agent_state()
