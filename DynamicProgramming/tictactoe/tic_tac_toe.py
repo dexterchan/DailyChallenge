@@ -2,7 +2,8 @@ from __future__ import annotations
 from enum import Enum
 import logging
 from typing import Dict, Tuple, List
-
+from .model import *
+import traceback
 
 logging.basicConfig(
     format="%(asctime)-15s %(levelname)s %(message)s (%(filename)s:%(lineno)s)")
@@ -24,170 +25,6 @@ class GameState(Enum):
     DRAW = 4
 
 
-class Memory(Enum):
-    BLANK = 0
-    ME = 1
-    YOU = 2
-
-    @staticmethod
-    def symbol(memory: Memory) -> str:
-        if memory == Memory.BLANK:
-            return " "
-        elif memory == Memory.ME:
-            return "M"
-        elif memory == Memory.YOU:
-            return "Y"
-
-    @staticmethod
-    def translate(mark: Mark, myMark: Mark) -> Memory:
-        """
-            translate the Mark to Memory Unit
-        """
-        if mark == Mark.BLANK:
-            return Memory.BLANK
-        elif mark == myMark:
-            return Memory.ME
-        else:
-            return Memory.YOU
-
-
-class Mark(Enum):
-    BLANK = 0
-    CROSS = 1
-    NOUGHT = 2
-
-    @staticmethod
-    def symbol(mark: Mark) -> str:
-        if mark == Mark.BLANK:
-            return " "
-        elif mark == Mark.CROSS:
-            return "X"
-        elif mark == Mark.NOUGHT:
-            return "O"
-
-
-class Grid():
-    def __init__(self, dimension: int = 3) -> None:
-        self._grid = [Mark.BLANK] * (dimension*dimension)
-        self.N = dimension
-        pass
-
-    def render(self) -> None:
-        """
-            render the grid
-        """
-        for r in range(self.N):
-            line = "|"
-            for c in range(self.N):
-                line += Mark.symbol(mark=self._grid[
-                    self._inx(
-                        position=(r+1, c+1)
-                    )
-                ])
-                line += "|"
-            print(line)
-        pass
-
-    def get_value(self, position: Tuple[int, int]) -> Mark:
-        return self._grid[
-            self._inx(position=position)
-        ]
-
-    def validate_new_place(self, position: Tuple[int, int]) -> bool:
-        """
-            check if the new place is valid
-        """
-        (row, column) = position
-        if row < 1 or row > self.N:
-            raise Exception(f"row {row} out of bound")
-        if column < 1 or column > self.N:
-            raise Exception(f"column {column} out of bound")
-
-        inx = self._inx(
-            position=position
-        )
-        if self._grid[inx] != Mark.BLANK:
-            raise Exception(f"Position {position} occupied")
-
-        return True
-
-    def _inx(self, position: Tuple[int, int]) -> None:
-        """
-            translate position to arrayindex
-        """
-        (row, column) = position
-        return (row-1) * self.N + (column-1)
-
-    def update(self, position: Tuple[int, int], mark: Mark) -> None:
-        if self.validate_new_place(
-            position=position
-        ):
-            # Update the grid with the mark
-            self._grid[self._inx(
-                position=position
-            )] = mark
-        else:
-            raise Exception("update failure")
-
-
-class State:
-    def __init__(self, dimension: int = 3) -> None:
-        self._state: List[Memory] = None
-        self.N = dimension
-        self.this_move: Tuple[int, int] = None
-        pass
-
-    @property
-    def key(self) -> str:
-        m_list = [Memory.symbol(m) for m in self._state]
-        key = "".join(m_list).replace(" ", "_")
-        return key
-
-    @classmethod
-    def replicate_from_Grid(cls,
-                            grid: Grid,
-                            my_mark: Mark,
-                            this_move: Tuple[int, int] = None) -> State:
-        new_state = cls(dimension=grid.N)
-
-        new_state._state = [Memory.translate(
-            mark=mark, myMark=my_mark) for mark in grid._grid]
-
-        if this_move is not None:
-            exclude_index = grid._inx(
-                position=this_move
-            )
-            new_state._state[exclude_index] = Memory.BLANK
-            new_state.this_move = this_move
-        return new_state
-
-    def _inx(self, position: Tuple[int, int]) -> None:
-        """
-            translate position to arrayindex
-        """
-        (row, column) = position
-        return (row-1) * self.N + (column-1)
-
-    def __str__(self) -> str:
-        """
-            render the state
-        """
-
-        lines = [f"state:{self.key}"]  # [f"state:{self.key}"]
-        for r in range(self.N):
-            line = "|"
-            for c in range(self.N):
-                line += Memory.symbol(memory=self._state[
-                    self._inx(
-                        position=(r+1, c+1)
-                    )
-                ])
-                line += "|"
-            lines.append(line)
-        lines.append(f"last move:{self.this_move}")
-        return "\n".join(lines)
-
-
 class Agent():
     """
         Agent records each move from Grid to State.
@@ -197,11 +34,13 @@ class Agent():
         The state list will be used for training automation bot.
     """
 
-    def __init__(self, name: str, mark: Mark) -> None:
+    def __init__(self, name: str, mark: Mark, place_interface:Place_Interface) -> None:
         self.name = name
         self.mark = mark
         self.MAX_TRIAL = 2
         self.state_history: List[State] = []
+        self.place_interface = place_interface
+        self.place_interface.sync_name(name=name)
         pass
 
     def place(self, position: Tuple[int, int], grid: Grid) -> None:
@@ -223,8 +62,8 @@ class Agent():
                 self.state_history.append(state)
                 break
             except Exception as ex:
-                exception = ex
-                logger.error(ex)
+                logger.error(traceback.format_exc())
+
                 print(f"try again... {num_trial}")
             if num_trial < self.MAX_TRIAL:
                 position = self.input(grid=grid)
@@ -239,17 +78,20 @@ class Agent():
     def input(self, grid: Grid) -> Tuple[int, int]:
         """
             basically accept input from the console
+            behavior will change with different 'Brain'
         """
-        state = State.replicate_from_Grid(
-            grid=grid,
-            my_mark=self.mark
+        # state = State.replicate_from_Grid(
+        #     grid=grid,
+        #     my_mark=self.mark
+        # )
+        # print(f"{self.name} - {Mark.symbol(self.mark)} input now")
+        # print(f"Current state: {state.key}")
+        # row: int = int(input("input row coordinate: "))
+        # column: int = int(input("Input column coordinate: "))
+        # position = (row, column)
+        return self.place_interface.place_mark(
+            grid=grid, mark = self.mark
         )
-        print(f"{self.name} - {Mark.symbol(self.mark)} input now")
-        print(f"Current state: {state.key}")
-        row: int = int(input("input row coordinate: "))
-        column: int = int(input("Input column coordinate: "))
-        position = (row, column)
-        return position
 
 
 class Judge:
@@ -391,9 +233,14 @@ class Tic_Tac_Toe_Game:
         If the grid is filled without winners, judge declares a "draw".
     """
 
-    def __init__(self, dimension: int = 3) -> None:
-        self.agentA = Agent(name="A", mark=Mark.CROSS)
-        self.agentB = Agent(name="B", mark=Mark.NOUGHT)
+    def __init__(self, dimension: int = 3,
+        agentA:Agent=Agent(name="A", mark=Mark.CROSS, place_interface=Manual_Console_Impl("A")),
+        agentB:Agent=Agent(name="B", mark=Mark.NOUGHT, place_interface=Manual_Console_Impl("B"))) -> None:
+        if agentA.mark == agentB.mark:
+            raise Exception(f"AgentA and Agent B mark should not be the same as {agentA.mark}")
+        self.agentA = agentA
+        self.agentB = agentB
+
         self.grid = Grid(
             dimension=dimension
         )

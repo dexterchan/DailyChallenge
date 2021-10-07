@@ -1,26 +1,66 @@
 from __future__ import annotations
 from .tic_tac_toe import *
 from .statistics import Statistics
+from .ai import Epsilon_Greedy
+import math
 
+from .loghelper import get_logger, logging
+logger = get_logger(__name__, logging.INFO)
 
 if __name__ == "__main__":
     DIM = 3
-    tic_tac_toe_game: Tic_Tac_Toe_Game = Tic_Tac_Toe_Game(
-        dimension=DIM
-    )
+    
+    human_player:bool = True
+    min_probability = 0.9
+    learning_rate = 0.1
+    max_iteration = 100 if not human_player else 1
     statistics: Statistics = Statistics(
-        "game.statistics.json", dim=DIM
-    )
-    tic_tac_toe_game.play()
-    (agentA_state, agentB_state) = tic_tac_toe_game.get_agent_state()
-    print(f"A:{agentA_state}")
-    print(f"B:{agentB_state}")
-    statistics.update_statistics(
-        state_list=tic_tac_toe_game.agentA.state_history,
-        final_game_state=agentA_state
-    )
-    statistics.update_statistics(
-        state_list=tic_tac_toe_game.agentB.state_history,
-        final_game_state=agentB_state
-    )
-    statistics.save()
+            "game.statistics.json", dim=DIM
+        )
+    iteration = 1
+    while (iteration <= max_iteration):
+        logger.info(f"iteration - {iteration}")
+        
+        min_probability_try_new = min_probability + (1-min_probability)* math.exp(-1 * iteration * learning_rate) if not human_player else 0.1
+
+        ep_ai1 = Epsilon_Greedy(
+            statistics=statistics, min_probability_try_new=min_probability_try_new
+        )
+        ep_ai2 = Epsilon_Greedy(
+            statistics=statistics, min_probability_try_new=min_probability_try_new
+        )
+        
+        A_brain = Manual_Console_Impl(
+            name="A"
+        ) if human_player else  AI_Impl(
+            name="epA", brain=ep_ai1
+        ) 
+
+        B_brain = AI_Impl(
+            name="epB", brain=ep_ai2
+        )
+
+        agentA:Agent=Agent(name="A", mark=Mark.CROSS, place_interface=A_brain)
+        agentB:Agent=Agent(name="B", mark=Mark.NOUGHT, place_interface=B_brain)
+        tic_tac_toe_game: Tic_Tac_Toe_Game = Tic_Tac_Toe_Game(
+            dimension=DIM, 
+            agentA=agentA, 
+            agentB=agentB
+        )
+        
+        
+        tic_tac_toe_game.play()
+        (agentA_state, agentB_state) = tic_tac_toe_game.get_agent_state()
+        print(f"{iteration}:A:{agentA_state}")
+        print(f"{iteration}:B:{agentB_state}")
+        logger.info(f"{iteration}: min_probability_try_new: {min_probability_try_new}")
+        statistics.update_statistics(
+            state_list=tic_tac_toe_game.agentA.state_history,
+            final_game_state=agentA_state
+        )
+        statistics.update_statistics(
+            state_list=tic_tac_toe_game.agentB.state_history,
+            final_game_state=agentB_state
+        )
+        statistics.save()
+        iteration += 1

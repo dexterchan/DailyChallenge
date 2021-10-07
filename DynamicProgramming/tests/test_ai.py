@@ -9,7 +9,7 @@ statistics = Statistics(
 )
 
 ep = Epsilon_Greedy(
-    statistics=statistics, min_probability_try_new=0.5
+    statistics=statistics, min_probability_try_new=0.0
 )
 pick = ep.pick_space(
     scene_key="_________"

@@ -5,15 +5,18 @@ from random import random, choice
 from collections import namedtuple
 from heapq import heapify
 from .loghelper import get_logger
+from .model import Brain
 ScorePoint = namedtuple("ScorePoint", ["coordinate", "score"])
 ScoreBook = namedtuple("ScoreBook", ["scene_key", "score_dict","score_list"])
 
 logger = get_logger(__name__, logging.INFO)
-class Epsilon_Greedy:
+
+class Epsilon_Greedy(Brain):
     WIN_SCORE: int = 2
     DRAW_SCORE: int = 1
     LOSS_SCORE: int = -2
-    MAX_SCORE: int = 2**31/2-1
+    MAX_SCORE: int = 2**30-1
+    MIN_BOUND: int = 0
 
     def __init__(self, statistics: Statistics, min_probability_try_new: float) -> None:
         self.statistics: Statistics = statistics
@@ -79,6 +82,10 @@ class Epsilon_Greedy:
             score_list = self.scores_cache[scene_key].score_list
             if len(score_list) > 0:
                 logger.info(f"pick most efficient one: {scene_key}")
+                record = score_list[0][1]
+                if record.score < self.MIN_BOUND:
+                    logger.info(f"Cannot find the most efficient one, pick a random one:")
+                    return self._random_space(spaces)
                 return self._translate_coordinate_2_tuple(score_list[0][1].coordinate)
             else:
                 logger.info(f"empty statistics {scene_key}, randomly pick one")
@@ -89,7 +96,7 @@ class Epsilon_Greedy:
 
     def _translate_coordinate_2_tuple(self, coordinate:str) -> Tuple[int, int]:
         l = coordinate.split("_")
-        return (l[0],l[1])
+        return (int(l[0]),int(l[1]))
     def _random_space(self, spaces:List[Tuple[int,int]]) -> Tuple[int,int]:
         return choice(spaces)
 
