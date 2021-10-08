@@ -17,6 +17,7 @@ if __name__ == "__main__":
     parser.add_argument("--training", dest="training", action = "store_true")
     parser.add_argument("--iteration", dest="iteration", default=10)
     parser.add_argument("--learningrate", dest="learningrate", type=float, default=0.1)
+    parser.add_argument("--min_probaility", dest="minprob", type=float, default=0.1)
     
     # flag_parser = parser.add_argument("--no-training", dest="training", action = "store_false")
     # parser.set_defaults(training=True)
@@ -24,7 +25,7 @@ if __name__ == "__main__":
     logger.error(args.training)
 
     human_player:bool = not args.training
-    min_probability = 0.1
+    min_probability = args.minprob
     learning_rate = args.learningrate
     max_iteration = int(args.iteration) if not human_player else 1
     statistics: Statistics = Statistics(
