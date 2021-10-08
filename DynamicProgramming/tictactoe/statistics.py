@@ -1,7 +1,7 @@
 from .tic_tac_toe import AgentPlayResult, State
 from typing import List
 from collections import defaultdict
-
+from shutil import copyfile
 import json
 import os
 
@@ -63,5 +63,7 @@ class Statistics:
         pass
 
     def save(self) -> None:
+        if os.path.exists(self.file_name):
+            copyfile(self.file_name, self.file_name+".bk")
         with open(self.file_name, "w") as f:
             json.dump(self.__dict__, f)
