@@ -1,6 +1,6 @@
 import logging
 
-logging.basicConfig("%(levelname)s %(message)s $(filename)s-%(lineno)s")
+logging.basicConfig(format="%(levelname)s  %(filename)s-%(lineno)s: %(message)s")
 
 
 def get_logger(name, loglevel):
