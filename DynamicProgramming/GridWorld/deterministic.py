@@ -11,7 +11,7 @@ For non-deterministic model, please refer to Monte Carlo method:
 reference: https://towardsdatascience.com/reinforcement-learning-rl-101-with-python-e1aa0d37d43b
 
 """
-from .model import Grid, Action, Policy, Values, NO_REWARD, Reward
+from .model import Grid, Action, Policy, State, Values, NO_REWARD, Reward
 from typing import Dict, List, Tuple
 from random import choices, random
 import math
@@ -39,6 +39,23 @@ class Deterministic_Optimizer:
                 values[state] = NO_REWARD
         return policy, values
 
+    def _find_possible_actions(self, grid: Grid, state: State) -> List[State]:
+        return grid.actions[state]
+
+    def _find_max_suboptimal_reward(
+        self, grid: Grid, state: State, values: Values
+    ) -> Tuple[Action, Reward]:
+        best_reward = float("-inf")
+        best_action = None
+        for action in self._find_possible_actions(grid=grid, state=state):
+            grid.state = state
+            reward = grid.move(action=action)
+            v = reward + self.GAMMA * values[grid.state]
+            if v > best_reward:
+                best_reward = v
+                best_action = action
+        return (best_action, best_reward)
+
     def optimize(self, grid: Grid) -> Tuple[Policy, Values]:
         states = grid.all_states()
         policy, values = self._init_value_iteration(grid=grid)
@@ -57,17 +74,20 @@ class Deterministic_Optimizer:
                     continue
                 new_v = float("-inf")
                 # Find action leading to max value function
-                for action in grid.actions[state]:
-                    grid.state = state
-                    reward = grid.move(action=action)
+                _, best_value = self._find_max_suboptimal_reward(
+                    grid=grid, state=state, values=values
+                )
+                # for action in grid.actions[state]:
+                #     grid.state = state
+                #     reward = grid.move(action=action)
 
-                    v = reward + self.GAMMA * values[grid.state]
-                    logger.debug(
-                        f"{iteration}:{state}->{grid.state} action:{action} reward:{reward} v:{v}"
-                    )
-                    new_v = v if v > new_v else new_v
-                values[state] = new_v
-                max_change = max(max_change, abs(new_v - old_vs))
+                #     v = reward + self.GAMMA * values[grid.state]
+                #     logger.debug(
+                #         f"{iteration}:{state}->{grid.state} action:{action} reward:{reward} v:{v}"
+                #     )
+                #     new_v = v if v > new_v else new_v
+                values[state] = best_value
+                max_change = max(max_change, abs(best_value - old_vs))
             iteration += 1
             if max_change < self.thresold:
                 break
@@ -75,17 +95,20 @@ class Deterministic_Optimizer:
         # Find policy leading to optimal value function
         for state in policy.keys():
             best_act = None
-            best_value = float("-inf")
+            # best_value = float("-inf")
             if state not in policy or grid.is_terminal(s=state):
                 continue
-            for action in grid.actions[state]:
-                grid.state = state
-                reward = grid.move(action=action)
+            # for action in grid.actions[state]:
+            #     grid.state = state
+            #     reward = grid.move(action=action)
 
-                v = reward + self.GAMMA * values[grid.state]
-                if v > best_value:
-                    best_act = action
-                    best_value = v
+            #     v = reward + self.GAMMA * values[grid.state]
+            #     if v > best_value:
+            #         best_act = action
+            #         best_value = v
+            best_act, _ = self._find_max_suboptimal_reward(
+                grid=grid, state=state, values=values
+            )
             policy[state] = best_act
             pass
         return policy, values
