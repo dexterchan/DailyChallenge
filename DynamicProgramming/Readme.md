@@ -1,4 +1,9 @@
 
+TEST
+```
+export PYTHONPATH=.
+python3 tests/tictactoe/test_ai.py
+```
 
 Build
 ```
