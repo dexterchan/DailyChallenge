@@ -47,14 +47,14 @@ class Mark(Enum):
     def __str__(self):
         return self.value
 
-    @staticmethod
-    def symbol(mark: Mark) -> str:
-        if mark == Mark.BLANK:
-            return " "
-        elif mark == Mark.CROSS:
-            return "X"
-        elif mark == Mark.NOUGHT:
-            return "O"
+    # @staticmethod
+    # def symbol(mark: Mark) -> str:
+    #     if mark == Mark.BLANK:
+    #         return " "
+    #     elif mark == Mark.CROSS:
+    #         return "X"
+    #     elif mark == Mark.NOUGHT:
+    #         return "O"
 
 
 class State:
