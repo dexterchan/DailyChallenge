@@ -4,6 +4,7 @@ from collections import defaultdict
 from shutil import copyfile
 import json
 import os
+from .io import State_IO
 
 
 class Statistics:
@@ -24,17 +25,15 @@ class Statistics:
         then statistic persists the state list into a file for later iteration update
     """
 
-    def __init__(self, file_name: str, dim:int) -> None:
-        self.my_statistics = {}
-        self.file_name = file_name
+    def __init__(self, state_io:State_IO, dim:int) -> None:
+        self.state_io = state_io
+        obj = state_io.read()
         self.dim = dim
-        self.sample = 0
-        if os.path.isfile(file_name):
-            with open(file_name, "r") as f:
-                obj = json.load(f)
-                self.my_statistics = obj["my_statistics"]
-                self.dim = obj["dim"]
-                self.sample = obj.get("sample", 0)
+        self.num_samples = 0
+        self.my_statistics = obj.get("my_statistics", {})
+        self.dim = obj.get("dim", dim)
+        self.num_samples = obj.get("num_samples", 0)
+        
 
     def update_statistics(self, state_list: List[State], final_game_state: AgentPlayResult) -> None:
         if final_game_state == AgentPlayResult.DRAW:
@@ -59,11 +58,19 @@ class Statistics:
             ) + 1
 
             pass
-        self.sample += 1
+        self.num_samples += 1
         pass
 
+    def to_dict(self):
+        d = self.__dict__
+        new_d = {}
+        exclude_fields = ["state_io"]
+        for key, value in d.items():
+            if key not in exclude_fields:
+                new_d[key] = value
+        return new_d
+
     def save(self) -> None:
-        if os.path.exists(self.file_name):
-            copyfile(self.file_name, self.file_name+".bk")
-        with open(self.file_name, "w") as f:
-            json.dump(self.__dict__, f)
+        self.state_io.write(
+            data=self.to_dict()
+        )

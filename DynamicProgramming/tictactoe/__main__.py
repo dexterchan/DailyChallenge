@@ -3,6 +3,7 @@ from logging import addLevelName
 from .tic_tac_toe import *
 from .statistics import Statistics
 from .ai import Epsilon_Greedy
+from .io import State_IO
 import math
 
 from .loghelper import get_logger, logging
@@ -31,8 +32,13 @@ if __name__ == "__main__":
     human_player: bool = not args.training
     min_probability = args.minprob
     learning_rate = args.learningrate
-    max_iteration = int(args.iteration) if not human_player else 1
-    statistics: Statistics = Statistics(args.statisticfile, dim=DIM)
+    max_iteration:int = int(args.iteration) if not human_player else 1
+    statistic_file:str = args.statisticfile
+    state_io_obj:State_IO = State_IO.instantiate(
+        filename=statistic_file
+    )
+
+    statistics: Statistics = Statistics(state_io=state_io_obj, dim=DIM)
     iteration = 1
     while iteration <= max_iteration:
         logger.info(f"iteration - {iteration}")
