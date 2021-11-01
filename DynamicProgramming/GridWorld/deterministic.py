@@ -9,7 +9,8 @@ Therefore, it is a determinsitic model as described in
  
 For non-deterministic model, please refer to Monte Carlo method:
 reference: https://towardsdatascience.com/reinforcement-learning-rl-101-with-python-e1aa0d37d43b
-
+https://towardsdatascience.com/reinforcement-learning-solving-mdps-using-dynamic-programming-part-3-b53d32341540
+https://medium.com/analytics-vidhya/bellman-equation-and-dynamic-programming-773ce67fc6a7
 """
 from .model import Grid, Action, Policy, State, Values, NO_REWARD, Reward
 from typing import Dict, List, Tuple
