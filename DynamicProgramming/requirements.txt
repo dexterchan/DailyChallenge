@@ -2,3 +2,12 @@ pytest
 pydantic
 numpy
 boto3
+gym
+requests
+pandas
+jupyter
+jupyter-client
+jupyter-console
+jupyter-core
+matplotlib
+plotly
