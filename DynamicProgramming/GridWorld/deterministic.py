@@ -27,6 +27,14 @@ class Deterministic_Optimizer:
     ACTIONS = (Action.UP, Action.DOWN, Action.LEFT, Action.RIGHT)
 
     def _init_value_iteration(self, grid: Grid) -> Tuple[Policy, Values]:
+        """[summary]
+
+        Args:
+            grid (Grid): [description]
+
+        Returns:
+            Tuple[Policy, Values]: [description]
+        """
         policy: Policy = dict()
         for state in grid.actions.keys():
             policy[state] = choices(self.ACTIONS)
