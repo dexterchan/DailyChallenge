@@ -1,8 +1,9 @@
 from enum import Enum
 from io import StringIO
-from typing import List
+from typing import List, Tuple, Dict, NamedTuple
 import random
-from collections import deque
+from collections import deque, namedtuple
+from functools import reduce
 
 
 class State(Enum):
@@ -17,6 +18,13 @@ class Action(Enum):
     UP = 1
     RIGHT = 2
     DOWN = 3
+
+
+Action_Probability = namedtuple("Action_Probability", ["prob", "state", "reward"])
+NORMAL_REWARD = -1
+FINAL_REWARD = 1
+
+WORST_REWARD = -(2 ** 32)
 
 
 class Board:
@@ -92,8 +100,11 @@ class Board:
         else:
             return False
 
+    def _convert_pos_row_column(self, pos: int) -> Tuple[int, int]:
+        return (int(pos / self.w), int(pos % self.w))
+
     def move(self, pos: int, action: Action) -> int:
-        row, col = int(pos / self.w), int(pos % self.w)
+        row, col = self._convert_pos_row_column(pos)
         if action == Action.LEFT:
             col -= 1
         elif action == Action.UP:
@@ -137,3 +148,60 @@ class Board:
                     graph.write(f" {self.board[pos].value} ")
             graph.write("\n")
         print(graph.getvalue())
+
+    def populate_transition_probaility(self, deterministic: bool) -> None:
+        """Populate probability and reward for each state
+        if deterministic = True, probability = 1 for each action to other state
+        """
+        self.Prob: List[Dict] = [None] * len(self.board)
+        for pos in range(len(self.board)):
+            self.Prob[pos] = {}
+            for a in range(len(Action)):
+                action = Action(a)
+                self.Prob[pos][action] = []
+
+                def move_prob_action(prob: float, prob_action: Action):
+                    if self.board[pos] == State.END or self.board[pos] == State.HOLLOW:
+                        newpos = pos
+                    else:
+                        newpos = self.move(pos=pos, action=prob_action)
+
+                    if newpos == Board.INVALID_POS:
+                        self.Prob[pos][action].append(
+                            Action_Probability(
+                                prob=prob, state=pos, reward=NORMAL_REWARD
+                            )
+                        )
+                    elif self.board[newpos] == State.HOLLOW:
+                        self.Prob[pos][action].append(
+                            Action_Probability(
+                                prob=prob, state=newpos, reward=WORST_REWARD
+                            )
+                        )
+                    elif self.board[newpos] == State.ICE:
+                        self.Prob[pos][action].append(
+                            Action_Probability(
+                                prob=prob, state=newpos, reward=NORMAL_REWARD
+                            )
+                        )
+                    elif self.board[newpos] == State.END:
+                        self.Prob[pos][action].append(
+                            Action_Probability(
+                                prob=prob, state=newpos, reward=FINAL_REWARD
+                            )
+                        )
+
+                def find_probability(action: Action, prob_action: Action) -> float:
+                    if action == prob_action:
+                        return 0.5
+                    else:
+                        return 0.5 / (len(Action) - 1)
+
+                if deterministic:
+                    move_prob_action(prob=1, prob_action=action)
+                else:
+                    for pa in range(len(Action)):
+                        prob_action = Action(pa)
+                        prob = find_probability(action=action, prob_action=prob_action)
+                        move_prob_action(prob=prob, prob_action=prob_action)
+        pass
