@@ -4,6 +4,11 @@ from typing import List, Tuple, Dict, NamedTuple
 import random
 from collections import deque, namedtuple
 from functools import reduce
+import logging
+
+logging.basicConfig(format="%(levelname)s  %(filename)s-%(lineno)s: %(message)s")
+logger = logging.getLogger(__name__)
+logger.setLevel(level=logging.DEBUG)
 
 
 class State(Enum):
@@ -20,11 +25,15 @@ class Action(Enum):
     DOWN = 3
 
 
-Action_Probability = namedtuple("Action_Probability", ["prob", "state", "reward"])
+Action_Probability = namedtuple(
+    "Action_Probability", ["prob", "state", "reward", "prob_action"]
+)
 NORMAL_REWARD = -1
-FINAL_REWARD = 1
+FINAL_REWARD = 100
 
-WORST_REWARD = -(2 ** 32)
+WORST_REWARD = -100
+
+# random.seed(1)
 
 
 class Board:
@@ -166,28 +175,48 @@ class Board:
                     else:
                         newpos = self.move(pos=pos, action=prob_action)
 
+                    # if pos == 4:
+                    #     logger.debug(
+                    #         f"debug of pos {pos} - action:{str(action)} - {str(prob_action)} {prob} -> {newpos}"
+                    #     )
+
                     if newpos == Board.INVALID_POS:
                         self.Prob[pos][action].append(
                             Action_Probability(
-                                prob=prob, state=pos, reward=NORMAL_REWARD
+                                prob=prob,
+                                state=pos,
+                                reward=WORST_REWARD,
+                                prob_action=prob_action,
                             )
                         )
-                    elif self.board[newpos] == State.HOLLOW:
+                    elif (
+                        self.board[newpos] == State.HOLLOW
+                        or self.board[newpos] == State.START
+                    ):
                         self.Prob[pos][action].append(
                             Action_Probability(
-                                prob=prob, state=newpos, reward=WORST_REWARD
+                                prob=prob,
+                                state=newpos,
+                                reward=WORST_REWARD,
+                                prob_action=prob_action,
                             )
                         )
                     elif self.board[newpos] == State.ICE:
                         self.Prob[pos][action].append(
                             Action_Probability(
-                                prob=prob, state=newpos, reward=NORMAL_REWARD
+                                prob=prob,
+                                state=newpos,
+                                reward=NORMAL_REWARD,
+                                prob_action=prob_action,
                             )
                         )
                     elif self.board[newpos] == State.END:
                         self.Prob[pos][action].append(
                             Action_Probability(
-                                prob=prob, state=newpos, reward=FINAL_REWARD
+                                prob=prob,
+                                state=newpos,
+                                reward=FINAL_REWARD,
+                                prob_action=prob_action,
                             )
                         )
 
@@ -200,8 +229,14 @@ class Board:
                 if deterministic:
                     move_prob_action(prob=1, prob_action=action)
                 else:
+
                     for pa in range(len(Action)):
                         prob_action = Action(pa)
+
                         prob = find_probability(action=action, prob_action=prob_action)
+                        # if pos == 4:
+                        #     logger.debug(
+                        #         f"debug of pos {pos} - action:{str(action)} - {str(prob_action)} {prob}"
+                        #     )
                         move_prob_action(prob=prob, prob_action=prob_action)
         pass
