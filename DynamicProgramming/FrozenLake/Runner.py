@@ -21,7 +21,7 @@ class PrioritizedItem:
 class Bellman_Runner:
     MAX_ITERATION = 1000
     DISCOUNT = 0.8
-    THRESHOLD = 0.1
+    THRESHOLD = 0.0001
 
     @staticmethod
     def _render_raw_values(length: int, width: int, values: List[Union(float, Action)]):
@@ -46,9 +46,9 @@ class Bellman_Runner:
             return reduce(lambda a, b: a + b, val_func)
 
         run = True
-        count = 0
+        self.count = 0
 
-        while run and count < self.MAX_ITERATION:
+        while run and self.count < self.MAX_ITERATION:
             old_state_value_function = deepcopy(state_value_function)
             for pos in range(len(game_board)):
                 """[summary]"""
@@ -76,7 +76,7 @@ class Bellman_Runner:
             if abs(old_sum - new_sum) < self.THRESHOLD:
                 run = False
                 break
-            count += 1
+            self.count += 1
             pass
 
         return state_value_function

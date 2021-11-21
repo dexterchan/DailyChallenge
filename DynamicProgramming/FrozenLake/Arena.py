@@ -29,9 +29,9 @@ Action_Probability = namedtuple(
     "Action_Probability", ["prob", "state", "reward", "prob_action"]
 )
 NORMAL_REWARD = -1
-FINAL_REWARD = 100
+FINAL_REWARD = 10
 
-WORST_REWARD = -100
+WORST_REWARD = -(10)
 
 # random.seed(1)
 
@@ -60,6 +60,7 @@ class Board:
 
         # DFS to check if the map is valid
         self.board = board
+        self.dfs_count = 0
 
         def DFS() -> bool:
             pos = START
@@ -73,6 +74,7 @@ class Board:
 
                 Visited[pos] = True
                 for a in range(len(Action)):
+                    self.dfs_count += 1
                     action = Action(a)
                     newpos = self.move(pos=pos, action=action)
                     # print(
