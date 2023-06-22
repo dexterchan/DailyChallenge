@@ -5,37 +5,62 @@ class DblLinkedList:
     def __init__(self) -> None:
         self._head:Node = None
         self._tail:Node = None
-        self._size:int = 0
         self._cur:Node = None
         pass
 
     def __len__(self) -> int:
-        return self._size
+        return self.size()
     
     def __repr__(self) -> str:
-        return self._head
+        return str(self._head)
 
     def __iter__(self) -> Node:
         self._cur = self._head
-        return self._cur
+        return self
     
     def __next__(self) -> Node:
         if self._cur is None:
             raise StopIteration
+        
+        cur = self._cur
         self._cur = self._cur.next
-        return self._cur
+        return cur
     
     def append(self, data) -> Node:
-        
         if self._head is None:
             self._head = Node(data)
             self._tail = self._head
-            self._size += 1
             return self._head
         else:
-            return self._tail.append(data)
+            tail_node, is_last = self._tail.append(Node(data))
+            assert is_last
+            self._tail = tail_node
+            return tail_node
     
+    def insert(self, node:Node, new_node:Node) -> Node:
+        inserted_node, is_first = node.insert(new_node)
+        if is_first:
+            self._head = inserted_node
+        return new_node
+
+    def delete(self, node:Node) -> Node:
+        last_node, is_first, is_last = node.delete()
+        if is_first:
+            self._head = last_node
+        if is_last:
+            self._tail = last_node
+        node.prev=None
+        node.next=None
+        return last_node
     
+    def find(self, value) -> Node:
+        return self._head.find(value)
+    
+    def size(self) -> int:
+        i:int = -1
+        for i, _ in enumerate(self):
+            pass
+        return i+1
     
     pass
 
@@ -45,14 +70,6 @@ class Node:
         self.data = data
         self.next:Node = None
         self.prev:Node = None
-    
-    # def __iter__(self):
-    #     return self
-    
-    # def __next__(self):
-    #     if self.next is None:
-    #         raise StopIteration
-    #     return self.next
     
     def __repr__(self) -> str:
         n:Node = self
@@ -77,23 +94,29 @@ class Node:
         #check if it is first element
         is_first = self.prev is None
         is_last = self.next is None
+        last_node:Node = None
         if is_first:
-            self.next.prev = None
-            return self.next, is_first, is_last
-        #check if it is not last element
-        elif is_last:
-            self.next.prev = self.prev
-        self.prev.next = self.next
+            if not is_last:
+                self.next.prev = None
+            last_node = self.next
+        else:
+            self.prev.next = self.next
+            last_node = self.prev
 
-        return self.prev, is_first, is_last
+        #check if it is not last element
+        if not is_last:
+            self.next.prev = self.prev
+        
+        return last_node, is_first, is_last
     
-    def append(self, new_node:Node) -> Node:
+    def append(self, new_node:Node) -> tuple[Node, bool]:
+        is_last = self.next is None
         new_node.next = self.next
         new_node.prev = self
         if self.next is not None:
             self.next.prev = new_node
         self.next = new_node
-        return new_node
+        return new_node, is_last
 
     def find(self, value) -> Node:
         n:Node = self
@@ -133,8 +156,8 @@ if __name__ == "__main__":
     lead = new_node if is_first else lead
     print(lead)
 
-    g_node = c_node.append(Node("g"))
-    print(lead)
+    g_node, is_last = c_node.append(Node("g"))
+    print(lead, is_last)
     # print(g_node.prev.data)
     # print(g_node.next.data)
     # print(g_node.next.prev.data)
