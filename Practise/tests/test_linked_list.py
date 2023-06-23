@@ -49,5 +49,25 @@ def test_insert_linked_list():
     dbl_list.delete(n3)
     dbl_list.insert(n1, n3)
     print(dbl_list)
+    assert dbl_list.size() == 5
 
+    n5 = dbl_list._tail
+    dbl_list.delete(n5)
+    assert dbl_list.size() == 4
+    print(dbl_list)
+    dbl_list.insert(n3, n5)
+    print(dbl_list)
+    assert dbl_list.size() == 5
+
+    n4 = dbl_list._tail
+    dbl_list.delete(n4)
+    dbl_list.insert(n3, n4)
+    print(dbl_list)
     
+    n2 = dbl_list._tail
+    dbl_list.delete(n2)
+    dbl_list.insert(n1, n2)
+    print(dbl_list)
+    
+    for i,v in enumerate(dbl_list):
+        assert v.data == 5-i
