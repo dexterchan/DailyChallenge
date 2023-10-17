@@ -13,18 +13,24 @@ class DblLinkedList:
     
     def __repr__(self) -> str:
         return str(self._head)
-
-    def __iter__(self) -> Node:
-        self._cur = self._head
-        return self
     
-    def __next__(self) -> Node:
-        if self._cur is None:
-            raise StopIteration
+    def __iter__(self) -> Node:
+        _cur = self._head
+        while _cur is not None:
+            yield _cur
+            _cur = _cur.next
+
+    # def __iter__(self) -> Node:
+    #     self._cur = self._head
+    #     return self
+    
+    # def __next__(self) -> Node:
+    #     if self._cur is None:
+    #         raise StopIteration
         
-        cur = self._cur
-        self._cur = self._cur.next
-        return cur
+    #     cur = self._cur
+    #     self._cur = self._cur.next
+    #     return cur
     
     def append(self, data) -> Node:
         if self._head is None:
