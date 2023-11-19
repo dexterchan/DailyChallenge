@@ -167,7 +167,7 @@ class Solution:
             return 0, []
         for m in meetingList:
             start.append(m[0])
-            end.append(Session(m[0], m[1]))
+            end.append(Session(*m))
         start.sort()
         end.sort(key=lambda x: x.end)
 
@@ -182,7 +182,7 @@ class Solution:
                 new_room.add(end[i])
                 heapq.heappush(priority_queue, new_room)
             else:
-                # add session to the earliest available room
+                # Update current room
                 rm_to_update = heapq.heappop(priority_queue)
                 rm_to_update.add(end[i])
                 heapq.heappush(priority_queue, rm_to_update)
